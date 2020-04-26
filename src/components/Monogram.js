@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 function Monogram({ highlight, ...props }) {
 
   return (
-    <MonogramWrapper width="45" height="45" viewBox="0 0 16000 16000" {...props}>
+    <MonogramWrapper aria-hidden width="45" height="45" viewBox="0 0 16000 16000" {...props}>
       <defs>
         <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#64bbe8"/>
