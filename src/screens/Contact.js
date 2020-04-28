@@ -6,7 +6,7 @@ import Input from 'components/Input';
 import DecoderText from 'components/DecoderText';
 import Divider from 'components/Divider';
 import { Button, RouterButton } from 'components/Button';
-import { AnimFade, sectionPadding } from 'utils/style';
+import { AnimFade, sectionPadding, media } from 'utils/style';
 import { useScrollRestore, useFormInput, useRouteTransition } from 'hooks';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
@@ -183,7 +183,7 @@ const ContactForm = styled.form`
   width: 100%;
   padding: 40px 0;
 
-  @media (max-width: ${props => props.theme.mobile}px) {
+  @media (max-width: ${media.mobile}px) {
     padding: 120px 0 40px;
     align-self: flex-start;
   }
@@ -197,13 +197,13 @@ const ContactFields = styled.div`
 
 const ContactTitle = styled.h1`
   font-size: 32px;
-  font-weight: 500;
+  font-weight: var(--fontWeightMedium);
   margin-bottom: 40px;
   line-height: 1;
   margin-top: 0;
-  color: ${props => props.theme.colorTitle};
+  color: rgb(var(--rgbTitle));
   transition-property: transform, opacity;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay + initDelay}ms;
   transform: translate3d(0, 90px, 0);
@@ -227,7 +227,7 @@ const ContactTitle = styled.h1`
 const ContactDivider = styled(Divider)`
   margin-bottom: 62px;
   transition-property: transform, opacity;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay + initDelay}ms;
   transform: translate3d(0, 90px, 0);
@@ -249,7 +249,7 @@ const ContactDivider = styled(Divider)`
 
 const ContactInput = styled(Input)`
   transition-property: transform, opacity;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay + initDelay}ms;
   transform: translate3d(0, 80px, 0);
@@ -272,7 +272,7 @@ const ContactInput = styled(Input)`
 const ContactButton = styled(Button)`
   margin-top: 28px;
   transition-property: transform, opacity;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-delay: ${props => props.status === 'entered' ? '0ms' : `${props.delay + initDelay}ms`};
   transition-duration: ${props => props.status === 'entered' ? '0.4s' : '0.8s'};
   transform: translate3d(0, 80px, 0);
@@ -281,7 +281,7 @@ const ContactButton = styled(Button)`
 
   ${props => props.sending && css`
     svg {
-      transition: transform ${props.curveFastoutSlowin} 0.8s, opacity 0.3s ease 0.3s;
+      transition: transform var(--curveFastoutSlowin) 0.8s, opacity 0.3s ease 0.3s;
       transform: translate3d(150px, 0, 0);
       opacity: 0;
     }
@@ -334,9 +334,9 @@ const ContactCompleteTitle = styled.h1`
   font-size: 32px;
   margin: 0;
   text-align: center;
-  color: ${props => props.theme.colorTitle};
+  color: rgb(var(--rgbTitle));
   transition-property: transform, opacity;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay}ms;
   transform: translate3d(0, 80px, 0);
@@ -352,7 +352,7 @@ const ContactCompleteText = styled.p`
   font-size: 18px;
   text-align: center;
   transition-property: transform, opacity;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay}ms;
   transform: translate3d(0, 80px, 0);
@@ -366,7 +366,7 @@ const ContactCompleteText = styled.p`
 
 const ContactCompleteButton = styled(RouterButton)`
   transition-property: transform, opacity;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay}ms;
   transform: translate3d(0, 80px, 0);

@@ -26,4 +26,9 @@ export const socialLinks = [
     url: 'https://github.com/CodyJasonBennett',
     icon: 'github',
   },
+  {
+    label: 'Email',
+    to: '/contact',
+    icon: 'email',
+  },
 ];

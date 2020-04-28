@@ -4,12 +4,14 @@ import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup, config as transitionConfig } from 'react-transition-group';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from 'components/Header';
-import { theme } from 'app/theme';
+import { theme, createThemeProperties } from 'app/theme';
+import { cornerClip, media } from 'utils/style';
 import { useLocalStorage, usePrefersReducedMotion } from 'hooks';
 import GothamBook from 'assets/fonts/gotham-book.woff2';
 import GothamMedium from 'assets/fonts/gotham-medium.woff2';
 import { initialState, reducer } from 'app/reducer';
 import { reflow } from 'utils/transition';
+import prerender from 'utils/prerender';
 
 const Home = lazy(() => import('screens/Home'));
 const Contact = lazy(() => import('screens/Contact'));
@@ -25,7 +27,7 @@ export const fontStyles = `
   @font-face {
     font-family: 'Gotham';
     font-weight: 400;
-    src: url(${GothamBook}) format('woff2');
+    src: url(${GothamBook}) format('woff');
     font-display: swap;
   }
 
@@ -121,19 +123,54 @@ function AppRoutes() {
 }
 
 export const GlobalStyles = createGlobalStyle`
+  :root {
+    --spacingOuter: 60px;
+    --maxWidth: 1100px;
+
+    @media (max-width: ${media.laptop}px) {
+      --maxWidth: 1000px;
+    }
+
+    @media (max-width: ${media.tablet}px) {
+      --spacingOuter: 40px;
+    }
+
+    @media (max-width: ${media.mobile}px) {
+      --spacingOuter: 20px;
+    }
+
+    @media (max-height: ${media.mobile}px) {
+      --spacingOuter: 20px;
+    }
+  }
+
+  .dark {
+    ${createThemeProperties(theme.dark)}
+  }
+
+  .light {
+    ${createThemeProperties(theme.light)}
+  }
+
+  ${!prerender && css`
+    body.light,
+    body.dark,
+    body {
+      ${props => createThemeProperties(props.theme)}
+    }
+  `}
+
   html,
   body {
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-    font-family: ${props => props.theme.fontStack};
-    background: ${props => props.theme.colorBackground};
-    color: ${props => props.theme.colorText};
+    font-family: var(--fontStack);
+    background: rgb(var(--rgbBackground));
+    color: rgb(var(--rgbText));
     border: 0;
     margin: 0;
     width: 100vw;
     overflow-x: hidden;
-    font-weight: 400;
+    font-weight: var(--fontWeightRegular);
   }
 
   *,
@@ -143,8 +180,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ::selection {
-    background: ${props => props.theme.colorAccent};
-    color: rgb(0, 0, 0, 0.9);
+    background: rgb(var(--rgbAccent));
+    color: rgb(var(--rgbBlack) / 0.9);
   }
 
   #root *,
@@ -163,7 +200,7 @@ const AppMainContent = styled.main`
   width: 100%;
   overflow-x: hidden;
   position: relative;
-  background: ${props => props.theme.colorBackground};
+  background: rgb(var(--rgbBackground));
   transition: background 0.4s ease;
   outline: none;
   display: grid;
@@ -196,8 +233,8 @@ const SkipToMain = styled.a`
   width: 1px;
   height: 1px;
   overflow: hidden;
-  color: ${props => props.theme.colorBackground};
-  background: ${props => props.theme.colorPrimary};
+  color: rgb(var(--rgbBackground));
+  background: rgb(var(--rgbPrimary));
   z-index: 99;
 
   &:focus {
@@ -209,9 +246,9 @@ const SkipToMain = styled.a`
     width: auto;
     height: auto;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: var(--fontWeightMedium);
     line-height: 1;
-    clip-path: ${props => props.theme.clipPath(8)};
+    ${cornerClip(8)}
   }
 `;
 

@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components/macro';
 import Icon from './Icon';
 import { Button } from 'components/Button';
+import { media } from 'utils/style';
 
 const NavToggle = ({ menuOpen, ...rest }) => (
   <NavToggleButton
@@ -11,8 +12,8 @@ const NavToggle = ({ menuOpen, ...rest }) => (
     {...rest}
   >
     <NavToggleInner>
-      <NavToggleIcon open={menuOpen} icon="menu" size={32} color="white" />
-      <NavToggleIcon open={menuOpen} icon="close" size={32} color="white" />
+      <NavToggleIcon open={menuOpen} icon="menu" />
+      <NavToggleIcon open={menuOpen} icon="close" />
     </NavToggleInner>
   </NavToggleButton>
 );
@@ -20,14 +21,14 @@ const NavToggle = ({ menuOpen, ...rest }) => (
 const NavToggleButton = styled(Button)`
   && {
     position: fixed;
-    top: ${props => props.theme.spacingOuter.mobile}px;
-    right: ${props => props.theme.spacingOuter.mobile}px;
+    top: var(--spacingOuter);
+    right: var(--spacingOuter);
     width: 48px;
     height: 48px;
     z-index: 1024;
     display: none;
 
-    @media (max-width: ${props => props.theme.mobile}px), (max-height: ${props => props.theme.mobile}px) {
+    @media (max-width: ${media.mobile}px), (max-height: ${media.mobile}px) {
       display: flex;
     }
   }
@@ -45,11 +46,11 @@ const NavToggleIcon = styled(Icon)`
   position: absolute;
   transition-property: opacity, transform, fill;
   transition-duration: 0.4s;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-delay: 0.1s;
   opacity: 1;
   transform: rotate(0deg);
-  fill: ${props => props.theme.colorText};
+  fill: rgb(var(--rgbText));
   width: 32px;
   height: 32px;
 

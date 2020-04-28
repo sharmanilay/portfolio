@@ -1,19 +1,21 @@
 import React from 'react';
 import styled, { useTheme } from 'styled-components/macro';
+import { createThemeProperties } from 'app/theme';
+import { media } from 'utils/style';
 
 const darkCodeTheme = {
   char: '#D8DEE9',
   comment: '#B2B2B2',
   keyword: '#c592ff',
-  primitive: 'rgba(0, 229, 255, 1)',
+  primitive: 'rgba(0,229,255,1)',
   string: '#00FF9C',
   variable: '#d7deea',
   boolean: '#ff8b50',
   punctuation: '#88C6BE',
   tag: '#FF4081',
-  function: 'rgba(0, 229, 255, 1)',
+  function: 'rgba(0,229,255,1)',
   className: '#fcee0a',
-  method: 'rgba(0, 229, 255, 1)',
+  method: 'rgba(0,229,255,1)',
   operator: '#FF4081',
   background: 'rgb(29, 29, 35)',
 };
@@ -49,17 +51,23 @@ function CodeBlock(props) {
       <CodeBlockContent codeTheme={codeTheme} {...props} />
     </CodeBlockWrapper>
   );
-}
+};
 
 const CodeBlockWrapper = styled.pre`
+  ${createThemeProperties(lightCodeTheme)};
+
+  @media (prefers-color-scheme: dark) {
+    ${createThemeProperties(darkCodeTheme)};
+  }
+
   padding: 30px;
   margin: 60px -30px;
-  background: ${props => props.codeTheme.background};
+  background: var(--background);
   clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
-  color: ${props => props.theme.colorText};
+  color: rgb(var(--rgbText));
   overflow-x: auto;
 
-  @media (max-width: ${props => props.theme.mobile}px) {
+  @media (max-width: ${media.mobile}px) {
     padding: 20px;
     margin: 40px -20px;
   }
@@ -75,15 +83,15 @@ const CodeBlockContent = styled.pre`
     font-size: 16px;
     line-height: 1.4;
     white-space: pre;
-    font-family: ${props => props.theme.monoFontStack};
+    font-family: var(--monoFontStack);
 
-    @media (max-width: ${props => props.theme.mobile}px) {
+    @media (max-width: ${media.mobile}px) {
       font-size: 14px;
     }
   }
 
   .token.attr-name {
-    color: ${props => props.codeTheme.keyword};
+    color: var(--keyword);
   }
 
   .token.comment,
@@ -91,7 +99,7 @@ const CodeBlockContent = styled.pre`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: ${props => props.codeTheme.comment};
+    color: var(--comment);
   }
 
   .token.property,
@@ -100,62 +108,62 @@ const CodeBlockContent = styled.pre`
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: ${props => props.codeTheme.primitive};
+    color: var(--primitive);
   }
 
   .token.boolean {
-    color: ${props => props.codeTheme.boolean};
+    color: var(--boolean);
   }
 
   .token.tag {
-    color: ${props => props.codeTheme.tag};
+    color: var(--tag);
   }
 
   .token.string {
-    color: ${props => props.codeTheme.string};
+    color: var(--string);
   }
 
   .token.punctuation {
-    color: ${props => props.codeTheme.punctuation};
+    color: var(--punctuation);
   }
 
   .token.selector,
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: ${props => props.codeTheme.char};
+    color: var(--char);
   }
 
   .token.function {
-    color: ${props => props.codeTheme.function};
+    color: var(--function);
   }
 
   .token.operator,
   .token.entity,
   .token.url,
   .token.variable {
-    color: ${props => props.codeTheme.variable};
+    color: var(--variable);
   }
 
   .token.attr-value {
-    color: ${props => props.codeTheme.string};
+    color: var(--string);
   }
 
   .token.keyword {
-    color: ${props => props.codeTheme.keyword};
+    color: var(--keyword);
   }
 
   .token.atrule,
   .token.class-name {
-    color: ${props => props.codeTheme.className};
+    color: var(--className);
   }
 
   .token.important {
-    font-weight: 400;
+    font-weight: var(--fontWeightRegular);
   }
 
   .token.bold {
-    font-weight: 700,
+    font-weight: var(--fontWeightBold),
   }
 
   .token.italic {

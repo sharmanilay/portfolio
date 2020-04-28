@@ -1,5 +1,5 @@
 import React, { lazy, useMemo, Suspense, Fragment } from 'react';
-import styled, { useTheme } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 import { Helmet } from 'react-helmet-async';
 import ProgressiveImage from 'components/ProgressiveImage';
 import { useScrollRestore } from 'hooks';
@@ -9,6 +9,7 @@ import {
   ProjectSectionContent, ProjectImage, ProjectSectionColumns, SidebarImageText,
   ProjectSectionHeading, ProjectSectionText, SidebarImage, ProjectTextRow
 } from 'components/Project';
+import { media } from 'utils/style';
 import prerender from 'utils/prerender';
 import mystgangBackground from 'assets/mystgang-background.png';
 import mystgangBackgroundLarge from 'assets/mystgang-background-large.png';
@@ -49,7 +50,6 @@ const roles = [
 ];
 
 function MystGang() {
-  const theme = useTheme();
   useScrollRestore();
 
   return (
@@ -77,7 +77,7 @@ function MystGang() {
                 reveal
                 srcSet={`${mystgang} 800w, ${mystgangLarge} 1440w`}
                 placeholder={mystgangPlaceholder}
-                sizes={`(max-width: ${theme.mobile}px) 500px, (max-width: ${theme.tablet}px) 800px, 1000px`}
+                sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
                 alt="Landing screne of the MystGang website."
               />
             </ProjectImage>
@@ -97,7 +97,7 @@ function MystGang() {
             <SidebarImage
               srcSet={`${mystgangBranding} 400w, ${mystgangBrandingLarge} 898w`}
               placeholder={mystgangBrandingPlaceholder}
-              sizes={`(max-width: ${theme.mobile}px) 100vw, (max-width: ${theme.tablet}px) 100vw, 50vw`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
               alt="MystGang's color palette, ranging from white to smooth, dark brown."
             />
           </ProjectSectionColumns>
@@ -109,7 +109,7 @@ function MystGang() {
                 src={mystgangLogo}
                 srcSet={mystgangLogo}
                 placeholder={mystgangLogoPlaceholder}
-                sizes={`(max-width: ${theme.mobile}px) 100vw, (max-width: ${theme.tablet}px) 100vw, 50vw`}
+                sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
                 alt="MystGang's Monogram, featuring a custom designed letter M."
               />
             </LogoContainer>
@@ -197,12 +197,12 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => props.theme.colorBackground};
+  background: var(--rgbBackground);
   padding: 60px 80px;
   margin-bottom: 80px;
   width: 100%;
 
-  @media (max-width: ${props => props.theme.mobile}px) {
+  @media (max-width: ${media.mobile}px) {
     padding: 30px 40px;
     margin-bottom: 40px;
   }

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styled, { useTheme } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 import { Helmet } from 'react-helmet-async';
 import ProgressiveImage from 'components/ProgressiveImage';
 import Footer from 'components/Footer';
@@ -9,6 +9,7 @@ import {
   ProjectSectionColumns, SidebarImageText, SidebarImage, ProjectTextRow
 } from 'components/Project';
 import { useScrollRestore } from 'hooks';
+import { media } from 'utils/style';
 import prerender from 'utils/prerender';
 import dttBackground from 'assets/dtt-background.png';
 import dttBackgroundLarge from 'assets/dtt-background-large.png';
@@ -41,7 +42,6 @@ const roles = [
 ];
 
 function ProjectDTT() {
-  const theme = useTheme();
   useScrollRestore();
 
   return (
@@ -69,7 +69,7 @@ function ProjectDTT() {
                 reveal
                 srcSet={`${dtt} 800w, ${dttLarge} 1440w`}
                 placeholder={dttPlaceholder}
-                sizes={`(max-width: ${theme.mobile}px) 500px, (max-width: ${theme.tablet}px) 800px, 1000px`}
+                sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
                 alt="Landing screen of the DevTech Tools website."
               />
             </ProjectImage>
@@ -86,7 +86,7 @@ function ProjectDTT() {
             <SidebarImage
               srcSet={`${dttBranding} 400w, ${dttBrandingLarge} 898w`}
               placeholder={dttBrandingPlaceholder}
-              sizes={`(max-width: ${theme.mobile}px) 100vw, (max-width: ${theme.tablet}px) 100vw, 50vw`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
               alt="The DevTech Tools color palette and logo, featuring pipelines as electronic traces."
             />
           </ProjectSectionColumns>
@@ -109,7 +109,7 @@ function ProjectDTT() {
             <ProgressiveImage
               srcSet={`${dttTool} 400w, ${dttToolLarge} 898w`}
               placeholder={dttToolPlaceholder}
-              sizes={`(max-width: ${theme.mobile}px) 100vw, (max-width: ${theme.tablet}px) 100vw, 50vw`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
               alt="The tool wrapper of the JSON to CSV data converter."
             />
             <ProjectSectionGridText>
@@ -137,7 +137,7 @@ function ProjectDTT() {
             <SidebarImage
               srcSet={`${dttAPI} 400w, ${dttAPILarge} 898w`}
               placeholder={dttAPIPlaceholder}
-              sizes={`(max-width: ${theme.mobile}px) 100vw, (max-width: ${theme.tablet}px) 100vw, 50vw`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
               alt="A snippet from the DevTech Tools API, converting data from JSON to CSV."
             />
           </ProjectSectionColumns>
@@ -157,7 +157,7 @@ function ProjectDTT() {
               srcSet={`${dttPipeline} 800w, ${dttPipelineLarge} 1440w`}
               placeholder={dttPipelinePlaceholder}
               alt="A screenshot of tools linked in the pipeline flowchart editor."
-              sizes={`(max-width: ${theme.mobile}px) 500px, (max-width: ${theme.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
           </ProjectSectionContent>
         </ProjectSection>
@@ -176,7 +176,7 @@ function ProjectDTT() {
               srcSet={`${dttLanding} 800w, ${dttLandingLarge} 1440w`}
               placeholder={dttLandingPlaceholder}
               alt="A screenshot of the landing page in production."
-              sizes={`(max-width: ${theme.mobile}px) 500px, (max-width: ${theme.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
           </ProjectSectionContent>
         </ProjectSection>
@@ -192,7 +192,7 @@ const ProjectSectionGrid = styled(ProjectSectionContent)`
   grid-gap: 70px;
   margin: 40px 0;
 
-  @media (max-width: ${props => props.theme.tablet}px) {
+  @media (max-width: ${media.tablet}px) {
     grid-template-columns: 1fr;
   }
 `;

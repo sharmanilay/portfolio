@@ -10,7 +10,7 @@ import ProgressiveImage from 'components/ProgressiveImage';
 import ProfileImg from 'assets/profile.jpg';
 import ProfileImgLarge from 'assets/profile-large.jpg';
 import ProfileImgPlaceholder from 'assets/profile-placeholder.jpg';
-import { sectionPadding } from 'utils/style';
+import { sectionPadding, media } from 'utils/style';
 import { reflow } from 'utils/transition';
 
 const ProfileText = ({ status, titleId }) => (
@@ -104,11 +104,11 @@ const ProfileSection = styled.section`
     outline: none;
   }
 
-  @media (min-width: ${props => props.theme.desktop}px) {
+  @media (min-width: ${media.desktop}px) {
     padding-left: 120px;
   }
 
-  @media (max-width: ${props => props.theme.tablet}px) {
+  @media (max-width: ${media.tablet}px) {
     padding-top: 50px;
     padding-right: 80px;
     padding-left: 160px;
@@ -117,7 +117,7 @@ const ProfileSection = styled.section`
     margin-bottom: 20px;
   }
 
-  @media (max-width: ${props => props.theme.mobile}px) {
+  @media (max-width: ${media.mobile}px) {
     margin-top: 0;
     padding-top: 90px;
     padding-left: 25px;
@@ -125,12 +125,12 @@ const ProfileSection = styled.section`
     overflow-x: hidden;
   }
 
-  @media (max-width: ${props => props.theme.mobile}px), (max-height: ${props => props.theme.mobile}px) {
-    padding-right: ${props => props.theme.spacingOuter.mobile}px;
-    padding-left: ${props => props.theme.spacingOuter.mobile}px;
+  @media (max-width: ${media.mobile}px), (max-height: ${media.mobile}px) {
+    padding-right: var(--spacingOuter);
+    padding-left: var(--spacingOuter);
   }
 
-  @media ${props => props.theme.mobileLS} {
+  @media ${media.mobileLS} {
     padding-right: 100px;
     padding-left: 100px;
   }
@@ -140,18 +140,14 @@ const ProfileContent = styled.div`
   display: grid;
   grid-template-columns: 44% 48%;
   grid-column-gap: 8%;
-  max-width: ${props => props.theme.maxWidthLaptop}px;
+  max-width: var(--maxWidth);
   width: 100%;
 
-  @media (min-width: ${props => props.theme.desktop}px) {
-    max-width: ${props => props.theme.maxWidthDesktop}px;
-  }
-
-  @media (max-width: ${props => props.theme.tablet}px) {
+  @media (max-width: ${media.tablet}px) {
     max-width: 600px;
   }
 
-  @media (max-width: ${props => props.theme.tablet}px) {
+  @media (max-width: ${media.tablet}px) {
     grid-template-columns: 100%;
   }
 `;
@@ -168,18 +164,18 @@ const ProfileColumn = styled.div`
 const ProfileTitle = styled.h2`
   font-size: 42px;
   margin: 0;
-  font-weight: 500;
+  font-weight: var(--fontWeightMedium);
   margin-bottom: 40px;
   white-space: nowrap;
   opacity: ${props => props.status === 'entered' ? 1 : 0};
   transition: opacity 0.8s ease 0.4s;
-  color: ${props => props.theme.colorTitle};
+  color: rgb(var(--rgbTitle));
 
   @media (max-width: 1245px) {
     font-size: 36px;
   }
 
-  @media (max-width: ${props => props.theme.mobile}px) {
+  @media (max-width: ${media.mobile}px) {
     font-size: 28px;
     margin-bottom: 30px;
   }
@@ -197,7 +193,7 @@ const ProfileDescription = styled.p`
     opacity: 1;
   `}
 
-  @media (max-width: ${props => props.theme.mobile}px) {
+  @media (max-width: ${media.mobile}px) {
     font-size: 18px;
   }
 `;
@@ -210,19 +206,19 @@ const ProfileTag = styled.div`
   grid-gap: 12px;
   align-items: center;
 
-  @media (max-width: ${props => props.theme.tablet}px) {
+  @media (max-width: ${media.tablet}px) {
     margin-top: 30px;
   }
 `;
 
 const ProfileTagText = styled.div`
   font-size: 16px;
-  font-weight: 500;
-  color: ${props => props.theme.colorPrimary};
+  font-weight: var(--fontWeightMedium);
+  color: rgb(var(--rgbPrimary));
   transform: translateX(-10px);
   opacity: 0;
   transition-property: opacity, transform;
-  transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+  transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.4s;
   transition-delay: 1.3s;
 

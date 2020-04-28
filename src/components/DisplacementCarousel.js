@@ -7,7 +7,7 @@ import styled from 'styled-components/macro';
 import { Easing, Tween, update as updateTween, remove as removeTween } from 'es6-tween';
 import Swipe from 'react-easy-swipe';
 import Icon from './Icon';
-import { rgba } from 'utils/style';
+import { cornerClip, media } from 'utils/style';
 import { vertex, fragment } from 'shaders/carouselShader';
 import { usePrefersReducedMotion } from 'hooks';
 import prerender from 'utils/prerender';
@@ -369,7 +369,7 @@ export default function DisplacementSlider(props) {
           left
           aria-label="Previous slide"
           onClick={() => navigate({ direction: -1 })}
-		      override={override}
+          override={override}
         >
           <Icon icon="slideLeft" />
         </SliderButton>
@@ -377,7 +377,7 @@ export default function DisplacementSlider(props) {
           right
           aria-label="Next slide"
           onClick={() => navigate({ direction: 1 })}
-		      override={override}
+          override={override}
         >
           <Icon icon="slideRight" />
         </SliderButton>
@@ -448,7 +448,7 @@ const SliderButton = styled.button`
   z-index: 32;
   cursor: pointer;
 
-  @media (max-width: ${props => props.theme.mobile}px) {
+  @media (max-width: ${media.mobile}px) {
     display: none;
   }
 
@@ -463,15 +463,15 @@ const SliderButton = styled.button`
     right: 0;
     bottom: 0;
     left: 0;
-    clip-path: ${props => props.theme.clipPath(12)};
     transition-property: background, box-shadow;
     transition-duration: 0.4s;
-    transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+    transition-timing-function: var(--curveFastoutSlowin);
+    ${cornerClip(12)}
   }
 
   &:hover::before,
   &:focus::before {
-    background: ${props => rgba(props.override ? props.theme.colorBlack : props.theme.colorWhite, 0.1)};
+    background: rgb(${props => props.override ? 'var(--rgbBlack)' : 'var(--rgbWhite)'} / 0.1);
   }
 
   &::after {
@@ -497,18 +497,15 @@ const SliderButton = styled.button`
     );
     transition-property: background, box-shadow;
     transition-duration: 0.4s;
-    transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+    transition-timing-function: var(--curveFastoutSlowin);
   }
 
   &:focus::after {
-    background: ${props => rgba(props.override ? props.theme.colorBlack : props.theme.colorWhite, 0.4)};
+    background: rgb(${props => props.override ? 'var(--rgbBlack)' : 'var(--rgbWhite)'} / 0.4);
   }
 
   svg {
-    transition-property: fill;
-    transition-duration: 0.5s;
-    transition-timing-function: ${props => props.theme.curveFastoutSlowin};
-    fill: ${props => props.override ? props => props.theme.colorBlack : props => props.theme.colorWhite};
+    fill: rgb(${props => props.override ? 'var(--rgbBlack)' : 'var(--rgbWhite)'});
     display: block;
   }
 `;
@@ -537,19 +534,15 @@ const SliderNavButton = styled.button`
     height: 10px;
     border-radius: 50%;
     display: block;
-    background: ${props => props.active
-    ? props.theme.colorText
-    : rgba(props.theme.colorText, 0.2)};
+    background: ${props => props.active ? 'rgb(var(--rgbText))' : 'rgb(var(--rgbTitle) / 0.2)'};
     transition-property: background, box-shadow;
     transition-duration: 0.5s;
-    transition-timing-function: ${props => props.theme.curveFastoutSlowin};
+    transition-timing-function: var(--curveFastoutSlowin);
   }
 
   &:focus::after {
-    box-shadow: 0 0 0 4px ${props => rgba(props.theme.colorText, 0.2)};
-    background: ${props => props.active
-    ? props.theme.colorText
-    : rgba(props.theme.colorText, 0.6)
+    box-shadow: 0 0 0 4px rgb(var(--rgbTitle) / 0.2);
+    background: ${props => props.active ? 'rgb(var(--rgbText))' : 'rgb(var(--rgbTitle) / 0.6)'
   };
   }
 `;
