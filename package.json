@@ -24,18 +24,18 @@
     "stylelint-processor-styled-components": "^1.10.0"
   },
   "dependencies": {
-    "@mdx-js/react": "^1.6.0",
+    "@mdx-js/react": "^1.6.1",
     "es6-tween": "^5.5.11",
     "ios-inner-height": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-easy-swipe": "^0.0.18",
-    "react-helmet-async": "^1.0.5",
+    "react-helmet-async": "^1.0.6",
     "react-router-dom": "5.1.2",
     "react-transition-group": "^4.3.0",
     "source-map-explorer": "^2.4.2",
     "styled-components": "^5.1.0",
-    "three": "^0.115.0"
+    "three": "^0.116.1"
   },
   "scripts": {
     "start": "set PORT=80 && react-scripts start",
