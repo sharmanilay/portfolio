@@ -13,6 +13,7 @@ const Link = styled.a.attrs(({ target, rel }) => ({
     ? 'inherit'
     : 'rgb(var(--rgbPrimary))'};
 
+  /* prettier-ignore */
   background:
     linear-gradient(${props => lineColor(1, props)}, ${props => lineColor(1, props)}) no-repeat 100% 100% / 0 2px,
     linear-gradient(${props => lineColor(0.3, props)}, ${props => lineColor(0.3, props)}) no-repeat 0 100% / 100% 2px;

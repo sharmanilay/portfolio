@@ -23,22 +23,6 @@ const NotFound = lazy(() => import('pages/404'));
 export const AppContext = createContext();
 export const TransitionContext = createContext();
 
-export const fontStyles = `
-  @font-face {
-    font-family: 'Gotham';
-    font-weight: 400;
-    src: url(${GothamBook}) format('woff');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Gotham';
-    font-weight: 500;
-    src: url(${GothamMedium}) format('woff2');
-    font-display: swap;
-  }
-`;
-
 function App() {
   const [storedTheme] = useLocalStorage('theme', 'dark');
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -84,7 +68,22 @@ function AppRoutes() {
         <link rel="canonical" href={`https://codyb.co${pathname}`} />
         <link rel="preload" href={GothamBook} as="font" crossorigin="" />
         <link rel="preload" href={GothamMedium} as="font" crossorigin="" />
-        <style>{fontStyles}</style>
+        <style>
+          {`
+            @font-face {
+              font-family: "Gotham";
+              font-weight: 400;
+              src: url(${GothamBook}) format("woff");
+              font-display: swap;
+            }
+            @font-face {
+              font-family: "Gotham";
+              font-weight: 500;
+              src: url(${GothamMedium}) format("woff2");
+              font-display: swap;
+            }
+          `}
+        </style>
       </Helmet>
       <GlobalStyles />
       <SkipToMain href="#MainContent">Skip to main content</SkipToMain>
