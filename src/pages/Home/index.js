@@ -6,6 +6,9 @@ import ProjectItem from './ProjectItem';
 import Profile from './Profile';
 import Footer from 'components/Footer';
 import { usePrefersReducedMotion, useRouteTransition } from 'hooks';
+import flowyProject from 'assets/flowy-project.png';
+import flowyProjectLarge from 'assets/flowy-project-large.png';
+import flowyProjectPlaceholder from 'assets/flowy-project-placeholder.png';
 import dttProject from 'assets/dtt-project.png';
 import dttProjectLarge from 'assets/dtt-project-large.png';
 import dttProjectPlaceholder from 'assets/dtt-project-placeholder.png';
@@ -24,11 +27,12 @@ export default function Home(props) {
   const intro = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
+  const projectThree = useRef();
   const about = useRef();
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    const revealSections = [intro, projectOne, projectTwo, about];
+    const revealSections = [intro, projectOne, projectTwo, projectThree, about];
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -65,7 +69,7 @@ export default function Home(props) {
 
     const handleHashchange = (hash, scroll) => {
       clearTimeout(scrollTimeout);
-      const hashSections = [intro, projectOne, projectTwo, about];
+      const hashSections = [intro, projectOne, projectTwo, projectThree, about];
       const hashString = hash.replace('#', '');
       const element = hashSections.filter(item => item.current.id === hashString)[0];
       if (!element) return;
@@ -133,6 +137,20 @@ export default function Home(props) {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index="01"
+        title="ES6-Flowy"
+        description="The minimal JavaScript library to create flowcharts."
+        buttonText="View Project"
+        buttonTo="/projects/flowy"
+        imageSrc={useMemo(() => [`${flowyProject} 980w, ${flowyProjectLarge} 1376w`], [])}
+        imageAlt={useMemo(() => ['A demo of the drag-and-drop interface powered by es6-flowy.'], [])}
+        imagePlaceholder={useMemo(() => [flowyProjectPlaceholder], [])}
+        imageType="laptop"
+      />
+      <ProjectItem
+        id="project-2"
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index="02"
         title="A Tool for Everything"
         description="Creating a platfrom to help developers build better software."
         buttonText="View Project"
@@ -143,10 +161,10 @@ export default function Home(props) {
         imageType="laptop"
       />
       <ProjectItem
-        id="project-2"
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index="02"
+        id="project-3"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index="03"
         title="MystGang"
         description="A personal site for a gaming content creator."
         buttonText="View Project"

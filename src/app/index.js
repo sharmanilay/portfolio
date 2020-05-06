@@ -15,6 +15,7 @@ import prerender from 'utils/prerender';
 
 const Home = lazy(() => import('pages/Home'));
 const Contact = lazy(() => import('pages/Contact'));
+const ProjectFlowy = lazy(() => import('pages/Flowy'));
 const ProjectDevTechTools = lazy(() => import('pages/DevTechTools'));
 const ProjectMystGang = lazy(() => import('pages/MystGang'));
 //const Articles = lazy(() => import('pages/Articles'));
@@ -106,6 +107,7 @@ function AppRoutes() {
                   <Switch location={location}>
                     <Route exact path="/" component={Home} />
                     <Route path="/contact" component={Contact} />
+                    <Route path="/projects/flowy" component={ProjectFlowy} />
                     <Route path="/projects/dtt" component={ProjectDevTechTools} />
                     <Route path="/projects/mystgang" component={ProjectMystGang} />
                     {/* <Route path="/articles" component={Articles} /> */}
