@@ -78,6 +78,8 @@ function Profile(props) {
                 srcSet={`${ProfileImg} 480w, ${ProfileImgLarge} 960w`}
                 sizes={`(max-width: ${props => props.theme.mobile}px) 100vw, 480px`}
                 alt=""
+                width={480}
+                height={560}
               />
             </ProfileColumn>
           </ProfileContent>
