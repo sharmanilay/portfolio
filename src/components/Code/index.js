@@ -54,11 +54,7 @@ function Code(props) {
 };
 
 const CodeWrapper = styled.pre`
-  ${createThemeProperties(lightCodeTheme)};
-
-  @media (prefers-color-scheme: dark) {
-    ${createThemeProperties(darkCodeTheme)};
-  }
+  ${props => createThemeProperties(props.codeTheme)};
 
   padding: 30px;
   margin: 60px -30px;
