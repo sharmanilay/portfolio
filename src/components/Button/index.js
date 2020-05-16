@@ -116,10 +116,11 @@ const ButtonLoader = styled(Loader)`
 
 const ButtonContainer = styled.button`
   --buttonSize: 56px;
+  --buttonFontSize: 18px;
 
   background: none;
   height: var(--buttonSize);
-  padding: ${props => props.iconOnly ? 0 : ' 0 26px'};
+  padding: ${props => (props.iconOnly ? 0 : ' 0 26px')};
   border: 0;
   margin: 0;
   cursor: pointer;
@@ -248,16 +249,16 @@ const ButtonContainer = styled.button`
     padding: 0;
 
     &::after {
-      background: rgb(var(--rgbTitle) / 0);
+      background: rgb(var(--rgbText) / 0);
     }
 
     &:hover::after,
     &:focus::after {
-      background: rgb(var(--rgbTitle) / 0.1);
+      background: rgb(var(--rgbText) / 0.1);
     }
 
     &::before {
-      background: rgb(var(--rgbTitle) / 0.4);
+      background: rgb(var(--rgbText) / 0.4);
       top: -4px;
       right: -4px;
       bottom: -4px;
@@ -281,7 +282,7 @@ const ButtonContainer = styled.button`
 `;
 
 const ButtonText = styled.div`
-  font-size: 18px;
+  font-size: var(--buttonFontSize);
   font-weight: var(--fontWeightMedium);
   position: relative;
   line-height: 1;
@@ -300,7 +301,7 @@ const ButtonText = styled.div`
   `}
 
   ${props => props.iconOnly && `
-    color: rgb(var(--rgbText));
+    color: var(--colorTextBody);
   `}
 `;
 
@@ -315,14 +316,14 @@ const ButtonIcon = styled(Icon)`
   `}
 
   ${props => props.iconOnly && css`
-    fill: rgb(var(--rgbText));
+    fill: var(--colorTextBody);
     margin: 0;
   `}
 
-  ${/* sc-selector */ButtonContainer}:hover &,
-  ${/* sc-selector */ButtonContainer}:focus & {
+  ${/* sc-selector */ ButtonContainer}:hover &,
+  ${/* sc-selector */ ButtonContainer}:focus & {
     ${props => props.iconHoverShift && css`
-      transform: translate3d(4px, 0, 0);
+      transform: translate3d(var(--spaceXS), 0, 0);
     `}
   }
 

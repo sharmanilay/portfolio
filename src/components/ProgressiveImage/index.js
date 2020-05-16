@@ -277,7 +277,7 @@ const ImageButton = styled(Button)`
 
   svg {
     fill: white;
-    margin-right: 8px;
+    margin-right: var(--spaceS);
     position: relative;
     top: -1px;
   }
@@ -318,8 +318,8 @@ const ImageButton = styled(Button)`
   ${props => props.showPlayButton && css`
     clip: auto;
     margin: 0;
-    top: 10px;
-    left: 10px;
+    top: var(--spaceM);
+    left: var(--spaceM);
     overflow: visible;
     width: auto;
   `}

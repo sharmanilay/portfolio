@@ -19,12 +19,14 @@ const NavToggle = ({ menuOpen, ...rest }) => (
 );
 
 const NavToggleButton = styled(Button)`
+  --buttonSize: var(--space2XL);
+
   && {
     position: fixed;
-    top: var(--spacingOuter);
-    right: var(--spacingOuter);
-    width: 48px;
-    height: 48px;
+    top: var(--spaceOuter);
+    right: var(--spaceOuter);
+    width: var(--buttonSize);
+    height: var(--buttonSize);
     z-index: 1024;
     display: none;
 
@@ -43,6 +45,8 @@ const NavToggleInner = styled.div`
 `;
 
 const NavToggleIcon = styled(Icon)`
+  --iconSize: var(--spaceXL);
+
   position: absolute;
   transition-property: opacity, transform, fill;
   transition-duration: 0.4s;
@@ -50,9 +54,9 @@ const NavToggleIcon = styled(Icon)`
   transition-delay: 0.1s;
   opacity: 1;
   transform: rotate(0deg);
-  fill: rgb(var(--rgbText));
-  width: 32px;
-  height: 32px;
+  fill: var(--colorTextBody);
+  width: var(--iconSize);
+  height: var(--iconSize);
 
   ${props => props.icon === 'close' && css`
     transition-delay: 0s;

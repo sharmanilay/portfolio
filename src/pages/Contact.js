@@ -6,10 +6,11 @@ import Input from 'components/Input';
 import DecoderText from 'components/DecoderText';
 import Divider from 'components/Divider';
 import { Button, RouterButton } from 'components/Button';
-import { AnimFade, sectionPadding, media } from 'utils/style';
+import { AnimFade, sectionPadding } from 'utils/style';
 import { useScrollRestore, useFormInput, useRouteTransition } from 'hooks';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
+import { media } from 'utils/style';
 
 const initDelay = 300;
 
@@ -179,12 +180,12 @@ const ContactWrapper = styled.section`
 `;
 
 const ContactForm = styled.form`
-  max-width: 440px;
+  max-width: var(--maxWidthS);
   width: 100%;
-  padding: 40px 0;
+  padding: var(--space2XL) 0;
 
   @media (max-width: ${media.mobile}px) {
-    padding: 120px 0 40px;
+    padding: var(--space5XL) 0 var(--space2XL);
     align-self: flex-start;
   }
 `;
@@ -192,26 +193,24 @@ const ContactForm = styled.form`
 const ContactFields = styled.div`
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 32px;
+  grid-gap: var(--spaceXL);
 `;
 
 const ContactTitle = styled.h1`
-  font-size: 32px;
+  font-size: var(--fontSizeH2);
   font-weight: var(--fontWeightMedium);
-  margin-bottom: 40px;
-  line-height: 1;
+  margin-bottom: var(--space2XL);
+  line-height: var(--lineHeightTitle);
   margin-top: 0;
-  color: rgb(var(--rgbTitle));
+  color: var(--colorTextTitle);
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay + initDelay}ms;
-  transform: translate3d(0, 90px, 0);
+  transform: translate3d(0, var(--space5XL), 0);
   opacity: 0;
-  height: 32px;
 
-  ${props => (props.status === 'entering' ||
-    props.status === 'entered') && !prerender && css`
+  ${props => (props.status === 'entering' || props.status === 'entered') && !prerender && css`
     transform: translate3d(0, 0, 0);
     opacity: 1;
   `}
@@ -219,22 +218,21 @@ const ContactTitle = styled.h1`
   ${props => props.status === 'exiting' && css`
     transition-duration: 0.4s;
     transition-delay: 0s;
-    transform: translate3d(0, -40px, 0);
+    transform: translate3d(0, calc(var(--space2XL) * -1), 0);
     opacity: 0;
   `}
 `;
 
 const ContactDivider = styled(Divider)`
-  margin-bottom: 62px;
+  margin-bottom: var(--space3XL);
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay + initDelay}ms;
-  transform: translate3d(0, 90px, 0);
+  transform: translate3d(0, var(--space5XL), 0);
   opacity: 0;
 
-  ${props => (props.status === 'entering' ||
-    props.status === 'entered') && !prerender && css`
+  ${props => (props.status === 'entering' || props.status === 'entered') && !prerender && css`
     transform: translate3d(0, 0, 0);
     opacity: 1;
   `}
@@ -242,7 +240,7 @@ const ContactDivider = styled(Divider)`
   ${props => props.status === 'exiting' && css`
     transition-duration: 0.4s;
     transition-delay: 0s;
-    transform: translate3d(0, -40px, 0);
+    transform: translate3d(0, calc(var(--space2XL) * -1), 0);
     opacity: 0;
   `}
 `;
@@ -252,11 +250,10 @@ const ContactInput = styled(Input)`
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay + initDelay}ms;
-  transform: translate3d(0, 80px, 0);
+  transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
 
-  ${props => (props.status === 'entering' ||
-    props.status === 'entered') && !prerender && css`
+  ${props => (props.status === 'entering' || props.status === 'entered') && !prerender && css`
     transform: translate3d(0, 0, 0);
     opacity: 1;
   `}
@@ -264,25 +261,25 @@ const ContactInput = styled(Input)`
   ${props => props.status === 'exiting' && css`
     transition-duration: 0.4s;
     transition-delay: 0s;
-    transform: translate3d(0, -40px, 0);
+    transform: translate3d(0, calc(var(--space2XL) * -1), 0);
     opacity: 0;
   `}
 `;
 
 const ContactButton = styled(Button)`
-  margin-top: 28px;
+  margin-top: var(--spaceXL);
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-delay: ${props => props.status === 'entered' ? '0ms' : `${props.delay + initDelay}ms`};
-  transition-duration: ${props => props.status === 'entered' ? '0.4s' : '0.8s'};
-  transform: translate3d(0, 80px, 0);
+  transition-duration: ${props => (props.status === 'entered' ? '0.4s' : '0.8s')};
+  transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
   justify-self: flex-start;
 
   ${props => props.sending && css`
     svg {
-      transition: transform var(--curveFastoutSlowin) 0.8s, opacity 0.3s ease 0.3s;
-      transform: translate3d(150px, 0, 0);
+      transition: transform ${props.curveFastoutSlowin} 0.8s, opacity 0.3s ease 0.3s;
+      transform: translate3d(var(--space5XL), 0, 0);
       opacity: 0;
     }
 
@@ -302,8 +299,7 @@ const ContactButton = styled(Button)`
     }
   `}
 
-  ${props => (props.status === 'entering' ||
-    props.status === 'entered') && !prerender && css`
+  ${props => (props.status === 'entering' || props.status === 'entered') && !prerender && css`
     transform: translate3d(0, 0, 0);
     opacity: 1;
   `}
@@ -311,7 +307,7 @@ const ContactButton = styled(Button)`
   ${props => props.status === 'exiting' && css`
     transition-duration: 0.4s;
     transition-delay: 0s;
-    transform: translate3d(0, -40px, 0);
+    transform: translate3d(0, calc(var(--space2XL) * -1), 0);
     opacity: 0;
   `}
 `;
@@ -321,7 +317,7 @@ const ContactComplete = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 30px 0;
+  padding: var(--spaceXL) 0;
   position: fixed;
   top: 0;
   right: 0;
@@ -330,16 +326,16 @@ const ContactComplete = styled.div`
 `;
 
 const ContactCompleteTitle = styled.h1`
-  font-weight: 500;
-  font-size: 32px;
-  margin: 0;
+  font-weight: var(--fontWeightMedium);
+  font-size: var(--fontSizeH2);
+  color: var(--colorTextTitle);
   text-align: center;
-  color: rgb(var(--rgbTitle));
+  margin: 0;
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay}ms;
-  transform: translate3d(0, 80px, 0);
+  transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
 
   ${props => props.status === 'entered' && css`
@@ -349,13 +345,13 @@ const ContactCompleteTitle = styled.h1`
 `;
 
 const ContactCompleteText = styled.p`
-  font-size: 18px;
+  font-size: var(--fontSizeBodyM);
   text-align: center;
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay}ms;
-  transform: translate3d(0, 80px, 0);
+  transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
 
   ${props => props.status === 'entered' && css`
@@ -369,7 +365,7 @@ const ContactCompleteButton = styled(RouterButton)`
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: ${props => props.delay}ms;
-  transform: translate3d(0, 80px, 0);
+  transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
   padding-left: 3px;
 

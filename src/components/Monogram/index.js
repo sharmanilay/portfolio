@@ -29,7 +29,7 @@ function Monogram({ highlight, ...props }) {
 }
 
 const MonogramWrapper = styled.svg`
-  fill: rgb(var(--rgbText));
+  fill: var(--colorTextTitle);
 `;
 
 const MonogramHighlight = styled.rect`

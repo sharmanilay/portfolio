@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup, config as transitionConfig } from 'react-transition-group';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from 'components/Header';
-import { theme, createThemeProperties } from 'app/theme';
+import { theme, tokens, createThemeProperties } from 'app/theme';
 import { cornerClip, media } from 'utils/style';
 import { useLocalStorage, usePrefersReducedMotion } from 'hooks';
 import GothamBook from 'assets/fonts/gotham-book.woff2';
@@ -18,11 +18,26 @@ const Contact = lazy(() => import('pages/Contact'));
 const ProjectFlowy = lazy(() => import('pages/Flowy'));
 const ProjectDevTechTools = lazy(() => import('pages/DevTechTools'));
 const ProjectMystGang = lazy(() => import('pages/MystGang'));
-//const Articles = lazy(() => import('pages/Articles'));
+const Articles = lazy(() => import('pages/Articles'));
 const NotFound = lazy(() => import('pages/404'));
 
 export const AppContext = createContext();
 export const TransitionContext = createContext();
+
+export const fontStyles = `
+  @font-face {
+    font-family: "Gotham";
+    font-weight: 400;
+    src: url(${GothamBook}) format("woff");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gotham";
+    font-weight: 500;
+    src: url(${GothamMedium}) format("woff2");
+    font-display: swap;
+  }
+`;
 
 function App() {
   const [storedTheme] = useLocalStorage('theme', 'dark');
@@ -69,22 +84,7 @@ function AppRoutes() {
         <link rel="canonical" href={`https://codyb.co${pathname}`} />
         <link rel="preload" href={GothamBook} as="font" crossorigin="" />
         <link rel="preload" href={GothamMedium} as="font" crossorigin="" />
-        <style>
-          {`
-            @font-face {
-              font-family: "Gotham";
-              font-weight: 400;
-              src: url(${GothamBook}) format("woff");
-              font-display: swap;
-            }
-            @font-face {
-              font-family: "Gotham";
-              font-weight: 500;
-              src: url(${GothamMedium}) format("woff2");
-              font-display: swap;
-            }
-          `}
-        </style>
+        <style>{fontStyles}</style>
       </Helmet>
       <GlobalStyles />
       <SkipToMain href="#MainContent">Skip to main content</SkipToMain>
@@ -110,7 +110,7 @@ function AppRoutes() {
                     <Route path="/projects/flowy" component={ProjectFlowy} />
                     <Route path="/projects/dtt" component={ProjectDevTechTools} />
                     <Route path="/projects/mystgang" component={ProjectMystGang} />
-                    {/* <Route path="/articles" component={Articles} /> */}
+                    <Route path="/articles" component={Articles} />
                     <Route component={NotFound} />
                   </Switch>
                 </Suspense>
@@ -125,23 +125,22 @@ function AppRoutes() {
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --spacingOuter: 60px;
-    --maxWidth: 1100px;
+    ${createThemeProperties(tokens.desktop)}
 
     @media (max-width: ${media.laptop}px) {
-      --maxWidth: 1000px;
+      ${createThemeProperties(tokens.laptop)}
     }
 
     @media (max-width: ${media.tablet}px) {
-      --spacingOuter: 40px;
+      ${createThemeProperties(tokens.tablet)}
     }
 
     @media (max-width: ${media.mobile}px) {
-      --spacingOuter: 20px;
+      ${createThemeProperties(tokens.mobile)}
     }
 
-    @media (max-height: ${media.mobile}px) {
-      --spacingOuter: 20px;
+    @media (max-width: ${media.mobileSmall}px) {
+      ${createThemeProperties(tokens.mobileSmall)}
     }
   }
 
@@ -165,13 +164,14 @@ export const GlobalStyles = createGlobalStyle`
   body {
     box-sizing: border-box;
     font-family: var(--fontStack);
+    font-weight: var(--fontWeightRegular);
+    font-size: var(--fontSizeBodyS);
     background: rgb(var(--rgbBackground));
-    color: rgb(var(--rgbText));
+    color: var(--colorTextBody);
     border: 0;
     margin: 0;
     width: 100vw;
     overflow-x: hidden;
-    font-weight: var(--fontWeightRegular);
   }
 
   *,
@@ -205,14 +205,13 @@ const AppMainContent = styled.main`
   transition: background 0.4s ease;
   outline: none;
   display: grid;
-  grid-template-columns: 100%;
+  grid-template: 100% / 100%;
 `;
 
 const AppPage = styled.div`
   overflow-x: hidden;
   opacity: 0;
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: 1 / 1;
   transition: opacity 0.3s ease;
 
   ${props => (props.status === 'exiting' || props.status === 'entering') && css`
@@ -239,10 +238,10 @@ const SkipToMain = styled.a`
   z-index: 99;
 
   &:focus {
-    padding: 8px 16px;
+    padding: var(--spaceS) var(--spaceM);
     position: fixed;
-    top: 16px;
-    left: 16px;
+    top: var(--spaceM);
+    left: var(--spaceM);
     clip: auto;
     width: auto;
     height: auto;

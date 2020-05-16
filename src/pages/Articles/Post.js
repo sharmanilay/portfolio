@@ -31,7 +31,7 @@ function PostWrapper({
   useScrollRestore();
   const contentRef = useRef();
 
-  const handleScrollIndicatorClick = (event) => {
+  const handleScrollIndicatorClick = event => {
     event.preventDefault();
 
     window.scrollTo({
@@ -46,6 +46,7 @@ function PostWrapper({
       <Helmet>
         <title>{`Blog | ${title}`}</title>
         <meta name="description" content={description} />
+        <link rel="preload" href={GothamBold} as="font" crossorigin="" />
         <style>
           {`
             @font-face {
@@ -59,12 +60,7 @@ function PostWrapper({
       </Helmet>
       <PostHeader>
         <PostHeaderText>
-          <Transition
-            appear
-            in={!prerender}
-            timeout={400}
-            onEnter={reflow}
-          >
+          <Transition appear in={!prerender} timeout={400} onEnter={reflow}>
             {status => (
               <PostDate>
                 <Divider
@@ -73,7 +69,10 @@ function PostWrapper({
                   collapsed={status !== 'entered'}
                 />
                 <PostDateText status={status}>
-                  {new Date(date).toLocaleDateString('default', { year: 'numeric', month: 'long' })}
+                  {new Date(date).toLocaleDateString('default', {
+                    year: 'numeric',
+                    month: 'long',
+                  })}
                 </PostDateText>
               </PostDate>
             )}
@@ -82,7 +81,8 @@ function PostWrapper({
             {title.split(' ').map((word, index) => (
               <PostTitleWordWrapper key={`${word}-${index}`}>
                 <PostTitleWord index={index}>
-                  {word}{index !== title.split(' ').length - 1 ? '\u00a0' : ''}
+                  {word}
+                  {index !== title.split(' ').length - 1 ? '\u00a0' : ''}
                 </PostTitleWord>
               </PostTitleWordWrapper>
             ))}
@@ -116,13 +116,11 @@ function PostWrapper({
 
 function imageFactory({ src, ...props }) {
   if (!src.startsWith('http')) {
-    return (
-      <Image {...props} src={require(`posts/assets/${src}`)} />
-    );
+    return <Image {...props} src={require(`posts/assets/${src}`)} />;
   }
 
   return <Image {...props} src={src} />;
-};
+}
 
 const PostArticle = styled.article`
   position: relative;
@@ -205,8 +203,8 @@ const PostDate = styled.div`
 `;
 
 const PostDateText = styled.span`
-  opacity: ${props => props.status === 'entered' ? 1 : 0};
-  transform: ${props => props.status === 'entered' ? 'none' : 'translate3d(-5%, 0, 0)'};
+  opacity: ${props => (props.status === 'entered' ? 1 : 0)};
+  transform: ${props => (props.status === 'entered' ? 'none' : 'translate3d(-5%, 0, 0)')};
   transition: opacity 0.8s ease, transform 0.8s var(--curveFastoutSlowin);
 `;
 
@@ -215,7 +213,7 @@ const PostTitle = styled.h1`
   font-weight: var(--fontWeightBold);
   line-height: 1.1;
   margin: 0;
-  color: rgb(var(--rgbTitle));
+  color: var(--colorTextTitle);
 
   @media (max-width: 1600px) {
     font-size: 80px;
@@ -316,11 +314,11 @@ const PostBannerArrow = styled.a`
   }
 
   svg {
-    stroke: rgb(var(--rgbTitle) / 0.5);
+    stroke: rgb(var(--rgbText) / 0.5);
     animation-name: ${AnimMobileScrollIndicator};
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
-    transition-timing-function: cubic-bezier(.8,.1,.27,1);
+    transition-timing-function: cubic-bezier(0.8, 0.1, 0.27, 1);
   }
 
   @media (max-width: ${media.tablet}px) {
@@ -335,7 +333,7 @@ const PostBannerArrow = styled.a`
 `;
 
 const PostBannerReadTime = styled.div`
-  color: rgb(var(--rgbTitle) / 0.6);
+  color: var(--colorTextLight);
   font-size: 16px;
   position: absolute;
   bottom: 10px;
@@ -359,7 +357,7 @@ const PostBannerReadTime = styled.div`
   &::before {
     content: '';
     height: 2px;
-    background: rgb(var(--rgbTitle) / 0.4);
+    background: rgb(var(--rgbText) / 0.4);
     display: block;
   }
 `;
@@ -401,7 +399,7 @@ const PostContent = styled.div`
     margin-top: 80px;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1096px) {
     grid-template-columns: 1fr 50px 660px 50px 1fr;
     margin-top: 80px;
   }
@@ -421,7 +419,7 @@ const PostContent = styled.div`
 `;
 
 const HeadingTwo = styled.h2`
-  color: rgb(var(--rgbTitle));
+  color: var(--colorTextTitle);
   margin: 0;
   font-size: 42px;
   grid-column: 3;
@@ -442,7 +440,7 @@ const HeadingTwo = styled.h2`
 `;
 
 const Paragrapgh = styled.p`
-  color: rgb(var(--rgbTitle) / 0.8);
+  color: rgb(var(--rgbText) / 0.8);
   margin: 0;
   font-size: 24px;
   line-height: 1.5;
@@ -505,8 +503,8 @@ const Image = styled.img`
 `;
 
 const InlineCode = styled.code`
-  color: rgb(var(--rgbTitle) / 0.6);
-  background: rgb(var(--rgbTitle) / 0.1);
+  color: var(--colorTextLight);
+  background: rgb(var(--rgbText) / 0.1);
   padding: 0.1em 0.3em;
   font-family: var(--monoFontStack);
 `;
@@ -516,17 +514,13 @@ const components = {
   h2: HeadingTwo,
   p: Paragrapgh,
   img: imageFactory,
-  a: (props) => <Anchor target="_blank" {...props} />,
+  a: props => <Anchor target="_blank" {...props} />,
   pre: Code,
   inlineCode: InlineCode,
 };
 
 function Post({ children }) {
-  return (
-    <MDXProvider components={components}>
-      {children}
-    </MDXProvider>
-  );
+  return <MDXProvider components={components}>{children}</MDXProvider>;
 }
 
 export default Post;

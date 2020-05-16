@@ -108,11 +108,11 @@ const HeaderWrapper = styled.header`
   justify-content: flex-start;
   position: fixed;
   padding: 0;
-  width: 45px;
+  width: var(--space2XL);
   z-index: 1024;
-  top: var(--spacingOuter);
-  left: var(--spacingOuter);
-  bottom: var(--spacingOuter);
+  top: var(--spaceOuter);
+  left: var(--spaceOuter);
+  bottom: var(--spaceOuter);
 
   @media (max-width: ${media.mobile}px), (max-height: ${media.mobile}px) {
     bottom: auto;
@@ -122,7 +122,7 @@ const HeaderWrapper = styled.header`
 const HeaderLogo = styled(Link)`
   display: flex;
   position: relative;
-  padding: 10px;
+  padding: var(--spaceM) var(--spaceM) var(--spaceL);
   z-index: 16;
 `;
 
@@ -132,9 +132,9 @@ const HeaderNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   flex: 1 1 auto;
-  max-width: 45px;
+  max-width: var(--space2XL);
   position: relative;
-  top: -10px;
+  top: calc(var(--spaceM) * -1);
 
   @media (max-width: ${media.mobile}px), (max-height: ${media.mobile}px) {
     display: none;
@@ -148,8 +148,8 @@ const HeaderNavList = styled.div`
 `;
 
 const HeaderNavLink = styled(NavLink)`
-  padding: 20px;
-  color: rgb(var(--rgbTitle) / 0.8);
+  padding: var(--spaceM);
+  color: rgb(var(--rgbText) / 0.8);
   text-decoration: none;
   font-weight: var(--fontWeightMedium);
   position: relative;
@@ -160,15 +160,15 @@ const HeaderNavLink = styled(NavLink)`
   &:active,
   &:focus,
   &.active {
-    color: rgb(var(--rgbText));
+    color: var(--colorTextBody);
   }
 
   &::after {
     content: '';
     position: absolute;
     top: 50%;
-    right: 10px;
-    left: 10px;
+    right: var(--spaceS);
+    left: var(--spaceS);
     height: 4px;
     background: rgb(var(--rgbAccent));
     transform: scaleX(0) translateY(-2px);
@@ -196,12 +196,12 @@ const HeaderNavIcons = styled.div`
   @media (max-width: ${media.mobile}px), (max-height: ${media.mobile}px) {
     flex-direction: row;
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: var(--spaceXL);
+    left: var(--spaceXL);
   }
 
   @media ${media.mobileLS} {
-    left: 20px;
+    left: var(--spaceL);
     transform: none;
     flex-direction: column;
     align-items: center;
@@ -214,11 +214,15 @@ const HeaderNavIconLink = styled.a.attrs({
   rel: 'noopener noreferrer',
 })`
   display: flex;
-  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spaceS);
+  width: var(--space2XL);
+  height: var(--space2XL);
 `;
 
 const HeaderNavIcon = styled(Icon)`
-  fill: rgb(var(--rgbTitle) / 0.6);
+  fill: var(--colorTextLight);
   transition: fill 0.4s ease;
 
   ${/* sc-selector */HeaderNavIconLink}:hover &,
@@ -243,7 +247,7 @@ const HeaderMobileNav = styled.nav`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--spaceM));
 
   @media (max-width: ${media.mobile}px), (max-height: ${media.mobile}px) {
     display: flex;
@@ -257,14 +261,14 @@ const HeaderMobileNavLink = styled(NavLink).attrs({
   font-size: 22px;
   text-align: center;
   text-decoration: none;
-  color: rgb(var(--rgbText));
-  padding: 20px;
-  transform: translate3d(0, -30px, 0);
+  color: var(--colorTextBody);
+  padding: var(--spaceL);
+  transform: translate3d(0, calc(var(--spaceXL) * -1), 0);
   opacity: 0;
   transition: all 0.3s var(--curveFastoutSlowin);
   transition-delay: ${props => props.delay}ms;
   position: relative;
-  top: -15px;
+  top: calc(var(--spaceM) * -1);
 
   @media ${media.mobileLS} {
     top: auto;
@@ -287,8 +291,8 @@ const HeaderMobileNavLink = styled(NavLink).attrs({
     content: '';
     position: absolute;
     top: 50%;
-    right: 60px;
-    left: 60px;
+    right: var(--space3XL);
+    left: var(--space3XL);
     height: 4px;
     background: rgb(var(--rgbAccent));
     transform: scaleX(0) translateY(-1px);

@@ -91,7 +91,7 @@ const SegmentedControlContainer = styled.div`
 
   &::before {
     content: '';
-    background-color: rgb(var(--rgbText));
+    background-color: var(--colorTextBody);
     position: absolute;
     top: 0;
     right: 0;
@@ -120,7 +120,7 @@ const SegmentedControlButton = styled.button`
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  color: rgb(var(--rgbText));
+  color: var(--colorTextBody);
   transition-property: color, background;
   transition-duration: 0.4s;
   transition-timing-function: ease;
@@ -136,13 +136,13 @@ const SegmentedControlButton = styled.button`
     border: 0;
   }
 
-  &[aria-selected=true] {
+  &[aria-selected='true'] {
     color: rgb(var(--rgbBackground));
   }
 
   &::before {
     content: '';
-    background: rgb(var(--rgbTitle) / 0.4);
+    background: rgb(var(--rgbText) / 0.4);
     opacity: 0;
     position: absolute;
     top: -4px;
@@ -153,16 +153,22 @@ const SegmentedControlButton = styled.button`
   }
 
   &:last-child::before {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 13px),
+      calc(100% - 13px) 100%,
+      0 100%
+    );
     right: -4px;
   }
 
-  ${/* sc-selector */SegmentedControlContainer}:focus &[aria-selected=true]::before {
+  ${/* sc-selector */ SegmentedControlContainer}:focus &[aria-selected=true]::before {
     opacity: 1;
   }
 
   & + & {
-    box-shadow: inset 2px 0 0 rgb(var(--rgbText));
+    box-shadow: inset 2px 0 0 var(--colorTextBody);
   }
 
   &:focus {
@@ -175,14 +181,20 @@ const SegmentedControlIndicator = styled.div`
   top: 2px;
   bottom: 2px;
   left: 0;
-  background-color: rgb(var(--rgbText));
+  background-color: var(--colorTextBody);
   transition-property: width, transform, clip-path;
   transition-duration: 0.4s;
   transition-timing-function: var(--curveFastoutSlowin);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%);
 
   ${props => props.isLast && css`
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%
+    );
   `}
 `;
 

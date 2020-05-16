@@ -1,7 +1,7 @@
 import React, { Fragment, memo } from 'react';
 import styled, { css } from 'styled-components/macro';
 import { Transition } from 'react-transition-group';
-import { sectionPadding, media } from 'utils/style';
+import { sectionPadding } from 'utils/style';
 import { RouterButton, LinkButton } from 'components/Button';
 import ProgressiveImage from 'components/ProgressiveImage';
 import Divider from 'components/Divider';
@@ -10,13 +10,25 @@ import phone from 'assets/phone.png';
 import phoneLarge from 'assets/phone-large.png';
 import phonePlaceholder from 'assets/phone-placeholder.png';
 import { reflow } from 'utils/transition';
+import { media } from 'utils/style';
 
-function ProjectItem(props) {
-  const {
-    id, visible, sectionRef, index, title, description, imageSrc, imageAlt, imageType,
-    imagePlaceholder, buttonText, buttonLink, buttonTo, alternate, ...rest
-  } = props;
-
+function ProjectItem({
+  id,
+  visible,
+  sectionRef,
+  index,
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+  imageType,
+  imagePlaceholder,
+  buttonText,
+  buttonLink,
+  buttonTo,
+  alternate,
+  ...rest
+}) {
   const { width } = useWindowSize();
   const titleId = `${id}-title`;
   const isMobile = width <= media.tablet;
@@ -73,7 +85,7 @@ function ProjectItem(props) {
       }
       {imageType === 'phone' &&
         <ProjectItemPreviewContentPhone>
-          {imageSrc && imageSrc.map((src, index) => (
+          {imageSrc?.map((src, index) => (
             <ProjectItemPhone first={index === 0} status={status} key={`img_${index}`}>
               <ProjectItemPhoneFrame
                 srcSet={`${phone} 414w, ${phoneLarge} 828w`}
@@ -131,11 +143,11 @@ function ProjectItem(props) {
       </ProjectItemContent>
     </ProjectItemSection>
   );
-};
+}
 
 const ProjectItemContent = styled.div`
   width: 100%;
-  max-width: var(--maxWidth);
+  max-width: var(--maxWidthL);
   align-items: center;
   justify-content: center;
   display: grid;
@@ -175,7 +187,7 @@ const ProjectItemSection = styled.section`
   padding-right: 80px;
   padding-bottom: 40px;
   padding-left: 220px;
-  margin-top: ${props => props.index === '01' ? '0' : '120px'};
+  margin-top: ${props => (props.index === '01' ? '0' : '120px')};
   margin-bottom: 120px;
   position: relative;
   display: flex;
@@ -191,12 +203,12 @@ const ProjectItemSection = styled.section`
 
   @media (max-width: ${media.tablet}px) {
     height: auto;
-    margin-top: ${props => props.index === '01' ? '0' : '60px'};
+    margin-top: ${props => (props.index === '01' ? '0' : '60px')};
     margin-bottom: 60px;
   }
 
   @media (max-width: ${media.mobile}px) {
-    padding-bottom: 100px;
+    padding-bottom: var(--space4XL);
     margin-bottom: 0;
     overflow-x: hidden;
   }
@@ -247,16 +259,16 @@ const ProjectItemIndex = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: 90px 1fr;
-  grid-gap: 12px;
+  grid-gap: var(--spaceM);
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: var(--spaceXL);
 `;
 
 const ProjectItemIndexNumber = styled.span`
-  font-size: 16px;
+  font-size: var(--fontSizeBodyS);
   font-weight: var(--fontWeightMedium);
   color: rgb(var(--rgbPrimary));
-  transform: translateX(-10px);
+  transform: translateX(calc(var(--spaceM) * -1));
   opacity: 0;
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
@@ -270,13 +282,12 @@ const ProjectItemIndexNumber = styled.span`
 `;
 
 const ProjectItemTitle = styled.h2`
-  font-size: 42px;
+  font-size: var(--fontSizeH2);
   font-weight: var(--fontWeightMedium);
-  line-height: 1.2;
-  margin: 0;
-  margin-bottom: 16px;
+  color: var(--colorTextTitle);
+  line-height: var(--lineHeightTitle);
+  margin: 0 0 var(--spaceL) 0;
   padding: 0;
-  color: rgb(var(--rgbTitle));
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
@@ -288,22 +299,14 @@ const ProjectItemTitle = styled.h2`
     transform: translate3d(0, 0, 0);
     opacity: 1;
   `}
-
-  @media (max-width: 1245px) {
-    font-size: 36px;
-  }
-
-  @media (max-width: ${media.mobile}px) {
-    font-size: 28px;
-  }
 `;
 
 const ProjectItemDescription = styled.p`
-  font-size: 18px;
-  line-height: 1.4;
-  color: rgb(var(--rgbTitle) / 0.8);
+  font-size: var(--fontSizeBodyL);
+  line-height: var(--lineHeightBody);
+  color: var(--colorTextBody);
   font-weight: var(--fontWeightRegular);
-  margin-bottom: 38px;
+  margin: 0 0 var(--spaceXL) 0;
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
@@ -315,10 +318,6 @@ const ProjectItemDescription = styled.p`
     transform: translate3d(0, 0, 0);
     opacity: 1;
   `}
-
-  @media (max-width: ${media.mobile}px) {
-    font-size: 16px;
-  }
 `;
 
 const ProjectItemButton = styled.div`
@@ -361,7 +360,7 @@ const ProjectItemImageLaptop = styled(ProgressiveImage)`
     height: 542px;
   }
 
-  @media(max-width: 1245px) {
+  @media (max-width: 1245px) {
     width: 761px;
     height: 491px;
   }
@@ -393,27 +392,29 @@ const ProjectItemPhone = styled.div`
   max-width: 100%;
   flex: 1 0 100%;
 
-  ${props => props.first ? css`
-    left: calc(50% - 140px);
-    top: -120px;
-    transform: translate3d(0, 80px, 0);
-    transition-delay: 0s;
+  ${props => props.first
+    ? css`
+        left: calc(50% - 140px);
+        top: -120px;
+        transform: translate3d(0, 80px, 0);
+        transition-delay: 0s;
 
-    @media (max-width: ${media.tablet}px) {
-      left: calc(50% - 48px);
-      top: -60px;
-    }
-  `: css`
-    left: calc(-50% + 20px);
-    top: 120px;
-    transform: translate3d(0, 80px, 0);
-    transition-delay: 0.2s;
+        @media (max-width: ${media.tablet}px) {
+          left: calc(50% - 48px);
+          top: -60px;
+        }
+      `
+    : css`
+        left: calc(-50% + 20px);
+        top: 120px;
+        transform: translate3d(0, 80px, 0);
+        transition-delay: 0.2s;
 
-    @media (max-width: ${media.tablet}px) {
-      left: calc(-50% + 40px);
-      top: 60px;
-    }
-  `}
+        @media (max-width: ${media.tablet}px) {
+          left: calc(-50% + 40px);
+          top: 60px;
+        }
+      `}
 
   ${props => props.status === 'entered' && css`
     transform: translate3d(0, 0, 0);
@@ -433,7 +434,7 @@ const ProjectItemPhoneFrame = styled(ProgressiveImage)`
 `;
 
 const ProjectItemPhoneImage = styled(ProgressiveImage)`
-  box-shadow: 0 0 0 2px #1C1C1C;
+  box-shadow: 0 0 0 2px #1c1c1c;
   position: relative;
   top: -14px;
   width: 254px;
@@ -445,7 +446,7 @@ const ProjectItemPhoneImage = styled(ProgressiveImage)`
   }
 
   @media (max-width: ${media.tablet}px) {
-    box-shadow: 0 0 0 1px #1C1C1C;
+    box-shadow: 0 0 0 1px #1c1c1c;
     width: 152px;
     height: 270px;
     top: -9px;

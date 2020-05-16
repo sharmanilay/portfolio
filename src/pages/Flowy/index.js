@@ -5,12 +5,12 @@ import { useScrollRestore } from 'hooks';
 import Footer from 'components/Footer';
 import {
   ProjectContainer, ProjectHeader, ProjectSection, ProjectSectionContent,
-  ProjectImage, ProjectSectionHeading, 
+  ProjectImage, ProjectSectionHeading,
 } from 'components/ProjectLayout';
 import { media } from 'utils/style';
-import flowy from './assets/flowy.png';
-import flowyLarge from './assets/flowy-large.png';
-import flowyPlaceholder from './assets/flowy-placeholder.png';
+import flowy from 'assets/flowy.png';
+import flowyLarge from 'assets/flowy-large.png';
+import flowyPlaceholder from 'assets/flowy-placeholder.png';
 
 const title = 'ES6-Flowy';
 const description = 'The minimal JavaScript library to create flowcharts.';

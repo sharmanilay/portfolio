@@ -4,15 +4,12 @@ import { Transition } from 'react-transition-group';
 import { Helmet } from 'react-helmet-async';
 import { RouterButton } from 'components/Button';
 import DecoderText from 'components/DecoderText';
-import { useScrollRestore } from 'hooks';
 import { reflow } from 'utils/transition';
 import { media } from 'utils/style';
 import notFound from 'assets/notfound.mp4';
 import notFoundPoster from 'assets/notfound.jpg';
 
 function NotFound() {
-  useScrollRestore();
-
   return (
     <NotFoundSection>
       <Helmet>
@@ -31,7 +28,11 @@ function NotFound() {
               <NotFoundText>
                 <NotFoundTitle status={status}>404</NotFoundTitle>
                 <NotFoundSubHeading status={status} aria-hidden>
-                  <DecoderText text="That is an error" start={status !== 'exited'} offset={100} />
+                  <DecoderText
+                    text="Error: Redacted"
+                    start={status !== 'exited'}
+                    offset={100}
+                  />
                 </NotFoundSubHeading>
                 <NotFoundDescription status={status}>
                   This page could not be found. It either doesn’t exist or was deleted.
@@ -59,7 +60,8 @@ function NotFound() {
               >
                 <source src={notFound} type="video/mp4" />
               </NotFoundVideo>
-              <NotFoundCredit status={status}
+              <NotFoundCredit
+                status={status}
                 href="https://twitter.com/ruinergame"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -80,7 +82,7 @@ const NotFoundSection = styled.section`
   height: 100vh;
   padding-left: 140px;
 
-  @media(max-width: ${media.tablet}px) {
+  @media (max-width: ${media.tablet}px) {
     padding-top: 80px;
     padding-bottom: 80px;
     padding-left: 80px;
@@ -89,7 +91,7 @@ const NotFoundSection = styled.section`
     height: auto;
   }
 
-  @media(max-width: ${media.mobile}px) {
+  @media (max-width: ${media.mobile}px) {
     padding-left: 0;
   }
 `;
@@ -158,7 +160,7 @@ const NotFoundVideo = styled.video`
     opacity: 1;
   `}
 
-  @media (max-width: ${media.mobile}px) {
+  @media(max-width: ${media.mobile}px) {
     left: 0;
   }
 `;
@@ -166,11 +168,11 @@ const NotFoundVideo = styled.video`
 const NotFoundCredit = styled.a`
   color: rgb(var(--rgbWhite) / 0.4);
   background: rgb(var(--rgbBlack) / 0.6);
-  padding: 4px 8px;
-  font-size: 14px;
+  padding: var(--spaceXXS) var(--spaceXS);
+  font-size: var(--fontSizeBodyS);
   position: absolute;
-  bottom: 16px;
-  left: 16px;
+  bottom: var(--spaceS);
+  left: var(--spaceS);
   transform: translate3d(0, 0, 0);
   text-decoration: none;
   transition-property: all;
@@ -192,11 +194,10 @@ const NotFoundDetails = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 40px;
+  padding: 0 var(--spaceXL);
   height: 100%;
 
   @media (max-width: ${media.mobile}px) {
-    padding: 0 30px;
     grid-row: 2;
   }
 `;
@@ -208,175 +209,21 @@ const NotFoundText = styled.div`
   width: 100%;
 `;
 
-const NoiseAnim = keyframes`
-  0% {
-     clip: rect(45px, 9999px, 34px, 0);
-   }
-   5% {
-     clip: rect(67px, 9999px, 57px, 0);
-   }
-   10% {
-     clip: rect(7px, 9999px, 32px, 0);
-   }
-   15.0% {
-     clip: rect(53px, 9999px, 61px, 0);
-   }
-   20% {
-     clip: rect(21px, 9999px, 49px, 0);
-   }
-   25% {
-     clip: rect(8px, 9999px, 33px, 0);
-   }
-   30.0% {
-     clip: rect(17px, 9999px, 36px, 0);
-   }
-   35% {
-     clip: rect(23px, 9999px, 1px, 0);
-   }
-   40% {
-     clip: rect(98px, 9999px, 86px, 0);
-   }
-   45% {
-     clip: rect(64px, 9999px, 72px, 0);
-   }
-   50% {
-     clip: rect(42px, 9999px, 60px, 0);
-   }
-   55.0% {
-     clip: rect(38px, 9999px, 46px, 0);
-   }
-   60.0% {
-     clip: rect(21px, 9999px, 55px, 0);
-   }
-   65% {
-     clip: rect(71px, 9999px, 57px, 0);
-   }
-   70% {
-     clip: rect(34px, 9999px, 70px, 0);
-   }
-   75% {
-     clip: rect(60px, 9999px, 67px, 0);
-   }
-   80% {
-     clip: rect(51px, 9999px, 48px, 0);
-   }
-   85.0% {
-     clip: rect(72px, 9999px, 48px, 0);
-   }
-   90% {
-     clip: rect(95px, 9999px, 98px, 0);
-   }
-   95% {
-     clip: rect(52px, 9999px, 65px, 0);
-   }
-   100% {
-     clip: rect(87px, 9999px, 50px, 0);
-   }
-`;
-
-const NoiseAnim2 = keyframes`
-  0% {
-    clip: rect(93px, 9999px, 57px, 0);
-  }
-  5% {
-    clip: rect(22px, 9999px, 5px, 0);
-  }
-  10% {
-    clip: rect(54px, 9999px, 44px, 0);
-  }
-  15.0% {
-    clip: rect(24px, 9999px, 40px, 0);
-  }
-  20% {
-    clip: rect(88px, 9999px, 85px, 0);
-  }
-  25% {
-    clip: rect(95px, 9999px, 86px, 0);
-  }
-  30.0% {
-    clip: rect(62px, 9999px, 6px, 0);
-  }
-  35% {
-    clip: rect(64px, 9999px, 39px, 0);
-  }
-  40% {
-    clip: rect(2px, 9999px, 85px, 0);
-  }
-  45% {
-    clip: rect(94px, 9999px, 58px, 0);
-  }
-  50% {
-    clip: rect(46px, 9999px, 8px, 0);
-  }
-  55.0% {
-    clip: rect(65px, 9999px, 52px, 0);
-  }
-  60.0% {
-    clip: rect(7px, 9999px, 59px, 0);
-  }
-  65% {
-    clip: rect(85px, 9999px, 75px, 0);
-  }
-  70% {
-    clip: rect(40px, 9999px, 19px, 0);
-  }
-  75% {
-    clip: rect(53px, 9999px, 54px, 0);
-  }
-  80% {
-    clip: rect(17px, 9999px, 37px, 0);
-  }
-  85.0% {
-    clip: rect(87px, 9999px, 59px, 0);
-  }
-  90% {
-    clip: rect(37px, 9999px, 77px, 0);
-  }
-  95% {
-    clip: rect(36px, 9999px, 53px, 0);
-  }
-  100% {
-    clip: rect(80px, 9999px, 94px, 0);
-  }
-`;
-
 const NotFoundTitle = styled.h1`
   margin: 0;
-  margin-bottom: 16px;
+  margin-bottom: var(--spaceM);
   font-size: 86px;
   font-weight: var(--fontWeightMedium);
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: 0.1s;
-  transform: translate3d(0, 40px, 0);
+  transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
-  color: rgb(var(--rgbTitle));
+  color: var(--colorTextTitle);
 
   @media (max-width: ${media.mobile}px) {
     font-size: 64px;
-  }
-
-  :before, :after {
-    content: "404";
-    position: absolute;
-    top: 0;
-    color: rgb(var(--rgbTitle));
-    background: none;
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-  }
-
-  :after {
-    left: 2px;
-    text-shadow: -2px 0 rgb(var(--rgbAccent));
-    animation: ${NoiseAnim} 2s infinite linear alternate-reverse;
-  }
-
-  :before {
-    left: -2px;
-    text-shadow: 2px 0 rgb(var(--rgbAccent));
-    animation: ${NoiseAnim2} 3s infinite linear alternate-reverse;
   }
 
   ${props => props.status === 'entered' && css`
@@ -386,18 +233,18 @@ const NotFoundTitle = styled.h1`
 `;
 
 const NotFoundSubHeading = styled.h2`
-  font-size: 24px;
+  font-size: var(--fontSizeH3);
   font-weight: var(--fontWeightMedium);
   margin: 0;
-  margin-bottom: 24px;
+  margin-bottom: var(--spaceL);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: rgb(var(--rgbTitle) / 0.4);
+  color: rgb(var(--rgbText) / 0.4);
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: 0.2s;
-  transform: translate3d(0, 40px, 0);
+  transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
   max-width: 100%;
   white-space: nowrap;
@@ -414,17 +261,16 @@ const NotFoundSubHeading = styled.h2`
 `;
 
 const NotFoundDescription = styled.p`
-  color: rgb(var(--rgbTitle) / 0.9);
-  margin: 0;
-  margin-bottom: 20px;
+  color: var(--colorTextBody);
+  margin: 0 0 var(--spaceL) 0;
   padding: 0;
-  font-size: 18px;
-  line-height: 1.4;
+  font-size: var(--fontSizeBodyM);
+  line-height: var(--lineHeightBody);
   transition-property: transform, opacity;
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: 0.3s;
-  transform: translate3d(0, 40px, 0);
+  transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
 
   ${props => props.status === 'entered' && css`
@@ -438,10 +284,10 @@ const NotFoundButton = styled(RouterButton)`
   transition-timing-function: var(--curveFastoutSlowin);
   transition-duration: 0.8s;
   transition-delay: 0.4s;
-  transform: translate3d(0, 40px, 0);
+  transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
   align-self: flex-start;
-  padding-left: 3px;
+  padding-left: var(--spaceXXS);
 
   ${props => props.status === 'entered' && css`
     transform: translate3d(0, 0, 0);
