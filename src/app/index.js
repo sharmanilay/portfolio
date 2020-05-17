@@ -24,6 +24,8 @@ const NotFound = lazy(() => import('pages/404'));
 export const AppContext = createContext();
 export const TransitionContext = createContext();
 
+const repoPrompt = `\u00A9 2018-${new Date().getFullYear()} Cody Bennett\n\nCheck out the source code: https://github.com/CodyJasonBennett/portfolio-website`;
+
 export const fontStyles = `
   @font-face {
     font-family: "Gotham";
@@ -54,6 +56,13 @@ function App() {
   }, [prefersReducedMotion]);
 
   useEffect(() => {
+    if (!prerender) {
+      console.info(`%c${repoPrompt}`, 'font-size: 18px');
+      document.body.removeAttribute('class');
+      const markupComment = document.createComment(repoPrompt);
+      document.documentElement.prepend(markupComment);
+    }
+
     window.history.scrollRestoration = 'manual';
   }, []);
 
