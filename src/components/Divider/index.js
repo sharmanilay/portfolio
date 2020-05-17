@@ -11,12 +11,12 @@ const Divider = styled.div`
     width: 100%;
     height: 100%;
     background: rgb(var(--rgbPrimary));
-    opacity: ${props => props.collapsed ? 0 : 1};
+    opacity: ${props => (props.collapsed ? 0 : 1)};
     transition-property: transform, opacity;
-    transition-duration: 600ms;
-    transition-timing-function: var(--curveFastoutSlowin);
+    transition-duration: var(--durationL);
+    transition-timing-function: var(--bezierFastoutSlowin);
     transition-delay: ${props => props.collapseDelay}ms;
-    transform: scaleX(${props => props.collapsed ? 0 : 1});
+    transform: scaleX(${props => (props.collapsed ? 0 : 1)});
     transform-origin: left center;
   }
 
@@ -28,14 +28,14 @@ const Divider = styled.div`
     position: absolute;
     top: ${props => props.lineHeight};
     transition-property: clip-path, opacity;
-    transition-duration: 600ms;
-    transition-timing-function: var(--curveFastoutSlowin);
+    transition-duration: var(--durationL);
+    transition-timing-function: var(--bezierFastoutSlowin);
     transition-delay: ${props => props.collapseDelay + 160}ms;
     opacity: ${props => props.collapsed ? 0 : 1};
     clip-path: ${props => props.collapsed
-    ? 'polygon(0 0, 0 0, 10px 100%, 10px 100%)'
-    : 'polygon(0 0, 100% 0, calc(100% - 10px) 100%, 10px 100%)'
-  };
+      ? 'polygon(0 0, 0 0, 10px 100%, 10px 100%)'
+      : 'polygon(0 0, 100% 0, calc(100% - 10px) 100%, 10px 100%)'
+    };
   }
 `;
 

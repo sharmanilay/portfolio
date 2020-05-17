@@ -143,7 +143,7 @@ const PostContent = styled(Link)`
   grid-template-columns: 300px 1fr;
   grid-gap: 0 40px;
   text-decoration: none;
-  transition: background-color 0.4s ease;
+  transition: background-color var(--durationM) ease;
 
   @media (max-width: ${media.tablet}px) {
     grid-template-columns: 100%;
@@ -175,7 +175,7 @@ const PostTitle = styled.h2`
   color: var(--colorTextTitle);
   display: inline;
   background: linear-gradient(var(--colorTextBody), var(--colorTextBody)) no-repeat 100% 100% / 0 2px;
-  transition: background-size 0.4s var(--curveFastoutSlowin);
+  transition: background-size var(--durationM) var(--bezierFastoutSlowin);
   padding-bottom: 2px;
 
   &:hover,
@@ -208,7 +208,7 @@ const PostImage = styled(ProgressiveImage)`
     height: 100%;
     width: 100%;
     object-fit: cover;
-    transition: transform 0.5s var(--curveFastoutSlowin);
+    transition: transform 0.5s var(--bezierFastoutSlowin);
   }
 
   ${/* sc-selector */ PostContent}:hover & img,

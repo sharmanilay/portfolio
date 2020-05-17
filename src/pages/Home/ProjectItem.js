@@ -1,7 +1,7 @@
 import React, { Fragment, memo } from 'react';
 import styled, { css } from 'styled-components/macro';
 import { Transition } from 'react-transition-group';
-import { sectionPadding } from 'utils/style';
+import { sectionPadding, media } from 'utils/style';
 import { RouterButton, LinkButton } from 'components/Button';
 import ProgressiveImage from 'components/ProgressiveImage';
 import Divider from 'components/Divider';
@@ -10,7 +10,6 @@ import phone from 'assets/phone.png';
 import phoneLarge from 'assets/phone-large.png';
 import phonePlaceholder from 'assets/phone-placeholder.png';
 import { reflow } from 'utils/transition';
-import { media } from 'utils/style';
 
 function ProjectItem({
   id,
@@ -185,7 +184,7 @@ const ProjectItemSection = styled.section`
   height: 100vh;
   width: 100vw;
   padding-right: 80px;
-  padding-bottom: 40px;
+  padding-bottom: var(--spaceL);
   padding-left: 220px;
   margin-top: ${props => (props.index === '01' ? '0' : '120px')};
   margin-bottom: 120px;
@@ -271,8 +270,8 @@ const ProjectItemIndexNumber = styled.span`
   transform: translateX(calc(var(--spaceM) * -1));
   opacity: 0;
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.4s;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationM);
   transition-delay: 1.3s;
 
   ${props => props.status === 'entered' && css`
@@ -289,10 +288,10 @@ const ProjectItemTitle = styled.h2`
   margin: 0 0 var(--spaceL) 0;
   padding: 0;
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: 0.4s;
-  transform: translate3d(0, 40px, 0);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: var(--durationM);
+  transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
 
   ${props => props.status === 'entered' && css`
@@ -308,10 +307,10 @@ const ProjectItemDescription = styled.p`
   font-weight: var(--fontWeightRegular);
   margin: 0 0 var(--spaceXL) 0;
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: 0.6s;
-  transform: translate3d(0, 40px, 0);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: var(--durationL);
+  transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
 
   ${props => props.status === 'entered' && css`
@@ -322,10 +321,10 @@ const ProjectItemDescription = styled.p`
 
 const ProjectItemButton = styled.div`
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: 0.8s;
-  transform: translate3d(0, 40px, 0);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: var(--durationXL);
+  transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
 
   ${props => props.status === 'entered' && css`
@@ -339,9 +338,9 @@ const ProjectItemImageLaptop = styled(ProgressiveImage)`
   height: 531px;
   transition-property: transform, opacity;
   transition-duration: 1s;
-  transition-delay: 0.4s;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transform: translate3d(40px, 0, 0);
+  transition-delay: var(--durationM);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transform: translate3d(var(--spaceL), 0, 0);
   opacity: 0;
   position: relative;
   right: -140px;
@@ -351,7 +350,7 @@ const ProjectItemImageLaptop = styled(ProgressiveImage)`
     opacity: 1;
   `}
 
-  ${props => props.theme.id === 'light' && css`
+  ${props => props.theme.themeId === 'light' && css`
     z-index: 1;
   `}
 
@@ -360,7 +359,7 @@ const ProjectItemImageLaptop = styled(ProgressiveImage)`
     height: 542px;
   }
 
-  @media (max-width: 1245px) {
+  @media (max-width: ${media.laptop}px) {
     width: 761px;
     height: 491px;
   }
@@ -368,14 +367,14 @@ const ProjectItemImageLaptop = styled(ProgressiveImage)`
   @media (max-width: ${media.tablet}px) {
     width: 420px;
     height: 258px;
-    margin-bottom: 120px;
+    margin-bottom: var(--space5XL);
     right: 0;
   }
 
   @media (max-width: ${media.mobile}px) {
     width: 336px;
     height: 206px;
-    margin-bottom: 60px;
+    margin-bottom: var(--space3XL);
   }
 `;
 
@@ -386,7 +385,7 @@ const ProjectItemPhone = styled.div`
   justify-content: center;
   opacity: 0;
   transition-duration: 1s;
-  transition-timing-function: var(--curveFastoutSlowin);
+  transition-timing-function: var(--bezierFastoutSlowin);
   transition-property: transform, opacity;
   width: 100%;
   max-width: 100%;
@@ -411,7 +410,7 @@ const ProjectItemPhone = styled.div`
         transition-delay: 0.2s;
 
         @media (max-width: ${media.tablet}px) {
-          left: calc(-50% + 40px);
+          left: calc(-50% + var(--spaceL));
           top: 60px;
         }
       `}

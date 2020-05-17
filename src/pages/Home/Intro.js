@@ -7,6 +7,7 @@ import Icon from 'components/Icon';
 import { useInterval, usePrevious, useWindowSize } from 'hooks';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
+import { pxToRem, tokens } from 'app/theme';
 
 const DisplacementSphere = lazy(() => import('components/DisplacementSphere'));
 
@@ -23,13 +24,13 @@ function Intro(props) {
   useInterval(() => {
     const index = (disciplineIndex + 1) % disciplines.length;
     setDisciplineIndex(index);
-  }, 5000, theme.id);
+  }, 5000, theme.themeId);
 
   useEffect(() => {
-    if (prevTheme && prevTheme.id !== theme.id) {
+    if (prevTheme && prevTheme.themeId !== theme.themeId) {
       setDisciplineIndex(0);
     }
-  }, [theme.id, prevTheme]);
+  }, [theme.themeId, prevTheme]);
 
   return (
     <IntroContent
@@ -40,7 +41,7 @@ function Intro(props) {
       {...rest}
     >
       <Transition
-        key={theme.id}
+        key={theme.themeId}
         appear={!prerender}
         in={!prerender}
         timeout={3000}
@@ -60,7 +61,7 @@ function Intro(props) {
               <IntroTitle>
                 <IntroTitleLabel>{`Designer + ${introLabel}`}</IntroTitleLabel>
                 <IntroTitleRow aria-hidden prerender={prerender}>
-                  <IntroTitleWord status={status} delay="0.2s">Designer</IntroTitleWord>
+                  <IntroTitleWord status={status} delay={tokens.base.durationXS}>Designer</IntroTitleWord>
                   <IntroTitleLine status={status} />
                 </IntroTitleRow>
                 <TransitionGroup component={IntroTitleRow} prerender={prerender}>
@@ -75,7 +76,7 @@ function Intro(props) {
                         <IntroTitleWord
                           plus
                           aria-hidden
-                          delay="0.5s"
+                          delay={tokens.base.durationL}
                           status={wordStatus}
                         >
                           {item}
@@ -121,38 +122,38 @@ const IntroText = styled.header`
   max-width: 780px;
   width: 100%;
   position: relative;
-  top: -20px;
+  top: calc(var(--spaceL) * -1);
 
   @media (min-width: ${media.desktop}px) {
     max-width: 920px;
   }
 
   @media (max-width: ${media.mobile}px) {
-    top: -60px;
+    top: calc(var(--space3XL) * -1);
   }
 
   @media (max-width: 400px) {
-    top: -30px;
+    top: calc(var(--spaceXL) * -1);
   }
 
   @media ${media.mobileLS} {
-    top: -16px;
+    top: calc(var(--spaceM) * -1);
   }
 `;
 
 const IntroName = styled.h1`
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: ${pxToRem(24)};
   letter-spacing: 0.3em;
   color: var(--colorTextBody);
-  margin-bottom: 40px;
+  margin-bottom: var(--space2XL);
   margin-top: 0;
   font-weight: var(--fontWeightMedium);
   line-height: 1;
   opacity: 0;
 
   ${props => props.status === 'entering' && css`
-    animation: ${css`${AnimFade} 0.6s ease 0.2s forwards`};
+    animation: ${css`${AnimFade} var(--durationL) ease 0.2s forwards`};
   `}
 
   ${props => props.status === 'entered' && css`
@@ -160,13 +161,13 @@ const IntroName = styled.h1`
   `}
 
   @media (min-width: ${media.desktop}px) {
-    font-size: 28px;
-    margin-bottom: 40px;
+    font-size: ${pxToRem(28)};
+    margin-bottom: var(--space2XL);
   }
 
   @media (max-width: ${media.tablet}px) {
-    font-size: 18px;
-    margin-bottom: 40px;
+    font-size: ${pxToRem(18)};
+    margin-bottom: var(--space2XL);
   }
 
   @media (max-width: ${media.mobile}px) {
@@ -185,25 +186,25 @@ const IntroName = styled.h1`
 const IntroTitle = styled.h2`
   display: flex;
   flex-direction: column;
-  font-size: 100px;
+  font-size: ${pxToRem(100)};
   margin: 0;
   letter-spacing: -0.005em;
   font-weight: var(--fontWeightMedium);
 
   @media (min-width: ${media.desktop}px) {
-    font-size: 120px;
+    font-size: ${pxToRem(120)};
   }
 
   @media (max-width: 860px) {
-    font-size: 80px;
+    font-size: ${pxToRem(80)};
   }
 
   @media (max-width: 600px) {
-    font-size: 56px;
+    font-size: ${pxToRem(56)};
   }
 
   @media (max-width: 400px) {
-    font-size: 42px;
+    font-size: ${pxToRem(42)};
   }
 `;
 
@@ -274,7 +275,7 @@ const IntroTitleWord = styled.span`
   line-height: 1;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
-  animation-timing-function: var(--curveFastoutSlowin);
+  animation-timing-function: var(--bezierFastoutSlowin);
   color: rgb(var(--rgbText) / 0);
   transition: opacity 0.5s ease 0.4s;
 
@@ -302,7 +303,7 @@ const IntroTitleWord = styled.span`
     opacity: 0;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
-    animation-timing-function: var(--curveFastoutSlowin);
+    animation-timing-function: var(--bezierFastoutSlowin);
     transform-origin: left;
     position: absolute;
     top: 0;
@@ -360,7 +361,7 @@ const IntroTitleLine = styled.span`
   animation-duration: 0.8s;
   animation-delay: 1s;
   animation-fill-mode: forwards;
-  animation-timing-function: var(--curveFastoutSlowin);
+  animation-timing-function: var(--bezierFastoutSlowin);
   transform-origin: left;
   opacity: 0;
 
@@ -397,7 +398,7 @@ const ScrollIndicator = styled.div`
   position: fixed;
   bottom: 64px;
   transition-property: opacity, transform;
-  transition-duration: 0.6s;
+  transition-duration: var(--durationL);
   transition-timing-function: ease;
   opacity: ${props => props.status === 'entered' && !props.isHidden ? 1 : 0};
   transform: translate3d(0, ${props => props.isHidden ? '20px' : 0}, 0);
@@ -442,7 +443,7 @@ const MobileScrollIndicator = styled.div`
   animation-iteration-count: infinite;
   transition-property: opacity, transform;
   transition-timing-function: cubic-bezier(.8, .1, .27, 1);
-  transition-duration: 0.4s;
+  transition-duration: var(--durationM);
 
   @media ${media.mobileLS} {
     display: none;

@@ -6,13 +6,13 @@ import Input from 'components/Input';
 import DecoderText from 'components/DecoderText';
 import Divider from 'components/Divider';
 import { Button, RouterButton } from 'components/Button';
-import { AnimFade, sectionPadding } from 'utils/style';
+import { AnimFade, sectionPadding, media } from 'utils/style';
 import { useScrollRestore, useFormInput, useRouteTransition } from 'hooks';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
-import { media } from 'utils/style';
+import { tokens, msToNum } from 'app/theme';
 
-const initDelay = 300;
+const initDelay = tokens.base.durationS;
 
 function getStatusError(status) {
   if (status === 200) return false;
@@ -85,19 +85,20 @@ function Contact() {
           >
             {status => (
               <ContactForm method="post" onSubmit={onSubmit} role="form">
-                <ContactTitle status={status} delay={50}>
+                <ContactTitle status={status} delay={msToNum(tokens.base.durationXS) / 3}>
                   <DecoderText
                     text="Say hello"
                     start={status !== 'exited' && !prerender}
                     offset={140}
+                    delay={msToNum(tokens.base.durationS)}
                   />
                 </ContactTitle>
-                <ContactDivider status={status} delay={100} />
+                <ContactDivider status={status} delay={msToNum(tokens.base.durationXS) / 2} />
                 <ContactFields>
                   <ContactInput
                     {...email}
                     status={status}
-                    delay={200}
+                    delay={tokens.base.durationXS}
                     autoComplete="email"
                     label="Your Email"
                     type="email"
@@ -107,7 +108,7 @@ function Contact() {
                   <ContactInput
                     {...message}
                     status={status}
-                    delay={300}
+                    delay={tokens.base.durationS}
                     autoComplete="off"
                     label="Message"
                     maxLength={5000}
@@ -120,7 +121,7 @@ function Contact() {
                     loading={sending}
                     loadingText="Sending..."
                     status={status}
-                    delay={400}
+                    delay={tokens.base.durationM}
                     icon="send"
                     type="submit"
                   >
@@ -136,22 +137,21 @@ function Contact() {
             appear
             mountOnEnter
             unmountOnExit
-            timeout={10}
             onEnter={reflow}
           >
             {status => (
               <ContactComplete aria-live="polite">
-                <ContactCompleteTitle status={status} delay={10}>
+                <ContactCompleteTitle status={status}>
                   Message Sent
                 </ContactCompleteTitle>
-                <ContactCompleteText status={status} delay={200}>
+                <ContactCompleteText status={status} delay={tokens.base.durationXS}>
                   I’ll get back to you within a couple days
                 </ContactCompleteText>
                 <ContactCompleteButton
                   secondary
                   to="/"
                   status={status}
-                  delay={400}
+                  delay={tokens.base.durationM}
                   icon="chevronRight"
                 >
                   Back to homepage
@@ -204,9 +204,9 @@ const ContactTitle = styled.h1`
   margin-top: 0;
   color: var(--colorTextTitle);
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: ${props => props.delay + initDelay}ms;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: calc(${props => props.delay}ms + ${initDelay});
   transform: translate3d(0, var(--space5XL), 0);
   opacity: 0;
 
@@ -216,7 +216,7 @@ const ContactTitle = styled.h1`
   `}
 
   ${props => props.status === 'exiting' && css`
-    transition-duration: 0.4s;
+    transition-duration: var(--durationM);
     transition-delay: 0s;
     transform: translate3d(0, calc(var(--space2XL) * -1), 0);
     opacity: 0;
@@ -226,9 +226,9 @@ const ContactTitle = styled.h1`
 const ContactDivider = styled(Divider)`
   margin-bottom: var(--space3XL);
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: ${props => props.delay + initDelay}ms;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: calc(${props => props.delay}ms + ${initDelay});
   transform: translate3d(0, var(--space5XL), 0);
   opacity: 0;
 
@@ -238,7 +238,7 @@ const ContactDivider = styled(Divider)`
   `}
 
   ${props => props.status === 'exiting' && css`
-    transition-duration: 0.4s;
+    transition-duration: var(--durationM);
     transition-delay: 0s;
     transform: translate3d(0, calc(var(--space2XL) * -1), 0);
     opacity: 0;
@@ -247,9 +247,9 @@ const ContactDivider = styled(Divider)`
 
 const ContactInput = styled(Input)`
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: ${props => props.delay + initDelay}ms;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: calc(${props => props.delay} + ${initDelay});
   transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
 
@@ -259,7 +259,7 @@ const ContactInput = styled(Input)`
   `}
 
   ${props => props.status === 'exiting' && css`
-    transition-duration: 0.4s;
+    transition-duration: var(--durationM);
     transition-delay: 0s;
     transform: translate3d(0, calc(var(--space2XL) * -1), 0);
     opacity: 0;
@@ -269,22 +269,23 @@ const ContactInput = styled(Input)`
 const ContactButton = styled(Button)`
   margin-top: var(--spaceXL);
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-delay: ${props => props.status === 'entered' ? '0ms' : `${props.delay + initDelay}ms`};
-  transition-duration: ${props => (props.status === 'entered' ? '0.4s' : '0.8s')};
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-delay: ${props => props.status === 'entered' ? '0ms' : `calc(${props.delay} + ${initDelay})`};
+  transition-duration: ${props => props.status === 'entered' ? 'var(--durationM)' : 'var(--durationXL)'};
   transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
   justify-self: flex-start;
 
   ${props => props.sending && css`
     svg {
-      transition: transform ${props.curveFastoutSlowin} 0.8s, opacity 0.3s ease 0.3s;
+      transition: transform ${props.bezierFastoutSlowin} var(--durationXL),
+        opacity var(--durationS) ease var(--durationS);
       transform: translate3d(var(--space5XL), 0, 0);
       opacity: 0;
     }
 
     div {
-      animation: ${AnimFade} 0.5s ease 0.6s forwards;
+      animation: ${AnimFade} var(--durationM) ease var(--durationL) forwards;
       opacity: 0;
 
       @media (prefers-reduced-motion: reduce) {
@@ -305,7 +306,7 @@ const ContactButton = styled(Button)`
   `}
 
   ${props => props.status === 'exiting' && css`
-    transition-duration: 0.4s;
+    transition-duration: var(--durationM);
     transition-delay: 0s;
     transform: translate3d(0, calc(var(--space2XL) * -1), 0);
     opacity: 0;
@@ -332,9 +333,9 @@ const ContactCompleteTitle = styled.h1`
   text-align: center;
   margin: 0;
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: ${props => props.delay}ms;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: ${props => props.delay};
   transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
 
@@ -348,9 +349,9 @@ const ContactCompleteText = styled.p`
   font-size: var(--fontSizeBodyM);
   text-align: center;
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: ${props => props.delay}ms;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: ${props => props.delay};
   transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
 
@@ -362,9 +363,9 @@ const ContactCompleteText = styled.p`
 
 const ContactCompleteButton = styled(RouterButton)`
   transition-property: transform, opacity;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.8s;
-  transition-delay: ${props => props.delay}ms;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: ${props => props.delay};
   transform: translate3d(0, var(--space3XL), 0);
   opacity: 0;
   padding-left: 3px;

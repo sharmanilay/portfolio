@@ -14,6 +14,7 @@ import Anchor from 'components/Anchor';
 import Code from 'components/Code';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
+import { tokens, msToNum } from 'app/theme';
 
 function PostWrapper({
   children,
@@ -60,7 +61,12 @@ function PostWrapper({
       </Helmet>
       <PostHeader>
         <PostHeaderText>
-          <Transition appear in={!prerender} timeout={400} onEnter={reflow}>
+          <Transition
+            appear
+            in={!prerender}
+            timeout={msToNum(tokens.base.durationM)}
+            onEnter={reflow}
+          >
             {status => (
               <PostDate>
                 <Divider
@@ -205,7 +211,9 @@ const PostDate = styled.div`
 const PostDateText = styled.span`
   opacity: ${props => (props.status === 'entered' ? 1 : 0)};
   transform: ${props => (props.status === 'entered' ? 'none' : 'translate3d(-5%, 0, 0)')};
-  transition: opacity 0.8s ease, transform 0.8s var(--curveFastoutSlowin);
+  transition:
+    opacity var(--durationXL) ease,
+    transform var(--durationXL) var(--bezierFastoutSlowin);
 `;
 
 const PostTitle = styled.h1`
@@ -250,7 +258,7 @@ const PostTitleWordWrapper = styled.span`
 const PostTitleWord = styled.span`
   transform: translate3d(0, 110%, 0);
   animation-name: ${AnimPostTitleWord};
-  animation-timing-function: var(--curveFastoutSlowin);
+  animation-timing-function: var(--bezierFastoutSlowin);
   animation-duration: 1.2s;
   animation-delay: ${props => props.index * 120 + 200}ms;
   animation-fill-mode: forwards;
@@ -303,7 +311,7 @@ const PostBannerArrow = styled.a`
   left: -10px;
   padding: 20px;
   animation-name: ${AnimFade};
-  animation-timing-function: var(--curveFastoutSlowin);
+  animation-timing-function: var(--bezierFastoutSlowin);
   animation-duration: 0.6s;
   animation-fill-mode: forwards;
   animation-delay: 1s;
@@ -344,7 +352,7 @@ const PostBannerReadTime = styled.div`
   grid-template-columns: 60px 1fr;
   grid-gap: 10px;
   animation-name: ${AnimFade};
-  animation-timing-function: var(--curveFastoutSlowin);
+  animation-timing-function: var(--bezierFastoutSlowin);
   animation-duration: 0.6s;
   animation-fill-mode: forwards;
   animation-delay: 1s;
@@ -373,7 +381,7 @@ const PostContent = styled.div`
   align-self: center;
   margin-top: 120px;
   animation-name: ${AnimFade};
-  animation-timing-function: var(--curveFastoutSlowin);
+  animation-timing-function: var(--bezierFastoutSlowin);
   animation-duration: 1.2s;
   animation-delay: 1s;
   animation-fill-mode: forwards;

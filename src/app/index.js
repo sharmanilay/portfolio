@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup, config as transitionConfig } from 'react-transition-group';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from 'components/Header';
-import { theme, tokens, createThemeProperties } from 'app/theme';
+import { theme, tokens, createThemeProperties, msToNum } from 'app/theme';
 import { cornerClip, media } from 'utils/style';
 import { useLocalStorage, usePrefersReducedMotion } from 'hooks';
 import GothamBook from 'assets/fonts/gotham-book.woff2';
@@ -18,7 +18,7 @@ const Contact = lazy(() => import('pages/Contact'));
 const ProjectFlowy = lazy(() => import('pages/Flowy'));
 const ProjectDevTechTools = lazy(() => import('pages/DevTechTools'));
 const ProjectMystGang = lazy(() => import('pages/MystGang'));
-const Articles = lazy(() => import('pages/Articles'));
+//const Articles = lazy(() => import('pages/Articles'));
 const NotFound = lazy(() => import('pages/404'));
 
 export const AppContext = createContext();
@@ -97,7 +97,7 @@ function AppRoutes() {
       >
         <Transition
           key={pathname}
-          timeout={300}
+          timeout={msToNum(tokens.base.durationS)}
           onEnter={reflow}
         >
           {status => (
@@ -110,7 +110,7 @@ function AppRoutes() {
                     <Route path="/projects/flowy" component={ProjectFlowy} />
                     <Route path="/projects/dtt" component={ProjectDevTechTools} />
                     <Route path="/projects/mystgang" component={ProjectMystGang} />
-                    <Route path="/articles" component={Articles} />
+                    {/* <Route path="/articles" component={Articles} /> */}
                     <Route component={NotFound} />
                   </Switch>
                 </Suspense>
@@ -125,7 +125,7 @@ function AppRoutes() {
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    ${createThemeProperties(tokens.desktop)}
+    ${createThemeProperties(tokens.base)}
 
     @media (max-width: ${media.laptop}px) {
       ${createThemeProperties(tokens.laptop)}
@@ -165,7 +165,6 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: var(--fontStack);
     font-weight: var(--fontWeightRegular);
-    font-size: var(--fontSizeBodyS);
     background: rgb(var(--rgbBackground));
     color: var(--colorTextBody);
     border: 0;
@@ -182,7 +181,7 @@ export const GlobalStyles = createGlobalStyle`
 
   ::selection {
     background: rgb(var(--rgbAccent));
-    color: rgb(var(--rgbBlack) / 0.9);
+    color: rgb(var(--rgbBlack));
   }
 
   #root *,
@@ -202,7 +201,7 @@ const AppMainContent = styled.main`
   overflow-x: hidden;
   position: relative;
   background: rgb(var(--rgbBackground));
-  transition: background 0.4s ease;
+  transition: background var(--durationM) ease;
   outline: none;
   display: grid;
   grid-template: 100% / 100%;
@@ -212,15 +211,15 @@ const AppPage = styled.div`
   overflow-x: hidden;
   opacity: 0;
   grid-area: 1 / 1;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--durationS) ease;
 
   ${props => (props.status === 'exiting' || props.status === 'entering') && css`
     opacity: 0;
   `}
 
   ${props => props.status === 'entered' && css`
-    transition-duration: 0.5s;
-    transition-delay: 0.2s;
+    transition-duration: var(--durationL);
+    transition-delay: var(--durationXS);
     opacity: 1;
   `}
 `;

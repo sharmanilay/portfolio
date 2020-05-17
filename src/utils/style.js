@@ -1,5 +1,6 @@
 import { keyframes, css } from 'styled-components/macro';
 
+// Media query breakpoints
 export const media = {
   desktop: 1600,
   laptop: 1280,
@@ -9,11 +10,13 @@ export const media = {
   mobileLS: `(max-width: 820px) and (max-height: 420px)`,
 };
 
+// Animation utils
 export const AnimFade = keyframes`
-  0% {opacity: 0}
-  100% {opacity: 1}
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 `;
 
+// Offset content padding based on the header nav
 export const sectionPadding = css`
   padding-right: var(--space5XL);
   padding-left: calc(var(--space4XL) * 2);
@@ -42,6 +45,7 @@ export const sectionPadding = css`
   }
 `;
 
+// Clip path to create angled corners
 export function cornerClip(size = 8) {
   return css`
     clip-path: polygon(

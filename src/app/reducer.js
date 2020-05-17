@@ -10,9 +10,9 @@ export function reducer(state, action) {
     case 'setTheme':
       return { ...state, currentTheme: action.value };
     case 'updateTheme':
-      return { ...state, currentTheme: { ...theme[state.currentTheme.id], ...action.value } };
+      return { ...state, currentTheme: { ...theme[state.currentTheme.themeId], ...action.value } };
     case 'toggleTheme': {
-      const newThemeKey = state.currentTheme.id === 'dark' ? 'light' : 'dark';
+      const newThemeKey = state.currentTheme.themeId === 'dark' ? 'light' : 'dark';
       window.localStorage.setItem('theme', JSON.stringify(newThemeKey));
       return { ...state, currentTheme: theme[newThemeKey] };
     }

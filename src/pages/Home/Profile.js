@@ -7,11 +7,11 @@ import { RouterButton } from 'components/Button';
 import DecoderText from 'components/DecoderText';
 import Divider from 'components/Divider';
 import ProgressiveImage from 'components/ProgressiveImage';
-import ProfileImg from 'assets/profile.jpg';
-import ProfileImgLarge from 'assets/profile-large.jpg';
-import ProfileImgPlaceholder from 'assets/profile-placeholder.jpg';
 import { sectionPadding, media } from 'utils/style';
 import { reflow } from 'utils/transition';
+import profileImg from 'assets/profile.jpg';
+import profileImgLarge from 'assets/profile-large.jpg';
+import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
 
 const ProfileText = ({ status, titleId }) => (
   <Fragment>
@@ -74,8 +74,8 @@ function Profile(props) {
                 reveal
                 delay={100}
                 visible={visible}
-                placeholder={ProfileImgPlaceholder}
-                srcSet={`${ProfileImg} 480w, ${ProfileImgLarge} 960w`}
+                placeholder={profileImgPlaceholder}
+                srcSet={`${profileImg} 480w, ${profileImgLarge} 960w`}
                 sizes={`(max-width: ${props => props.theme.mobile}px) 100vw, 480px`}
                 alt=""
                 width={480}
@@ -170,7 +170,7 @@ const ProfileTitle = styled.h2`
   white-space: nowrap;
   margin: 0 0 var(--spaceL) 0;
   opacity: ${props => props.status === 'entered' ? 1 : 0};
-  transition: opacity 0.8s ease 0.4s;
+  transition: opacity var(--durationXL) ease var(--durationM);
 
   @media (max-width: ${media.mobile}px) {
     margin-bottom: var(--spaceXL);
@@ -182,7 +182,7 @@ const ProfileDescription = styled.p`
   line-height: var(--lineHeightBody);
   margin: 0 0 var(--spaceXL) 0;
   opacity: 0;
-  transition: opacity 0.8s ease 0.6s;
+  transition: opacity var(--durationXL) ease var(--durationL);
 
   ${props => props.status === 'entered' && css`
     opacity: 1;
@@ -209,8 +209,8 @@ const ProfileTagText = styled.div`
   transform: translateX(calc(var(--spaceM) * -1));
   opacity: 0;
   transition-property: opacity, transform;
-  transition-timing-function: var(--curveFastoutSlowin);
-  transition-duration: 0.4s;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationM);
   transition-delay: 1.3s;
 
   ${props => props.status === 'entered' && css`
@@ -227,7 +227,7 @@ const ProfileImage = styled(ProgressiveImage)`
 
 const ProfileButton = styled(RouterButton)`
   opacity: 0;
-  transition: opacity 0.8s ease 0.6s;
+  transition: opacity var(--durationXL) ease var(--durationL);
 
   ${props => props.status === 'entered' && css`
     opacity: 1;
