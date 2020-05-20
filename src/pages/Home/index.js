@@ -6,9 +6,9 @@ import ProjectItem from './ProjectItem';
 import Profile from './Profile';
 import Footer from 'components/Footer';
 import { usePrefersReducedMotion, useRouteTransition } from 'hooks';
-import flowyProject from 'assets/flowy-project.png';
-import flowyProjectLarge from 'assets/flowy-project-large.png';
-import flowyProjectPlaceholder from 'assets/flowy-project-placeholder.png';
+import modernProject from 'assets/modern-project.png';
+import modernProjectLarge from 'assets/modern-project-large.png';
+import modernProjectPlaceholder from 'assets/modern-project-placeholder.png';
 import dttProject from 'assets/dtt-project.png';
 import dttProjectLarge from 'assets/dtt-project-large.png';
 import dttProjectPlaceholder from 'assets/dtt-project-placeholder.png';
@@ -137,13 +137,13 @@ export default function Home(props) {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index="01"
-        title="ES6-Flowy"
-        description="The minimal JavaScript library to create flowcharts."
+        title="Putting Players First"
+        description="Building a community that puts players and game health first, not profits."
         buttonText="View Project"
-        buttonTo="/projects/flowy"
-        imageSrc={useMemo(() => [`${flowyProject} 980w, ${flowyProjectLarge} 1376w`], [])}
-        imageAlt={useMemo(() => ['A demo of the drag-and-drop interface powered by es6-flowy.'], [])}
-        imagePlaceholder={useMemo(() => [flowyProjectPlaceholder], [])}
+        buttonTo="/projects/projectmodern"
+        imageSrc={useMemo(() => [`${modernProject} 980w, ${modernProjectLarge} 1376w`], [])}
+        imageAlt={useMemo(() => ['The Modern Project Landing Page'], [])}
+        imagePlaceholder={useMemo(() => [modernProjectPlaceholder], [])}
         imageType="laptop"
       />
       <ProjectItem
