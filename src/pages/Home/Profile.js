@@ -1,5 +1,5 @@
 import React, { Fragment, memo } from 'react';
-import styled, { css } from 'styled-components/macro';
+import styled, { css, keyframes } from 'styled-components/macro';
 import { Transition } from 'react-transition-group';
 import Anchor from 'components/Anchor';
 import { Link } from 'components/Link';
@@ -9,9 +9,9 @@ import Divider from 'components/Divider';
 import ProgressiveImage from 'components/ProgressiveImage';
 import { sectionPadding, media } from 'utils/style';
 import { reflow } from 'utils/transition';
-import profileImg from 'assets/profile.jpg';
-import profileImgLarge from 'assets/profile-large.jpg';
-import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
+import profileImg from 'assets/profile.png';
+import profileImgLarge from 'assets/profile-large.png';
+import profileImgPlaceholder from 'assets/profile-placeholder.png';
 
 const ProfileText = ({ status, titleId }) => (
   <Fragment>
@@ -219,10 +219,27 @@ const ProfileTagText = styled.div`
   `}
 `;
 
+const ImageReveal = keyframes`
+  0% {
+    background: none;
+  }
+  100% {
+    background: rgb(var(--rgbBackgroundLight));
+  }
+`;
+
 const ProfileImage = styled(ProgressiveImage)`
+  height: auto;
   max-width: 100%;
   width: 960px;
-  height: auto;
+
+  ${props => props.visible && css`
+    animation: var(--durationM) ${ImageReveal} 1.4s forwards;
+    background: rgb(var(--rgbBackgroundLight));
+    transition-duration: var(--durationM);
+    transition-property: background;
+    transition-timing-function: var(--bezierFastoutSlowin);
+  `}
 `;
 
 const ProfileButton = styled(RouterButton)`
