@@ -19,13 +19,13 @@
     "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
     "storybook-addon-styled-component-theme": "^1.3.0",
-    "stylelint": "^13.6.0",
+    "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0"
   },
   "dependencies": {
-    "@mdx-js/react": "^1.6.5",
+    "@mdx-js/react": "^1.6.6",
     "es6-tween": "^5.5.11",
     "ios-inner-height": "^1.1.1",
     "prettier": "^2.0.5",
