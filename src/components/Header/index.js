@@ -12,16 +12,6 @@ import { navLinks, socialLinks } from './navData';
 import { reflow } from 'utils/transition';
 import { pxToRem, tokens, msToNum } from 'app/theme';
 
-const HeaderIcons = () => (
-  <HeaderNavIcons>
-    {socialLinks.map(({ label, to, url, icon }) => (
-      <HeaderNavIconLink as={to && Link} key={label} aria-label={label} to={to} href={url}>
-        <HeaderNavIcon icon={icon} />
-      </HeaderNavIconLink>
-    ))}
-  </HeaderNavIcons>
-);
-
 function Header(props) {
   const { menuOpen, dispatch } = useAppContext();
   const { location } = props;
@@ -30,19 +20,41 @@ function Header(props) {
   const headerRef = useRef();
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
 
+  const toggleMenu = () => {
+    if (menuOpen) dispatch({ type: 'toggleMenu' });
+  };
+
   const handleNavClick = () => {
     setHashKey(Math.random().toString(32).substr(2, 8));
   };
 
   const handleMobileNavClick = () => {
     handleNavClick();
-    if (menuOpen) dispatch({ type: 'toggleMenu' });
+    toggleMenu();
   };
 
   const isMatch = ({ match, hash = '' }) => {
     if (!match) return false;
     return `${match.url}${hash}` === `${location.pathname}${location.hash}`;
   };
+
+  const HeaderIcons = () => (
+    <HeaderNavIcons>
+      {socialLinks.map(({ label, to, url, icon }) => (
+        <HeaderNavIconLink
+          as={to && Link}
+          key={label}
+          aria-label={label}
+          to={to}
+          href={url}
+          target={url && '_blank'}
+          onClick={toggleMenu}
+        >
+          <HeaderNavIcon icon={icon} />
+        </HeaderNavIconLink>
+      ))}
+    </HeaderNavIcons>
+  );
 
   return (
     <HeaderWrapper role="banner" ref={headerRef}>
@@ -221,10 +233,9 @@ const HeaderNavIcons = styled.div`
   }
 `;
 
-const HeaderNavIconLink = styled.a.attrs({
-  target: '_blank',
-  rel: 'noopener noreferrer',
-})`
+const HeaderNavIconLink = styled.a.attrs(({ target, rel }) => ({
+  rel: rel || target === '_blank' ? 'noreferrer noopener' : null,
+}))`
   display: flex;
   align-items: center;
   justify-content: center;

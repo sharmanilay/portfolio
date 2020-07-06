@@ -17,13 +17,13 @@ export const navLinks = [
 
 export const socialLinks = [
   {
-    label: 'StackOverflow',
-    url: 'https://stackoverflow.com/users/story/10601877',
-    icon: 'stackOverflow',
+    label: 'LinkedIn',
+    url: 'https://linkedin.codyb.co',
+    icon: 'linkedin',
   },
   {
     label: 'Github',
-    url: 'https://github.com/CodyJasonBennett',
+    url: 'https://github.codyb.co',
     icon: 'github',
   },
   {

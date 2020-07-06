@@ -1,6 +1,5 @@
 import React from 'react';
-import { ReactComponent as IconStackOverflow } from 'assets/icons/stackoverflow.svg';
-import { ReactComponent as IconDribbble } from 'assets/icons/dribbble.svg';
+import { ReactComponent as IconLinkedIn } from 'assets/icons/linkedin.svg';
 import { ReactComponent as IconCode } from 'assets/icons/code.svg';
 import { ReactComponent as IconArrowDown } from 'assets/icons/arrow-down.svg';
 import { ReactComponent as IconGithub } from 'assets/icons/github.svg';
@@ -16,8 +15,7 @@ import { ReactComponent as IconPlay } from 'assets/icons/play.svg';
 import { ReactComponent as IconPause } from 'assets/icons/pause.svg';
 
 const icons = {
-  stackOverflow: IconStackOverflow,
-  dribbble: IconDribbble,
+  linkedin: IconLinkedIn,
   github: IconGithub,
   email: IconEmail,
   menu: IconMenu,
