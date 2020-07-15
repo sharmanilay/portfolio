@@ -169,8 +169,8 @@ function MystGang() {
                     alt: 'MystGang Contact Screen',
                   },
                 ], [])}
-                width={useMemo(() => 1920, [])}
-                height={useMemo(() => 1080, [])}
+                width={1920}
+                height={1080}
               />
             </Suspense>
           </ProjectSectionContent>

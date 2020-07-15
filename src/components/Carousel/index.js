@@ -9,7 +9,7 @@ import { LoadingManager } from 'three/src/loaders/LoadingManager';
 import { ShaderMaterial } from 'three/src/materials/ShaderMaterial';
 import { Mesh } from 'three/src/objects/Mesh';
 import { Color } from 'three/src/math/Color';
-import { Easing, Tween, update as updateTween, remove as removeTween } from 'es6-tween';
+import { spring, value } from 'popmotion';
 import classNames from 'classnames';
 import Swipe from 'react-easy-swipe';
 import { usePrefersReducedMotion } from 'hooks';
@@ -29,8 +29,7 @@ function determineIndex(imageIndex, index, images, direction) {
   return finalIndex;
 }
 
-export default function Carousel(props) {
-  const { width, height, images, placeholder, ...rest } = props;
+const Carousel = ({ width, height, images, placeholder, ...rest }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
@@ -50,12 +49,13 @@ export default function Carousel(props) {
   const prefersReducedMotion = usePrefersReducedMotion();
   const placeholderRef = useRef();
   const tweenRef = useRef();
+  const springValue = useRef();
   const currentImageAlt = `Slide ${imageIndex + 1} of ${images.length}. ${
     images[imageIndex].alt
   }`;
 
   const goToIndex = useCallback(
-    ({ index, direction = 1, duration = 1200, easing = Easing.Exponential.InOut }) => {
+    ({ index, direction = 1 }) => {
       if (!sliderImages) return;
       setImageIndex(index);
       const uniforms = material.current.uniforms;
@@ -71,11 +71,18 @@ export default function Carousel(props) {
       if (!prefersReducedMotion && uniforms.dispFactor.value !== 1) {
         animating.current = true;
 
-        tweenRef.current = new Tween(uniforms.dispFactor)
-          .to({ value: 1 }, duration)
-          .easing(easing)
-          .on('complete', onComplete)
-          .start();
+        springValue.current = value(uniforms.dispFactor.value, value => {
+          uniforms.dispFactor.value = value;
+          if (value === 1) onComplete();
+        });
+
+        tweenRef.current = spring({
+          from: springValue.current.get(),
+          to: 1,
+          velocity: springValue.current.getVelocity(),
+          stiffness: 80,
+          damping: 20,
+        }).start(springValue.current);
       } else {
         onComplete();
         requestAnimationFrame(() => {
@@ -247,7 +254,6 @@ export default function Carousel(props) {
     const animate = () => {
       animation = requestAnimationFrame(animate);
       if (animating.current) {
-        updateTween();
         renderer.current.render(scene.current, camera.current);
       }
     };
@@ -256,7 +262,7 @@ export default function Carousel(props) {
 
     return function cleanup() {
       cancelAnimationFrame(animation);
-      removeTween(tweenRef.current);
+      tweenRef.current.stop();
     };
   }, []);
 
@@ -321,7 +327,6 @@ export default function Carousel(props) {
       navigate({
         duration,
         direction: swipeDirection.current,
-        easing: Easing.Exponential.Out,
       });
     } else {
       uniforms.currentImage.value = uniforms.nextImage.value;
@@ -329,10 +334,8 @@ export default function Carousel(props) {
       uniforms.dispFactor.value = 1 - uniforms.dispFactor.value;
 
       navigate({
-        duration: uniforms.dispFactor.value * 1000,
         direction: swipeDirection.current * -1,
         index: imageIndex,
-        easing: Easing.Exponential.Out,
       });
     }
   }, [canvasWidth, imageIndex, navigate]);
@@ -409,4 +412,6 @@ export default function Carousel(props) {
       </div>
     </div>
   );
-}
+};
+
+export default Carousel;
