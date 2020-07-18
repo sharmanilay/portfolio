@@ -32,7 +32,7 @@ const ProfileText = ({ status, titleId }) => (
     </p>
     <p className={classNames('profile__description', `profile__description--${status}`)}>
       In my spare time, I like to play guitar and{' '}
-      <Anchor href="https://codepen.io/cbenn" target="_blank">
+      <Anchor href="https://codepen.codyb.co" target="_blank">
         experiment with new tech
       </Anchor>
       . I’m always interested in new projects, so feel free to drop me a line.
