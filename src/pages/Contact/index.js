@@ -12,7 +12,8 @@ import Icon from 'components/Icon';
 import { useScrollRestore, useFormInput, useRouteTransition } from 'hooks';
 import { reflow, isVisible } from 'utils/transition';
 import prerender from 'utils/prerender';
-import { tokens, msToNum } from 'app/theme';
+import { msToNum, numToPx } from 'utils/style';
+import { tokens } from 'app/theme';
 import './index.css';
 
 const initDelay = tokens.base.durationS;
@@ -166,7 +167,7 @@ const Contact = () => {
                           )}
                           style={{
                             '--height': isVisible(errorStatus)
-                              ? `${errorRef.current?.getBoundingClientRect().height}px`
+                              ? numToPx(errorRef.current?.getBoundingClientRect().height)
                               : '0px',
                           }}
                         >

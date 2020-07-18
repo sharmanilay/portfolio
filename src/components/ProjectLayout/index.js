@@ -6,6 +6,7 @@ import { useParallax } from 'hooks';
 import prerender from 'utils/prerender';
 import Section from 'components/Section';
 import './index.css';
+import { numToPx, numToMs } from 'utils/style';
 
 const initDelay = 300;
 
@@ -96,8 +97,8 @@ export const ProjectBackground = ({ opacity = 0.7, className, entered, ...rest }
       role="presentation"
       style={{
         '--opacity': opacity,
-        '--offset': `${offset}px`,
-        '--initDelay': `${initDelay}ms`,
+        '--offset': numToPx(offset),
+        '--initDelay': numToMs(initDelay),
       }}
       {...rest}
     />
@@ -141,10 +142,11 @@ export const ProjectTextRow = ({
   />
 );
 
-export const ProjectSectionColumns = ({ className, alternate, ...rest }) => (
+export const ProjectSectionColumns = ({ className, alternate, centered, ...rest }) => (
   <ProjectSectionContent
     className={classNames('project__section-columns', {
-      '--alternate': alternate
+      'project__section-columns--alternate': alternate,
+      'project__section-columns--centered': centered
     })}
     {...rest}
   />

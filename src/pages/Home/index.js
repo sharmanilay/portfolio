@@ -1,20 +1,22 @@
-import React, { useState, useEffect, useRef, useMemo, Fragment } from 'react';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Intro from './Intro';
-import ProjectItem from './ProjectItem';
+import ProjectSummary from './ProjectSummary';
 import Profile from './Profile';
 import Footer from 'components/Footer';
 import { usePrefersReducedMotion, useRouteTransition } from 'hooks';
-import modernProject from 'assets/modern-project.png';
-import modernProjectLarge from 'assets/modern-project-large.png';
-import modernProjectPlaceholder from 'assets/modern-project-placeholder.png';
-import dttProject from 'assets/dtt-project.png';
-import dttProjectLarge from 'assets/dtt-project-large.png';
-import dttProjectPlaceholder from 'assets/dtt-project-placeholder.png';
-import mystgangProject from 'assets/mystgang-project.png';
-import mystgangProjectLarge from 'assets/mystgang-project-large.png';
-import mystgangProjectPlaceholder from 'assets/mystgang-project-placeholder.png';
+import modernTexture from 'assets/modern.png';
+import modernTextureLarge from 'assets/modern-large.png';
+import modernTexturePlaceholder from 'assets/modern-placeholder.png';
+import dttTexture from 'assets/dtt.png';
+import dttTextureLarge from 'assets/dtt-large.png';
+import dttTexturePlaceholder from 'assets/dtt-placeholder.png';
+import mystgangTexture from 'assets/mystgang.png';
+import mystgangTextureLarge from 'assets/mystgang-large.png';
+import mystgangTexturePlaceholder from 'assets/mystgang-placeholder.png';
+import iphone11 from 'assets/iphone-11.glb';
+import macbookPro from 'assets/macbook-pro.glb';
 
 const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Guitarist'];
 
@@ -125,54 +127,78 @@ export default function Home(props) {
           name: "description",
           content: "Portfolio of Cody Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.",
         }]}
-      />
+      >
+        <link rel="prefetch" href={iphone11} as="fetch" crossorigin="" />
+        <link rel="prefetch" href={macbookPro} as="fetch" crossorigin="" />
+      </Helmet>
       <Intro
         id="intro"
         sectionRef={intro}
         disciplines={disciplines}
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
-      <ProjectItem
+      <ProjectSummary
         id="project-1"
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
-        index="01"
+        index={1}
         title="Putting Players First"
         description="Building a community that puts players and game health first, not profits."
         buttonText="View Project"
         buttonTo="/projects/modern"
-        imageSrc={useMemo(() => [`${modernProject} 980w, ${modernProjectLarge} 1376w`], [])}
-        imageAlt={useMemo(() => ['The Modern Project Landing Page'], [])}
-        imagePlaceholder={useMemo(() => [modernProjectPlaceholder], [])}
-        imageType="laptop"
+        model={{
+          type: 'laptop',
+          alt: 'The Modern Project Landing Page',
+          textures: [
+            {
+              src: modernTexture,
+              srcSet: `${modernTexture} 800w, ${modernTextureLarge} 1440w`,
+              placeholder: modernTexturePlaceholder,
+            },
+          ],
+        }}
       />
-      <ProjectItem
+      <ProjectSummary
         id="project-2"
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
-        index="02"
+        index={2}
         title="A Tool for Everything"
         description="Creating a platfrom to help developers build better software."
         buttonText="View Project"
         buttonTo="/projects/dtt"
-        imageSrc={useMemo(() => [`${dttProject} 980w, ${dttProjectLarge} 1376w`], [])}
-        imageAlt={useMemo(() => ['DevTech Tools Landing Page'], [])}
-        imagePlaceholder={useMemo(() => [dttProjectPlaceholder], [])}
-        imageType="laptop"
+        model={{
+          type: 'laptop',
+          alt: 'DevTech Tools Landing Page',
+          textures: [
+            {
+              src: dttTexture,
+              srcSet: `${dttTexture} 800w, ${dttTextureLarge} 1440w`,
+              placeholder: dttTexturePlaceholder,
+            },
+          ],
+        }}
       />
-      <ProjectItem
+      <ProjectSummary
         id="project-3"
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
-        index="03"
+        index={3}
         title="MystGang"
         description="A personal site for a gaming content creator."
         buttonText="View Project"
         buttonTo="/projects/mystgang"
-        imageSrc={useMemo(() => [`${mystgangProject} 980w, ${mystgangProjectLarge} 1376w`], [])}
-        imageAlt={useMemo(() => ['MystGang Website'], [])}
-        imagePlaceholder={useMemo(() => [mystgangProjectPlaceholder], [])}
-        imageType="laptop"
+        model={{
+          type: 'laptop',
+          alt: 'MystGang Website',
+          textures: [
+            {
+              src: mystgangTexture,
+              srcSet: `${mystgangTexture} 800w, ${mystgangTextureLarge} 1440w`,
+              placeholder: mystgangTexturePlaceholder,
+            },
+          ],
+        }}
       />
       <Profile
         sectionRef={about}

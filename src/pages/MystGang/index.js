@@ -130,42 +130,42 @@ function MystGang() {
                 images={useMemo(() => [
                   {
                     src: mystgangSlide1,
-                    srcset: `${mystgangSlide1} 960w, ${mystgangSlide1Large} 1920w`,
+                    srcSet: `${mystgangSlide1} 960w, ${mystgangSlide1Large} 1920w`,
                     alt: 'MystGang Splash Screen',
                   },
                   {
                     src: mystgangSlide2,
-                    srcset: `${mystgangSlide2} 960w, ${mystgangSlide2Large} 1920w`,
+                    srcSet: `${mystgangSlide2} 960w, ${mystgangSlide2Large} 1920w`,
                     alt: 'MystGang Home Screen',
                   },
                   {
                     src: mystgangSlide3,
-                    srcset: `${mystgangSlide3} 960w, ${mystgangSlide3Large} 1920w`,
+                    srcSet: `${mystgangSlide3} 960w, ${mystgangSlide3Large} 1920w`,
                     alt: 'MystGang Fullscreen Menu',
                   },
                   {
                     src: mystgangSlide4,
-                    srcset: `${mystgangSlide4} 960w, ${mystgangSlide4Large} 1920w`,
+                    srcSet: `${mystgangSlide4} 960w, ${mystgangSlide4Large} 1920w`,
                     alt: 'MystGang Work Screen',
                   },
                   {
                     src: mystgangSlide5,
-                    srcset: `${mystgangSlide5} 960w, ${mystgangSlide5Large} 1920w`,
+                    srcSet: `${mystgangSlide5} 960w, ${mystgangSlide5Large} 1920w`,
                     alt: 'MystGang About Self'
                   },
                   {
                     src: mystgangSlide6,
-                    srcset: `${mystgangSlide6} 960w, ${mystgangSlide6Large} 1920w`,
+                    srcSet: `${mystgangSlide6} 960w, ${mystgangSlide6Large} 1920w`,
                     alt: 'MystGang About Work',
                   },
                   {
                     src: mystgangSlide7,
-                    srcset: `${mystgangSlide7} 960w, ${mystgangSlide7Large} 1920w`,
+                    srcSet: `${mystgangSlide7} 960w, ${mystgangSlide7Large} 1920w`,
                     alt: 'MystGang About Socials',
                   },
                   {
                     src: mystgangSlide8,
-                    srcset: `${mystgangSlide8} 960w, ${mystgangSlide8Large} 1920w`,
+                    srcSet: `${mystgangSlide8} 960w, ${mystgangSlide8Large} 1920w`,
                     alt: 'MystGang Contact Screen',
                   },
                 ], [])}

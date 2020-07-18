@@ -13,16 +13,19 @@ export default {
   title: 'Model',
 };
 
+const modelStyle = { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 };
+
 export const phone = () => (
   <StoryContainer fullWidth padding={32}>
     <Model
-      enableControls
-      cameraPosition={[0, 0, 6]}
+      style={modelStyle}
+      cameraPosition={[0, 0, 8]}
+      alt="Phone Model"
       models={[{
         ...deviceModels.phone,
         texture: {
-          large: phoneTextureLarge,
-          medium: phoneTexture,
+          src: phoneTexture,
+          srcSet: `${phoneTexture} 800w, ${phoneTextureLarge} 1440w`,
           placeholder: phoneTexturePlaceholder,
         },
       }]}
@@ -33,13 +36,14 @@ export const phone = () => (
 export const laptop = () => (
   <StoryContainer fullWidth padding={32}>
     <Model
-      enableControls
-      cameraPosition={[0, 0, 6]}
+      style={modelStyle}
+      cameraPosition={[0, 0, 8]}
+      alt="Laptop Model"
       models={[{
         ...deviceModels.laptop,
         texture: {
-          large: laptopTextureLarge,
-          medium: laptopTexture,
+          src: laptopTexture,
+          srcSet: `${laptopTexture} 800w, ${laptopTextureLarge} 1440w`,
           placeholder: laptopTexturePlaceholder,
         },
       }]}

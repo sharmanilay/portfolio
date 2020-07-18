@@ -17,15 +17,15 @@ export const images = () => (
       placeholder={placeholderImg}
       images={[
         {
-          src: 'https://source.unsplash.com/FfpZPMVV_M8/1280x720',
+          srcSet: 'https://source.unsplash.com/FfpZPMVV_M8/1280x720',
           alt: 'Mountain at daytime',
         },
         {
-          src: 'https://source.unsplash.com/ARSCXacOtkY/1280x720',
+          srcSet: 'https://source.unsplash.com/ARSCXacOtkY/1280x720',
           alt: 'Morning sunrise in the valley',
         },
           {
-          src: 'https://source.unsplash.com/Vak2-pUxkUg/1280x720',
+          srcSet: 'https://source.unsplash.com/Vak2-pUxkUg/1280x720',
           alt: 'Desert in Morocco',
         },
       ]}
