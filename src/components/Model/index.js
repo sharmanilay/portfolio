@@ -1,18 +1,16 @@
 import React, { useRef, useEffect, memo, useState } from 'react';
-import {
-  Scene,
-  WebGLRenderer,
-  PerspectiveCamera,
-  AmbientLight,
-  DirectionalLight,
-  sRGBEncoding,
-  Color,
-  TextureLoader,
-  LinearFilter,
-  Vector3,
-  MathUtils,
-  Group,
-} from 'three';
+import { Scene } from 'three/src/scenes/Scene';
+import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer';
+import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera';
+import { AmbientLight } from 'three/src/lights/AmbientLight';
+import { DirectionalLight } from 'three/src/lights/DirectionalLight';
+import { sRGBEncoding } from 'three/src/constants';
+import { Color } from 'three/src/math/Color';
+import { TextureLoader } from 'three/src/loaders/TextureLoader';
+import { LinearFilter } from 'three/src/constants';
+import { Vector3 } from 'three/src/math/Vector3';
+import { MathUtils } from 'three/src/math/MathUtils';
+import { Group } from 'three/src/objects/Group';
 import classNames from 'classnames';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { spring, value, chain, delay } from 'popmotion';
