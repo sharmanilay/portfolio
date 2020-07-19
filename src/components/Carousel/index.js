@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer';
-import { LinearFilter } from 'three/src/constants';
-import { OrthographicCamera } from 'three/src/cameras/OrthographicCamera';
-import { Scene } from 'three/src/scenes/Scene';
-import { PlaneBufferGeometry } from 'three/src/geometries/PlaneGeometry';
-import { TextureLoader } from 'three/src/loaders/TextureLoader';
-import { ShaderMaterial } from 'three/src/materials/ShaderMaterial';
-import { Mesh } from 'three/src/objects/Mesh';
-import { Color } from 'three/src/math/Color';
+import {
+  WebGLRenderer,
+  LinearFilter,
+  OrthographicCamera,
+  Scene,
+  PlaneBufferGeometry,
+  TextureLoader,
+  ShaderMaterial,
+  Mesh,
+  Color,
+  sRGBEncoding,
+} from 'three';
 import { spring, value } from 'popmotion';
 import classNames from 'classnames';
 import Swipe from 'react-easy-swipe';
@@ -81,7 +84,7 @@ const Carousel = ({ width, height, images, placeholder, ...rest }) => {
           from: springValue.current.get(),
           to: 1,
           velocity: springValue.current.getVelocity(),
-          stiffness: 80,
+          stiffness: 100,
           damping: 20,
         }).start(springValue.current);
       } else {
@@ -182,8 +185,11 @@ const Carousel = ({ width, height, images, placeholder, ...rest }) => {
       const results = images.map(async image => {
         const imageSrc = await getImageFromSrcSet(image);
         const imageTexture = await textureLoader.loadAsync(imageSrc);
-        imageTexture.magFilter = imageTexture.minFilter = LinearFilter;
+        imageTexture.encoding = sRGBEncoding;
+        imageTexture.minFilter = LinearFilter;
+        imageTexture.magFilter = LinearFilter;
         imageTexture.anisotropy = renderer.current.capabilities.getMaxAnisotropy();
+        imageTexture.generateMipmaps = false;
         return imageTexture;
       });
 

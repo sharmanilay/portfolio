@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { useScrollRestore } from 'hooks';
 import { sectionPadding, media } from 'utils/style';
 import posts from 'posts';
-import Post from 'pages/Post';
+import Post from 'posts/Post';
 import Image from 'components/Image';
 
 function PostListItem({
