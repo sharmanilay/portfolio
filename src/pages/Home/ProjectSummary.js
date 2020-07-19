@@ -96,9 +96,12 @@ const ProjectSummary = ({
 
   const renderPreview = status => (
     <div className="project-summary__preview">
-      {model.type === 'laptop' && visible && (
+      {model.type === 'laptop' && (
         <Model
-          className="project-summary__preview-model-laptop"
+          className={classNames(
+            'project-summary__model',
+            'project-summary__model--laptop'
+          )}
           alt={model.alt}
           cameraPosition={[0, 0, 8.6]}
           showDelay={800}
@@ -114,9 +117,12 @@ const ProjectSummary = ({
           ]}
         />
       )}
-      {model.type === 'phone' && visible && (
+      {model.type === 'phone' && (
         <Model
-          className="project-summary__preview-model-phone"
+          className={classNames(
+            'project-summary__model',
+            'project-summary__model--phone'
+          )}
           alt={model.alt}
           cameraPosition={[0, 0, 11]}
           showDelay={500}

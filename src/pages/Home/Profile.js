@@ -85,20 +85,22 @@ function Profile({ id, visible, sectionRef }) {
                   About Me
                 </div>
               </div>
-              <Image
-                reveal
-                className={classNames(
-                  'profile__image',
-                  `profile__image--${status}`
-                )}
-                delay={100}
-                placeholder={profileImgPlaceholder}
-                srcSet={`${profileImg} 480w, ${profileImgLarge} 960w`}
-                sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
-                alt=""
-                width={480}
-                height={560}
-              />
+              <div className="profile__image-wrapper">
+                <Image
+                  reveal
+                  className={classNames(
+                    'profile__image',
+                    `profile__image--${status}`
+                  )}
+                  delay={100}
+                  placeholder={profileImgPlaceholder}
+                  srcSet={`${profileImg} 480w, ${profileImgLarge} 960w`}
+                  sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
+                  alt=""
+                  width={480}
+                  height={560}
+                />
+              </div>
             </div>
           </div>
         )}
