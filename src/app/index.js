@@ -108,7 +108,7 @@ const AppRoutes = () => {
   return (
     <Fragment>
       <Helmet>
-        <link rel="canonical" href={`https://github.com/sharmanilay`} />
+        <link rel="canonical" href={`https://github.com/sharmanilayapp`} />
         <link rel="preload" href={GothamMedium} as="font" crossorigin="" />
         <link rel="preload" href={GothamBook} as="font" crossorigin="" />
         <style>{fontStyles}</style>
@@ -135,7 +135,7 @@ const AppRoutes = () => {
               <div className={classNames('app__page', `app__page--${status}`)}>
                 <Suspense fallback={<Fragment />}>
                   <Switch location={location}>
-                    <Route exact path="/" component={Home} />
+                    <Route path="/" component={Home} />
                     {/* <Route path="/contact" component={Contact} />
                     <Route path="/projects/modern" component={ProjectModern} />
                     <Route path="/projects/dtt" component={ProjectDTT} />

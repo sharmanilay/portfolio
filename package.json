@@ -1,8 +1,9 @@
 {
-  "name": "nilay-sharma-portfolia",
+  "name": "nilay-sharma-portfolio",
   "version": "0.4.0",
   "description": "Nilay Sharma Portfolio",
   "repository": "https://github.com/sharmanilay/portfolio.git",
+  "homepage": "http://sharmanilay.github.io/portfolio",
   "author": "Nilay Sharma <nilaysharma642@gmail.com>",
   "devDependencies": {
     "@storybook/addon-a11y": "^5.3.19",
@@ -41,7 +42,8 @@
     "build": "react-scripts build",
     "build-storybook": "build-storybook -o build-storybook",
     "postbuild": "react-snap",
-    "deploy": "firebase deploy --only hosting:portfolio",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "deploy-functions": "firebase deploy --only functions",
     "deploy-storybook": "firebase deploy --only hosting:storybook",
     "serve": "firebase serve --only hosting",
