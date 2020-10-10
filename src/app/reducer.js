@@ -8,6 +8,8 @@ export const initialState = {
 export function reducer(state, action) {
   switch (action.type) {
     case 'setTheme':
+      window.localStorage.setItem('theme', JSON.stringify(action.value.themeId));
+      document.body.setAttribute('class', action.value.themeId);
       return { ...state, theme: action.value };
     case 'updateTheme':
       return {

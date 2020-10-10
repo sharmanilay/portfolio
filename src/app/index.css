@@ -117,3 +117,44 @@ body {
 .skip-to-main::-moz-focus-inner {
   border: 0;
 }
+
+.matrix-alive {
+  z-index: 1;
+  width: 0;
+}
+.position-fixed {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.matrix-pill-cover {
+  height: 100vh;
+  background-image: url('../assets/pill-cover.jpg');
+  background-size: cover;
+}
+
+.pill-button-wrapper {
+  position: fixed;
+  top: 75vh;
+  left: 23vw;
+}
+
+.pill-buttons {
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  padding: 0.7rem 2.5rem;
+  margin: 0 8rem;
+}
+
+.red-pill {
+  background: rgb(148, 49, 38);
+  border: 1px solid rgb(148, 49, 38);
+}
+
+.blue-pill {
+  background: #1F487E;
+  border: 1px solid #1F487E;
+}

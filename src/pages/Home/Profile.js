@@ -23,16 +23,27 @@ const ProfileText = ({ status, titleId }) => (
     >
       <DecoderText text="Hi" start={status !== 'exited'} offset={140} />
     </h2>
-    <p className={classNames('profile__description', `profile__description--${status}`)}>
-      I’m Cody. Currently, I am based in Austin, working as the lead designer at{' '}
+    {/* <p className={classNames('profile__description', `profile__description--${status}`)}>
+      I’m Nilay Sharma. Currently, I am based in Mumbai, working as Software Developer at{' '}
       <Anchor as={Link} to="/projects/dtt">
-        DevTechTools
+        Drip Capital
       </Anchor>
-      . I am a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.
+      . I have been developing web applications for about 3.5 years now(with 2 years of professional experience). 
+      I am a quick learner and can learn new technologies on the go. 
+    </p> */}
+    <p className={classNames('profile__description', `profile__description--${status}`)}>
+      I'm' Software Engineer
+      Skilled in {' '}
+      <Anchor href="#about">
+       React JS, Vue JS, React Native, NodeJS, MongoDB, Java, Ruby on Rails, Python, HTML, CSS, JavaScript. 
+      </Anchor>
+      {' '}
+      I have been developing web applications for about 4 years now(with 2 years of professional experience)
+      I am a quick learner and can learn new technologies on the go. 
     </p>
     <p className={classNames('profile__description', `profile__description--${status}`)}>
       In my spare time, I like to play guitar and{' '}
-      <Anchor href="https://codepen.codyb.co" target="_blank">
+      <Anchor href="https://github.com/sharmanilay" target="_blank">
         experiment with new tech
       </Anchor>
       . I’m always interested in new projects, so feel free to drop me a line.
@@ -60,9 +71,10 @@ function Profile({ id, visible, sectionRef }) {
               <Button
                 secondary
                 className={classNames('profile__button', `profile__button--${status}`)}
-                as={Link}
+                as="a"
                 status={status}
-                to="/contact"
+                target="_blank"
+                href={'https://twitter.com/thenaamsake'}
                 icon="send"
               >
                 Send me a message

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef, Fragment } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import classNames from 'classnames';
 import Intro from './Intro';
 import ProjectSummary from './ProjectSummary';
 import Profile from './Profile';
 import Footer from 'components/Footer';
-import { usePrefersReducedMotion, useRouteTransition } from 'hooks';
+import { usePrefersReducedMotion, useRouteTransition, useAppContext }  from 'hooks';
 import modernTexture from 'assets/modern.png';
 import modernTextureLarge from 'assets/modern-large.png';
 import modernTexturePlaceholder from 'assets/modern-placeholder.png';
@@ -15,10 +16,8 @@ import dttTexturePlaceholder from 'assets/dtt-placeholder.png';
 import mystgangTexture from 'assets/mystgang.png';
 import mystgangTextureLarge from 'assets/mystgang-large.png';
 import mystgangTexturePlaceholder from 'assets/mystgang-placeholder.png';
-import iphone11 from 'assets/iphone-11.glb';
-import macbookPro from 'assets/macbook-pro.glb';
 
-const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Guitarist'];
+const disciplines = ['Creator', 'Writer', 'Editor', 'Guitarist'];
 
 export default function Home(props) {
   const { status } = useRouteTransition();
@@ -29,12 +28,40 @@ export default function Home(props) {
   const intro = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
+  const projectSection = useRef();
   const projectThree = useRef();
+  const projectFour = useRef();
   const about = useRef();
+  const matrixRef = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { theme } = useAppContext();
+
+  const [sticky, setSticky] = useState(false);
+
+  const handleScroll = () => {
+    let theme = JSON.parse(window.localStorage.getItem('theme'));
+    let isDark = theme === 'dark';
+    if (matrixRef.current && isDark) {
+      let matrixRefTop = matrixRef.current.getBoundingClientRect().top;
+      let upperBoundary = projectSection.current.getBoundingClientRect().top;
+      let lowerBoundary = projectSection.current.getBoundingClientRect().bottom;
+      // console.log(themeId)
+      setSticky(matrixRefTop <= 540 && lowerBoundary >= 150 && upperBoundary <= 630);
+    } else {
+      setSticky(false);
+    }
+  };
 
   useEffect(() => {
-    const revealSections = [intro, projectOne, projectTwo, projectThree, about];
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', () => handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const revealSections = [intro, projectOne, projectTwo, projectThree, projectFour, about];
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -71,7 +98,7 @@ export default function Home(props) {
 
     const handleHashchange = (hash, scroll) => {
       clearTimeout(scrollTimeout);
-      const hashSections = [intro, projectOne, projectTwo, projectThree, about];
+      const hashSections = [intro, projectOne, projectTwo, projectThree, projectFour, about];
       const hashString = hash.replace('#', '');
       const element = hashSections.filter(item => item.current.id === hashString)[0];
       if (!element) return;
@@ -119,17 +146,73 @@ export default function Home(props) {
     };
   }, [hash, state, prefersReducedMotion, status]);
 
+  useEffect(() => {
+    const { themeId } = theme;
+    const isDark = themeId === 'dark';
+    if (isDark) {
+      let matrix = document.getElementById("matrix");
+      let ctx = matrix.getContext("2d");
+
+      //making the canvas full screen
+      matrix.height = window.innerHeight;
+      matrix.width = window.innerWidth;
+
+      //textToShow characters - taken from the unicode charset
+      // let textToShow = "React Vue Nuxt Next TypeScript Ruby on Rails Node Express MongoDb SQL"
+      let textToShow = "01100111 01100101 01110100 00100000 01100001 00100000 01101000 01101111 01100010 01100010 01111001";
+      //converting the string into an array of single characters
+      textToShow = textToShow.split("");
+
+      let font_size = 15;
+      let columns = matrix.width/font_size; //number of columns for the rain
+      //an array of drops - one per column
+      let drops = [];
+      //x below is the x coordinate
+      //1 = y co-ordinate of the drop(same for every drop initially)
+      for(let x = 0; x < columns; x++)
+        drops[x] = 1; 
+
+      //drawing the characters
+      function draw()
+      {
+        //Black BG for the canvas
+        //translucent BG to show trail
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, matrix.width, matrix.height);
+        
+        ctx.fillStyle = "#E50914"; //red text
+        ctx.font = font_size + "px arial";
+        //looping over drops
+        for(let i = 0; i < drops.length; i++)
+        {
+          //a random textToShow character to print
+          let text = textToShow[Math.floor(Math.random()*textToShow.length)];
+          //x = i*font_size, y = value of drops[i]*font_size
+          ctx.fillText(text, i*font_size, drops[i]*font_size);
+          
+          //sending the drop back to the top randomly after it has crossed the screen
+          //adding a randomness to the reset to make the drops scattered on the Y axis
+          if(drops[i]*font_size > matrix.height && Math.random() > 0.975)
+            drops[i] = 0;
+          
+          //incrementing Y coordinate
+          drops[i]++;
+        }
+      }
+
+      setInterval(draw, 50);
+    }
+  });
+
   return (
     <Fragment>
       <Helmet
-        title="Cody Bennett | Designer + Developer"
+        title="Nilay Sharma | Software Developer"
         meta={[{
           name: "description",
-          content: "Portfolio of Cody Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.",
+          content: "Portfolio of Nilay Sharma  – a full-stack developer, and creator of web & mobile applications",
         }]}
       >
-        <link rel="prefetch" href={iphone11} as="fetch" crossorigin="" />
-        <link rel="prefetch" href={macbookPro} as="fetch" crossorigin="" />
       </Helmet>
       <Intro
         id="intro"
@@ -137,73 +220,103 @@ export default function Home(props) {
         disciplines={disciplines}
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
+      <canvas
+        className={classNames('matrix-alive', {
+          'position-fixed ': sticky,
+          'd-none': !sticky
+        })}
+        id="matrix" ref={matrixRef}>
+      </canvas>
+      <div ref={projectSection}>
       <ProjectSummary
         id="project-1"
-        sectionRef={projectOne}
-        visible={visibleSections.includes(projectOne.current)}
-        index={1}
-        title="Putting Players First"
-        description="Building a community that puts players and game health first, not profits."
-        buttonText="View Project"
-        buttonTo="/projects/modern"
-        model={{
-          type: 'laptop',
-          alt: 'The Modern Project Landing Page',
-          textures: [
-            {
-              src: modernTexture,
-              srcSet: `${modernTexture} 800w, ${modernTextureLarge} 1440w`,
-              placeholder: modernTexturePlaceholder,
-            },
-          ],
+          sectionRef={projectOne}
+          visible={visibleSections.includes(projectOne.current)}
+          index={1}
+          title="Automated Instagram Profile"
+          description="A bot created to automate the process of randomly finding image related to a string upload it on Instagram. It randomly likes and comments on related content and follows users based on relative algorithm."
+          buttonText="View More"
+          buttonLink="https://www.instagram.com/maketravelgoals/"
+          model={{
+            type: 'laptop',
+            alt: 'View Project',
+            textures: [
+              {
+                src: modernTexture,
+                srcSet: `${modernTexture} 800w, ${modernTextureLarge} 1440w`,
+                placeholder: modernTexturePlaceholder,
+              },
+            ],
         }}
       />
       <ProjectSummary
         id="project-2"
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
-        title="A Tool for Everything"
-        description="Creating a platfrom to help developers build better software."
-        buttonText="View Project"
-        buttonTo="/projects/dtt"
-        model={{
-          type: 'laptop',
-          alt: 'DevTech Tools Landing Page',
-          textures: [
-            {
-              src: dttTexture,
-              srcSet: `${dttTexture} 800w, ${dttTextureLarge} 1440w`,
-              placeholder: dttTexturePlaceholder,
-            },
-          ],
+          sectionRef={projectTwo}
+          visible={visibleSections.includes(projectTwo.current)}
+          index={2}
+          title="React Easy Bar Chart"
+          description="A lightweight bar chart npm library based on canvas to dynamically create bar chart based on data passed as a prop"
+          buttonText="View Project"
+          buttonLink="https://www.npmjs.com/package/react-easy-bar-chart"
+          model={{
+            type: 'laptop',
+            alt: 'DevTech Tools Landing Page',
+            textures: [
+              {
+                src: dttTexture,
+                srcSet: `${dttTexture} 800w, ${dttTextureLarge} 1440w`,
+                placeholder: dttTexturePlaceholder,
+              },
+            ],
         }}
       />
       <ProjectSummary
         id="project-3"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="MystGang"
-        description="A personal site for a gaming content creator."
-        buttonText="View Project"
-        buttonTo="/projects/mystgang"
-        model={{
-          type: 'laptop',
-          alt: 'MystGang Website',
-          textures: [
-            {
-              src: mystgangTexture,
-              srcSet: `${mystgangTexture} 800w, ${mystgangTextureLarge} 1440w`,
-              placeholder: mystgangTexturePlaceholder,
-            },
-          ],
+          sectionRef={projectThree}
+          visible={visibleSections.includes(projectThree.current)}
+          index={3}
+          title="Color-Barn"
+          description="A Machine-Learning backed web portal to remove the background of a given selfie and provide custom background based on the prominent colors in the extracted image."
+          buttonText="View Project"
+          buttonLink="https://github.com/sharmanilay/color-barn"
+          model={{
+            type: 'laptop',
+            alt: 'MystGang Website',
+            textures: [
+              {
+                src: mystgangTexture,
+                srcSet: `${mystgangTexture} 800w, ${mystgangTextureLarge} 1440w`,
+                placeholder: mystgangTexturePlaceholder,
+              },
+            ],
         }}
       />
+      <ProjectSummary
+        id="project-4"
+          sectionRef={projectFour}
+          visible={visibleSections.includes(projectFour.current)}
+          index={4}
+          title="Comment Plugin"
+          description="A Facebook like comment plugin made using pure Vanilla JavaScript without using any external libraries like React and JQuery."
+          buttonText="View Project"
+          buttonLink="https://github.com/sharmanilay/comment-plugin"
+          model={{
+            type: 'laptop',
+            alt: 'MystGang Website',
+            textures: [
+              {
+                src: mystgangTexture,
+                srcSet: `${mystgangTexture} 800w, ${mystgangTextureLarge} 1440w`,
+                placeholder: mystgangTexturePlaceholder,
+              },
+            ],
+        }}
+      />
+      </div>
       <Profile
         sectionRef={about}
-        visible={visibleSections.includes(about.current)}
-        id="about"
+          visible={visibleSections.includes(about.current)}
+          id="about"
       />
       <Footer />
     </Fragment>

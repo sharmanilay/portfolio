@@ -1,55 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://codyb.co/</loc>
+    <loc>https://nilaysharma.com/</loc>
     <lastmod>2020-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://codyb.co/contact</loc>
+    <loc>https://nilaysharma.com/contact</loc>
     <lastmod>2020-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://codyb.co/projects/modern</loc>
+    <loc>https://nilaysharma.com/projects/modern</loc>
     <lastmod>2020-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://codyb.co/projects/dtt</loc>
+    <loc>https://nilaysharma.com/projects/dtt</loc>
     <lastmod>2020-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://codyb.co/projects/mystgang</loc>
+    <loc>https://nilaysharma.com/projects/mystgang</loc>
     <lastmod>2020-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://storybook.codyb.co</loc>
-    <lastmod>2020-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://github.codyb.co</loc>
-    <lastmod>2020-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://linkedin.codyb.co</loc>
-    <lastmod>2020-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://codepen.codyb.co</loc>
+    <loc>https://github.com/sharmanilay</loc>
     <lastmod>2020-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

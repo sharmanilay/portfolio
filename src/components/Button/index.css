@@ -122,6 +122,7 @@
 }
 
 .button__text {
+  color: var(--rgbText);
   font-size: var(--buttonFontSize);
   font-weight: var(--fontWeightMedium);
   visibility: var(--buttonTextVisibility);

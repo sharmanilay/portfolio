@@ -28,7 +28,7 @@ function NotFound() {
                   className={classNames('page-404__subheading', `page-404__subheading--${status}`)}
                 >
                   <DecoderText
-                    text="Error: Redacted"
+                    text="Glitch in the Matrix"
                     start={status !== 'exited'}
                     offset={100}
                   />
@@ -39,7 +39,7 @@ function NotFound() {
                     `page-404__description--${status}`
                   )}
                 >
-                  This page could not be found. It either doesn’t exist or was deleted.
+                  You are lost
                 </p>
                 <Button
                   secondary
@@ -49,7 +49,7 @@ function NotFound() {
                   to="/"
                   icon="chevronRight"
                 >
-                  Back to homepage
+                  Wake up Neo. Go Back to homepage
                 </Button>
               </div>
             </div>
@@ -70,14 +70,6 @@ function NotFound() {
               >
                 <source src={notFound} type="video/mp4" />
               </video>
-              <a
-                className={classNames('page-404__credit', `page-404__credit--${status}`)}
-                href="https://twitter.com/ruinergame"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Animation from Ruiner
-              </a>
             </div>
           </Fragment>
         )}

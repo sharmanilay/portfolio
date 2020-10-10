@@ -86,26 +86,26 @@ const dark = {
   themeId: 'dark',
   rgbBackground: '17 17 17',
   rgbBackgroundLight: '26 26 26',
-  rgbPrimary: '0 229 255',
-  rgbAccent: '0 229 255',
+  rgbPrimary: '148 49 38',
+  rgbAccent: '148 49 38',
   rgbText: '255 255 255',
   rgbError: '255 0 60',
   colorTextTitle: 'rgb(var(--rgbText) / 1)',
   colorTextBody: 'rgb(var(--rgbText) / 0.8)',
-  colorTextLight: 'rgb(var(--rgbText) / 0.6)',
+  colorTextLight: 'rgb(var(--rgbText) / 0.6)'
 };
 
 const light = {
   themeId: 'light',
   rgbBackground: '242 242 242',
   rgbBackgroundLight: '255 255 255',
-  rgbPrimary: '0 0 0',
-  rgbAccent: '0 229 255',
+  rgbPrimary: '31 72 126',
+  rgbAccent: '31 72 126',
   rgbText: '0 0 0',
   rgbError: '210 14 60',
   colorTextTitle: 'rgb(var(--rgbText) / 1)',
   colorTextBody: 'rgb(var(--rgbText) / 0.7)',
-  colorTextLight: 'rgb(var(--rgbText) / 0.6)',
+  colorTextLight: 'rgb(var(--rgbText) / 0.6)'
 };
 
 export const tokens = {

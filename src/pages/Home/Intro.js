@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import classNames from 'classnames';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import DecoderText from 'components/DecoderText';
@@ -11,7 +11,6 @@ import { tokens } from 'app/theme';
 import Section from 'components/Section';
 import './Intro.css';
 
-const DisplacementSphere = lazy(() => import('pages/Home/DisplacementSphere'));
 
 function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...rest }) {
   const { theme } = useAppContext();
@@ -60,20 +59,15 @@ function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...rest }) 
       >
         {status => (
           <Fragment>
-            {!prerender && (
-              <Suspense fallback={null}>
-                <DisplacementSphere />
-              </Suspense>
-            )}
             <header className="intro__text">
               <h1
                 className={classNames('intro__name', `intro__name--${status}`)}
                 id={titleId}
               >
-                <DecoderText text="Cody Bennett" start={!prerender} offset={120} />
+                <DecoderText text="Nilay Sharma" start={!prerender} offset={120} />
               </h1>
               <h2 className="intro__title">
-                <span className="intro__title-label">{`Designer + ${introLabel}`}</span>
+                <span className="intro__title-label">{`Software Developer + ${introLabel}`}</span>
                 <span
                   aria-hidden
                   className={classNames('intro__title-row', {
@@ -87,7 +81,7 @@ function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...rest }) 
                     )}
                     style={{ '--delay': tokens.base.durationXS }}
                   >
-                    Designer
+                    Developer
                   </span>
                   <span
                     className={classNames(

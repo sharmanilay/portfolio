@@ -4,12 +4,10 @@ import { Transition } from 'react-transition-group';
 import { Link } from 'components/Link';
 import Section from 'components/Section';
 import { Button } from 'components/Button';
-import Model from 'components/Model';
 import Divider from 'components/Divider';
 import { useWindowSize } from 'hooks';
-import { reflow, isVisible } from 'utils/transition';
+import { reflow } from 'utils/transition';
 import { media } from 'utils/style';
-import deviceModels from 'components/Model/deviceModels';
 import './ProjectSummary.css';
 
 const ProjectSummary = ({
@@ -30,8 +28,6 @@ const ProjectSummary = ({
   const titleId = `${id}-title`;
   const isMobile = width <= media.tablet;
   const indexText = index < 10 ? `0${index}` : index;
-  const phoneSizes = `(max-width: ${media.tablet}px) 152px, 254px`;
-  const laptopSizes = `(max-width: ${media.tablet}px) 100vw, 50vw`;
 
   const renderDetails = status => (
     <div className="project-summary__details">
@@ -95,59 +91,7 @@ const ProjectSummary = ({
   );
 
   const renderPreview = status => (
-    <div className="project-summary__preview">
-      {model.type === 'laptop' && (
-        <Model
-          className={classNames(
-            'project-summary__model',
-            'project-summary__model--laptop'
-          )}
-          alt={model.alt}
-          cameraPosition={[0, 0, 8]}
-          showDelay={800}
-          show={isVisible(status)}
-          models={[
-            {
-              ...deviceModels.laptop,
-              texture: {
-                ...model.textures[0],
-                sizes: laptopSizes,
-              },
-            },
-          ]}
-        />
-      )}
-      {model.type === 'phone' && (
-        <Model
-          className={classNames(
-            'project-summary__model',
-            'project-summary__model--phone'
-          )}
-          alt={model.alt}
-          cameraPosition={[0, 0, 11.5]}
-          showDelay={500}
-          show={isVisible(status)}
-          models={[
-            {
-              ...deviceModels.phone,
-              position: { x: -0.6, y: 1.1, z: 0 },
-              texture: {
-                ...model.textures[0],
-                sizes: phoneSizes,
-              },
-            },
-            {
-              ...deviceModels.phone,
-              position: { x: 0.6, y: -0.5, z: 0.3 },
-              texture: {
-                ...model.textures[1],
-                sizes: phoneSizes,
-              },
-            },
-          ]}
-        />
-      )}
-    </div>
+    <div></div>
   );
 
   return (

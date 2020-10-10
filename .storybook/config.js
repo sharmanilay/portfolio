@@ -14,9 +14,9 @@ addParameters({
   options: {
     theme: {
       ...themes.dark,
-      brandImage: 'https://codyb.co/icon.svg',
-      brandTitle: 'Cody Bennett Components',
-      brandUrl: 'https://codyb.co',
+      brandImage: 'https://avatars3.githubusercontent.com/u/20474441?s=460&u=f08dab216e2319f442fabb0cc9a27c6abc0626a1&v=4',
+      brandTitle: 'Nilay Sharma Components',
+      brandUrl: 'https://github.com/sharmanilay',
     },
   },
 });

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, createContext, useReducer, Fragment } from 'react';
+import React, { lazy, Suspense, useEffect, useState, createContext, useReducer, Fragment } from 'react';
 import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup, config as transitionConfig } from 'react-transition-group';
 import classNames from 'classnames';
@@ -11,21 +11,19 @@ import GothamBook from 'assets/fonts/gotham-book.woff2';
 import GothamMedium from 'assets/fonts/gotham-medium.woff2';
 import { initialState, reducer } from 'app/reducer';
 import { reflow } from 'utils/transition';
-import prerender from 'utils/prerender';
 import './index.css';
 
 const Home = lazy(() => import('pages/Home'));
-const Contact = lazy(() => import('pages/Contact'));
-const ProjectModern = lazy(() => import('pages/ProjectModern'));
-const ProjectDTT = lazy(() => import('pages/DevTechTools'));
-const ProjectMystGang = lazy(() => import('pages/MystGang'));
+// const Contact = lazy(() => import('pages/Contact'));
+// const ProjectModern = lazy(() => import('pages/ProjectModern'));
+// const ProjectDTT = lazy(() => import('pages/DevTechTools'));
+// const ProjectMystGang = lazy(() => import('pages/MystGang'));
 // const Articles = lazy(() => import('pages/Articles'));
 const NotFound = lazy(() => import('pages/404'));
 
 export const AppContext = createContext();
 export const TransitionContext = createContext();
 
-const repoPrompt = `\u00A9 2018-${new Date().getFullYear()} Cody Bennett\n\nCheck out the source code: https://github.com/CodyJasonBennett/portfolio-website`;
 
 export const fontStyles = `
   @font-face {
@@ -46,7 +44,23 @@ export const fontStyles = `
 const App = () => {
   const [storedTheme] = useLocalStorage('theme', 'dark');
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [pill, setPill] = useState();
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const chooseAPill = () => {
+    return (
+      <div className="matrix-pill-cover">
+        <div className="pill-button-wrapper">
+          <button onClick={() => setPill('red')} className="pill-buttons red-pill">
+            Red Pill
+          </button>
+          <button onClick={() => setPill('blue')} className="pill-buttons blue-pill">
+            Blue Pill
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -57,10 +71,15 @@ const App = () => {
   }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (!prerender) {
-      console.info(`${repoPrompt}\n\n`);
+    if (pill === 'red') {
+      console.log('raas')
+      dispatch({ type: 'setTheme', value: theme['dark'] });
+    } else if (pill === 'blue') {
+      dispatch({ type: 'setTheme', value: theme['light'] });
     }
+  }, [pill]);
 
+  useEffect(() => {
     window.history.scrollRestoration = 'manual';
   }, []);
 
@@ -72,7 +91,10 @@ const App = () => {
     <HelmetProvider>
       <AppContext.Provider value={{ ...state, dispatch }}>
         <BrowserRouter>
-          <AppRoutes />
+          { pill 
+            ? <AppRoutes /> 
+            : chooseAPill()
+          }
         </BrowserRouter>
       </AppContext.Provider>
     </HelmetProvider>
@@ -86,7 +108,7 @@ const AppRoutes = () => {
   return (
     <Fragment>
       <Helmet>
-        <link rel="canonical" href={`https://codyb.co${pathname}`} />
+        <link rel="canonical" href={`https://github.com/sharmanilay`} />
         <link rel="preload" href={GothamMedium} as="font" crossorigin="" />
         <link rel="preload" href={GothamBook} as="font" crossorigin="" />
         <style>{fontStyles}</style>
@@ -114,10 +136,10 @@ const AppRoutes = () => {
                 <Suspense fallback={<Fragment />}>
                   <Switch location={location}>
                     <Route exact path="/" component={Home} />
-                    <Route path="/contact" component={Contact} />
+                    {/* <Route path="/contact" component={Contact} />
                     <Route path="/projects/modern" component={ProjectModern} />
                     <Route path="/projects/dtt" component={ProjectDTT} />
-                    <Route path="/projects/mystgang" component={ProjectMystGang} />
+                    <Route path="/projects/mystgang" component={ProjectMystGang} /> */}
                     {/* <Route path="/articles" component={Articles} /> */}
                     <Route component={NotFound} />
                   </Switch>
