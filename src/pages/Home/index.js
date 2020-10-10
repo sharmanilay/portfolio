@@ -163,14 +163,14 @@ export default function Home(props) {
       //converting the string into an array of single characters
       textToShow = textToShow.split("");
 
-      let font_size = 15;
+      let font_size = 17;
       let columns = matrix.width/font_size; //number of columns for the rain
       //an array of drops - one per column
       let drops = [];
       //x below is the x coordinate
       //1 = y co-ordinate of the drop(same for every drop initially)
       for(let x = 0; x < columns; x++)
-        drops[x] = 1; 
+        drops[x] = 1;
 
       //drawing the characters
       function draw()
@@ -180,7 +180,7 @@ export default function Home(props) {
         ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
         ctx.fillRect(0, 0, matrix.width, matrix.height);
         
-        ctx.fillStyle = "#E50914"; //red text
+        ctx.fillStyle = "rgba(229, 9, 20, 0.5)"; //red text
         ctx.font = font_size + "px arial";
         //looping over drops
         for(let i = 0; i < drops.length; i++)
