@@ -50,6 +50,7 @@ const App = () => {
   const chooseAPill = () => {
     return (
       <div className="matrix-pill-cover">
+        {/* <img className="responsive-cover" src={require(`../assets/pill-cover.jpg`)} alt="matrix-cover" /> */}
         <div className="pill-button-wrapper">
           <button onClick={() => setPill('red')} className="pill-buttons red-pill">
             Red Pill

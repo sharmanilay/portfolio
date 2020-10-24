@@ -22,6 +22,7 @@ const ProjectSummary = ({
   buttonLink,
   buttonTo,
   alternate,
+  techStack,
   ...rest
 }) => {
   const { width } = useWindowSize();
@@ -91,7 +92,20 @@ const ProjectSummary = ({
   );
 
   const renderPreview = status => (
-    <div></div>
+      <Fragment>
+        <div className="tech-summary__content">
+          <div className="tech-header">Technologies Used</div>
+          <div className="tech-wrapper">{
+            techStack.map((item,i) =>  (
+              <div key={`${item.src}+${i}`} className="project-tech-stack">
+                <div className="tech-logo-wrapper">
+                  <img className="tech-logo" src={require(`../../assets/tech/${item.src}.png`)} alt="item.text"/>
+                </div>
+                <div className="tech-name">{item.text}</div>
+              </div>
+          ))}</div>
+        </div>
+      </Fragment>
   );
 
   return (
@@ -119,8 +133,8 @@ const ProjectSummary = ({
               )}
               {(alternate || isMobile) && (
                 <Fragment>
-                  {renderPreview(status)}
                   {renderDetails(status)}
+                  {renderPreview(status)}
                 </Fragment>
               )}
             </Fragment>

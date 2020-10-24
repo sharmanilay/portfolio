@@ -3,7 +3,6 @@
   height: 100vh;
   width: 100vw;
   padding-bottom: var(--spaceL);
-  margin: 120px 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -20,6 +19,21 @@
     margin: 40px 0;
   }
 }
+.tech-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.tech-logo-wrapper {
+  align-self: center;
+}
+.tech-logo {
+  height: 3rem;
+  width: 3rem;
+  margin-bottom: 1rem;
+}
+.tech-name {
+  align-self: center;
+}
 
 @media (max-width: 1024px) {
   .project-summary {
@@ -34,7 +48,7 @@
 
 @media (max-width: 696px) {
   .project-summary {
-    padding-bottom: var(--space4XL);
+    padding-bottom: var(--spaceXL);
     margin-bottom: 0;
     overflow-x: hidden;
   }
@@ -49,6 +63,31 @@
   grid-template-columns: 43% 55%;
   grid-column-gap: 2%;
 }
+
+.tech-summary__content {
+  z-index: 10;
+  background-size: cover;
+  padding: 5rem 0;
+  width: 100%;
+  max-width: var(--maxWidthL);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-header {
+  align-self: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+.project-tech-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem;
+}
+
 
 .project-summary--alternate .project-summary__content {
   grid-template-columns: 55% 40%;
@@ -68,6 +107,7 @@
 
 @media (max-width: 1024px) {
   .project-summary__content {
+    margin-top: 20px;
     grid-template-columns: 100%;
     flex-direction: column-reverse;
     height: auto;
@@ -85,7 +125,7 @@
   .project-summary__details {
     flex: 0 0 auto;
     max-width: 410px;
-    grid-row: 2;
+    grid-row: 1;
     grid-column: 1;
     justify-self: center;
   }

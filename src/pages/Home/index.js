@@ -17,7 +17,7 @@ import mystgangTexture from 'assets/mystgang.png';
 import mystgangTextureLarge from 'assets/mystgang-large.png';
 import mystgangTexturePlaceholder from 'assets/mystgang-placeholder.png';
 
-const disciplines = ['Creator', 'Writer', 'Editor', 'Guitarist'];
+const disciplines = ['Vue', 'React', 'Express', 'Sass', 'Redux', 'Vuex', 'NextJs', 'NuxtJs', 'Ruby', 'Python'];
 
 export default function Home(props) {
   const { status } = useRouteTransition();
@@ -31,6 +31,7 @@ export default function Home(props) {
   const projectSection = useRef();
   const projectThree = useRef();
   const projectFour = useRef();
+  const projectFive = useRef();
   const about = useRef();
   const matrixRef = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -61,7 +62,7 @@ export default function Home(props) {
   }, []);
 
   useEffect(() => {
-    const revealSections = [intro, projectOne, projectTwo, projectThree, projectFour, about];
+    const revealSections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, about];
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -98,7 +99,7 @@ export default function Home(props) {
 
     const handleHashchange = (hash, scroll) => {
       clearTimeout(scrollTimeout);
-      const hashSections = [intro, projectOne, projectTwo, projectThree, projectFour, about];
+      const hashSections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, about];
       const hashString = hash.replace('#', '');
       const element = hashSections.filter(item => item.current.id === hashString)[0];
       if (!element) return;
@@ -233,10 +234,20 @@ export default function Home(props) {
           sectionRef={projectOne}
           visible={visibleSections.includes(projectOne.current)}
           index={1}
-          title="Automated Instagram Profile"
-          description="A bot created to automate the process of randomly finding image related to a string upload it on Instagram. It randomly likes and comments on related content and follows users based on relative algorithm."
+          title="Astropedia"
+          description="An interactive portal to display all the asteroids observed by NASA, provide information related to each one and save specific asteroids for future reading"
           buttonText="View More"
-          buttonLink="https://www.instagram.com/maketravelgoals/"
+          buttonLink="https://astropedia.netlify.app/"
+          techStack={[
+            {
+              text: 'Vue',
+              src: 'vue'
+            },
+            {
+              text: 'Firebase',
+              src: 'firebase'
+            }
+          ]}
           model={{
             type: 'laptop',
             alt: 'View Project',
@@ -253,11 +264,56 @@ export default function Home(props) {
         id="project-2"
           sectionRef={projectTwo}
           visible={visibleSections.includes(projectTwo.current)}
+          index={1}
+          title="Automated Instagram Profile"
+          description="A bot created to automate the process of randomly finding image related to a string upload it on Instagram. It randomly likes and comments on related content and follows users based on relative algorithm."
+          buttonText="View More"
+          buttonLink="https://www.instagram.com/maketravelgoals/"
+          techStack={[
+            {
+              text: 'Python',
+              src: 'python'
+            },
+            {
+              text: 'Google Vision API',
+              src: 'vision'
+            }
+          ]}
+          model={{
+            type: 'laptop',
+            alt: 'View Project',
+            textures: [
+              {
+                src: modernTexture,
+                srcSet: `${modernTexture} 800w, ${modernTextureLarge} 1440w`,
+                placeholder: modernTexturePlaceholder,
+              },
+            ],
+        }}
+      />
+      <ProjectSummary
+        id="project-3"
+          sectionRef={projectThree}
+          visible={visibleSections.includes(projectThree.current)}
           index={2}
           title="React Easy Bar Chart"
           description="A lightweight bar chart npm library based on canvas to dynamically create bar chart based on data passed as a prop"
           buttonText="View Project"
           buttonLink="https://www.npmjs.com/package/react-easy-bar-chart"
+          techStack={[
+            {
+              text: 'React',
+              src: 'react'
+            },
+            {
+              text: 'HTML',
+              src: 'html'
+            },
+            {
+              text: 'CSS',
+              src: 'css'
+            }
+          ]}
           model={{
             type: 'laptop',
             alt: 'DevTech Tools Landing Page',
@@ -271,14 +327,28 @@ export default function Home(props) {
         }}
       />
       <ProjectSummary
-        id="project-3"
-          sectionRef={projectThree}
-          visible={visibleSections.includes(projectThree.current)}
+        id="project-4"
+          sectionRef={projectFour}
+          visible={visibleSections.includes(projectFour.current)}
           index={3}
           title="Color-Barn"
           description="A Machine-Learning backed web portal to remove the background of a given selfie and provide custom background based on the prominent colors in the extracted image."
           buttonText="View Project"
           buttonLink="https://github.com/sharmanilay/color-barn"
+          techStack={[
+            {
+              text: 'React',
+              src: 'react'
+            },
+            {
+              text: 'Node',
+              src: 'node'
+            },
+            {
+              text: 'Python',
+              src: 'python'
+            }
+          ]}
           model={{
             type: 'laptop',
             alt: 'MystGang Website',
@@ -292,14 +362,28 @@ export default function Home(props) {
         }}
       />
       <ProjectSummary
-        id="project-4"
-          sectionRef={projectFour}
-          visible={visibleSections.includes(projectFour.current)}
+        id="project-5"
+          sectionRef={projectFive}
+          visible={visibleSections.includes(projectFive.current)}
           index={4}
           title="Comment Plugin"
           description="A Facebook like comment plugin made using pure Vanilla JavaScript without using any external libraries like React and JQuery."
           buttonText="View Project"
           buttonLink="https://github.com/sharmanilay/comment-plugin"
+          techStack={[
+            {
+              text: 'JavaScript',
+              src: 'javascript'
+            },
+            {
+              text: 'HTML',
+              src: 'html'
+            },
+            {
+              text: 'CSS',
+              src: 'css'
+            }
+          ]}
           model={{
             type: 'laptop',
             alt: 'MystGang Website',
