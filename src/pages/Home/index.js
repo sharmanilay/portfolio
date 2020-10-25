@@ -264,7 +264,7 @@ export default function Home(props) {
         id="project-2"
           sectionRef={projectTwo}
           visible={visibleSections.includes(projectTwo.current)}
-          index={1}
+          index={2}
           title="Automated Instagram Profile"
           description="A bot created to automate the process of randomly finding image related to a string upload it on Instagram. It randomly likes and comments on related content and follows users based on relative algorithm."
           buttonText="View More"
@@ -295,7 +295,7 @@ export default function Home(props) {
         id="project-3"
           sectionRef={projectThree}
           visible={visibleSections.includes(projectThree.current)}
-          index={2}
+          index={3}
           title="React Easy Bar Chart"
           description="A lightweight bar chart npm library based on canvas to dynamically create bar chart based on data passed as a prop"
           buttonText="View Project"
@@ -330,7 +330,7 @@ export default function Home(props) {
         id="project-4"
           sectionRef={projectFour}
           visible={visibleSections.includes(projectFour.current)}
-          index={3}
+          index={4}
           title="Color-Barn"
           description="A Machine-Learning backed web portal to remove the background of a given selfie and provide custom background based on the prominent colors in the extracted image."
           buttonText="View Project"
@@ -365,7 +365,7 @@ export default function Home(props) {
         id="project-5"
           sectionRef={projectFive}
           visible={visibleSections.includes(projectFive.current)}
-          index={4}
+          index={5}
           title="Comment Plugin"
           description="A Facebook like comment plugin made using pure Vanilla JavaScript without using any external libraries like React and JQuery."
           buttonText="View Project"
