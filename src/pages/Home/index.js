@@ -6,7 +6,7 @@ import Intro from './Intro';
 import ProjectSummary from './ProjectSummary';
 import Profile from './Profile';
 import Footer from 'components/Footer';
-import { usePrefersReducedMotion, useRouteTransition, useAppContext }  from 'hooks';
+import { usePrefersReducedMotion, useRouteTransition, useAppContext } from 'hooks';
 import modernTexture from 'assets/modern.png';
 import modernTextureLarge from 'assets/modern-large.png';
 import modernTexturePlaceholder from 'assets/modern-placeholder.png';
@@ -17,7 +17,18 @@ import mystgangTexture from 'assets/mystgang.png';
 import mystgangTextureLarge from 'assets/mystgang-large.png';
 import mystgangTexturePlaceholder from 'assets/mystgang-placeholder.png';
 
-const disciplines = ['Vue', 'React', 'Express', 'Sass', 'Redux', 'Vuex', 'NextJs', 'NuxtJs', 'Ruby', 'Python'];
+const disciplines = [
+  'React',
+  'Vue',
+  'Express',
+  'Sass',
+  'Redux',
+  'Vuex',
+  'NextJs',
+  'NuxtJs',
+  'Ruby',
+  'Python',
+];
 
 export default function Home(props) {
   const { status } = useRouteTransition();
@@ -62,22 +73,36 @@ export default function Home(props) {
   }, []);
 
   useEffect(() => {
-    const revealSections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, about];
+    const revealSections = [
+      intro,
+      projectOne,
+      projectTwo,
+      projectThree,
+      projectFour,
+      projectFive,
+      about,
+    ];
 
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const section = entry.target;
-          observer.unobserve(section);
-          if (visibleSections.includes(section)) return;
-          setVisibleSections(prevSections => [...prevSections, section]);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px' });
+    const sectionObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const section = entry.target;
+            observer.unobserve(section);
+            if (visibleSections.includes(section)) return;
+            setVisibleSections(prevSections => [...prevSections, section]);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px' }
+    );
 
-    const indicatorObserver = new IntersectionObserver(([entry]) => {
-      setScrollIndicatorHidden(!entry.isIntersecting);
-    }, { rootMargin: '-100% 0px 0px 0px' });
+    const indicatorObserver = new IntersectionObserver(
+      ([entry]) => {
+        setScrollIndicatorHidden(!entry.isIntersecting);
+      },
+      { rootMargin: '-100% 0px 0px 0px' }
+    );
 
     revealSections.forEach(section => {
       sectionObserver.observe(section.current);
@@ -99,22 +124,36 @@ export default function Home(props) {
 
     const handleHashchange = (hash, scroll) => {
       clearTimeout(scrollTimeout);
-      const hashSections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive, about];
+      const hashSections = [
+        intro,
+        projectOne,
+        projectTwo,
+        projectThree,
+        projectFour,
+        projectFive,
+        about,
+      ];
       const hashString = hash.replace('#', '');
       const element = hashSections.filter(item => item.current.id === hashString)[0];
       if (!element) return;
       const behavior = scroll && !prefersReducedMotion ? 'smooth' : 'instant';
       const top = element.current.offsetTop;
 
-      scrollObserver = new IntersectionObserver((entries, observer) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          scrollTimeout = setTimeout(() => {
-            element.current.focus();
-          }, prefersReducedMotion ? 0 : 400);
-          observer.unobserve(entry.target);
-        }
-      }, { rootMargin: '-20% 0px -20% 0px' });
+      scrollObserver = new IntersectionObserver(
+        (entries, observer) => {
+          const [entry] = entries;
+          if (entry.isIntersecting) {
+            scrollTimeout = setTimeout(
+              () => {
+                element.current.focus();
+              },
+              prefersReducedMotion ? 0 : 400
+            );
+            observer.unobserve(entry.target);
+          }
+        },
+        { rootMargin: '-20% 0px -20% 0px' }
+      );
 
       scrollObserver.observe(element.current);
 
@@ -151,8 +190,8 @@ export default function Home(props) {
     const { themeId } = theme;
     const isDark = themeId === 'dark';
     if (isDark) {
-      let matrix = document.getElementById("matrix");
-      let ctx = matrix.getContext("2d");
+      let matrix = document.getElementById('matrix');
+      let ctx = matrix.getContext('2d');
 
       //making the canvas full screen
       matrix.height = window.innerHeight;
@@ -160,42 +199,39 @@ export default function Home(props) {
 
       //textToShow characters - taken from the unicode charset
       // let textToShow = "React Vue Nuxt Next TypeScript Ruby on Rails Node Express MongoDb SQL"
-      let textToShow = "01100111 01100101 01110100 00100000 01100001 00100000 01101000 01101111 01100010 01100010 01111001";
+      let textToShow =
+        '01100111 01100101 01110100 00100000 01100001 00100000 01101000 01101111 01100010 01100010 01111001';
       //converting the string into an array of single characters
-      textToShow = textToShow.split("");
+      textToShow = textToShow.split('');
 
       let font_size = 17;
-      let columns = matrix.width/font_size; //number of columns for the rain
+      let columns = matrix.width / font_size; //number of columns for the rain
       //an array of drops - one per column
       let drops = [];
       //x below is the x coordinate
       //1 = y co-ordinate of the drop(same for every drop initially)
-      for(let x = 0; x < columns; x++)
-        drops[x] = 1;
+      for (let x = 0; x < columns; x++) drops[x] = 1;
 
       //drawing the characters
-      function draw()
-      {
+      function draw() {
         //Black BG for the canvas
         //translucent BG to show trail
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, matrix.width, matrix.height);
-        
-        ctx.fillStyle = "rgba(229, 9, 20, 0.5)"; //red text
-        ctx.font = font_size + "px arial";
+
+        ctx.fillStyle = 'rgba(229, 9, 20, 0.5)'; //red text
+        ctx.font = font_size + 'px arial';
         //looping over drops
-        for(let i = 0; i < drops.length; i++)
-        {
+        for (let i = 0; i < drops.length; i++) {
           //a random textToShow character to print
-          let text = textToShow[Math.floor(Math.random()*textToShow.length)];
+          let text = textToShow[Math.floor(Math.random() * textToShow.length)];
           //x = i*font_size, y = value of drops[i]*font_size
-          ctx.fillText(text, i*font_size, drops[i]*font_size);
-          
+          ctx.fillText(text, i * font_size, drops[i] * font_size);
+
           //sending the drop back to the top randomly after it has crossed the screen
           //adding a randomness to the reset to make the drops scattered on the Y axis
-          if(drops[i]*font_size > matrix.height && Math.random() > 0.975)
-            drops[i] = 0;
-          
+          if (drops[i] * font_size > matrix.height && Math.random() > 0.975) drops[i] = 0;
+
           //incrementing Y coordinate
           drops[i]++;
         }
@@ -209,12 +245,14 @@ export default function Home(props) {
     <Fragment>
       <Helmet
         title="Nilay Sharma | Software Developer"
-        meta={[{
-          name: "description",
-          content: "Portfolio of Nilay Sharma  – a full-stack developer, and creator of web & mobile applications",
-        }]}
-      >
-      </Helmet>
+        meta={[
+          {
+            name: 'description',
+            content:
+              'Portfolio of Nilay Sharma  – a full-stack developer, and creator of web & mobile applications',
+          },
+        ]}
+      ></Helmet>
       <Intro
         id="intro"
         sectionRef={intro}
@@ -224,15 +262,47 @@ export default function Home(props) {
       <canvas
         className={classNames('matrix-alive', {
           'position-fixed ': sticky,
-          'd-none': !sticky
+          'd-none': !sticky,
         })}
-        id="matrix" ref={matrixRef}>
-      </canvas>
+        id="matrix"
+        ref={matrixRef}
+      ></canvas>
       <div ref={projectSection}>
-      <ProjectSummary
-        id="project-1"
+        <ProjectSummary
+          id="project-1"
           sectionRef={projectOne}
           visible={visibleSections.includes(projectOne.current)}
+          index={1}
+          title="What To Watch"
+          description="A straightforward recommendation engine to provide movie suggestions on the basis of user type catering the needs of their content consumption habits"
+          buttonText="View More"
+          buttonLink="https://getwhattowatch.com/"
+          techStack={[
+            {
+              text: 'React',
+              src: 'react',
+            },
+            {
+              text: 'Firebase',
+              src: 'firebase',
+            },
+          ]}
+          model={{
+            type: 'laptop',
+            alt: 'View Project',
+            textures: [
+              {
+                src: modernTexture,
+                srcSet: `${modernTexture} 800w, ${modernTextureLarge} 1440w`,
+                placeholder: modernTexturePlaceholder,
+              },
+            ],
+          }}
+        />
+        <ProjectSummary
+          id="project-2"
+          sectionRef={projectTwo}
+          visible={visibleSections.includes(projectTwo.current)}
           index={1}
           title="Astropedia"
           description="An interactive portal to display all the asteroids observed by NASA, provide information related to each one and save specific asteroids for future reading"
@@ -241,43 +311,16 @@ export default function Home(props) {
           techStack={[
             {
               text: 'Vue',
-              src: 'vue'
+              src: 'vue',
             },
             {
               text: 'Firebase',
-              src: 'firebase'
-            }
-          ]}
-          model={{
-            type: 'laptop',
-            alt: 'View Project',
-            textures: [
-              {
-                src: modernTexture,
-                srcSet: `${modernTexture} 800w, ${modernTextureLarge} 1440w`,
-                placeholder: modernTexturePlaceholder,
-              },
-            ],
-        }}
-      />
-      <ProjectSummary
-        id="project-2"
-          sectionRef={projectTwo}
-          visible={visibleSections.includes(projectTwo.current)}
-          index={2}
-          title="Automated Instagram Profile"
-          description="A bot created to automate the process of randomly finding image related to a string upload it on Instagram. It randomly likes and comments on related content and follows users based on relative algorithm."
-          buttonText="View More"
-          buttonLink="https://www.instagram.com/maketravelgoals/"
-          techStack={[
-            {
-              text: 'Python',
-              src: 'python'
+              src: 'firebase',
             },
             {
-              text: 'Google Vision API',
-              src: 'vision'
-            }
+              text: 'NASA API',
+              src: 'nasa',
+            },
           ]}
           model={{
             type: 'laptop',
@@ -289,10 +332,10 @@ export default function Home(props) {
                 placeholder: modernTexturePlaceholder,
               },
             ],
-        }}
-      />
-      <ProjectSummary
-        id="project-3"
+          }}
+        />
+        <ProjectSummary
+          id="project-3"
           sectionRef={projectThree}
           visible={visibleSections.includes(projectThree.current)}
           index={3}
@@ -303,16 +346,16 @@ export default function Home(props) {
           techStack={[
             {
               text: 'React',
-              src: 'react'
+              src: 'react',
             },
             {
               text: 'HTML',
-              src: 'html'
+              src: 'html',
             },
             {
               text: 'CSS',
-              src: 'css'
-            }
+              src: 'css',
+            },
           ]}
           model={{
             type: 'laptop',
@@ -324,10 +367,10 @@ export default function Home(props) {
                 placeholder: dttTexturePlaceholder,
               },
             ],
-        }}
-      />
-      <ProjectSummary
-        id="project-4"
+          }}
+        />
+        <ProjectSummary
+          id="project-4"
           sectionRef={projectFour}
           visible={visibleSections.includes(projectFour.current)}
           index={4}
@@ -338,16 +381,16 @@ export default function Home(props) {
           techStack={[
             {
               text: 'React',
-              src: 'react'
+              src: 'react',
             },
             {
               text: 'Node',
-              src: 'node'
+              src: 'node',
             },
             {
               text: 'Python',
-              src: 'python'
-            }
+              src: 'python',
+            },
           ]}
           model={{
             type: 'laptop',
@@ -359,10 +402,10 @@ export default function Home(props) {
                 placeholder: mystgangTexturePlaceholder,
               },
             ],
-        }}
-      />
-      <ProjectSummary
-        id="project-5"
+          }}
+        />
+        <ProjectSummary
+          id="project-5"
           sectionRef={projectFive}
           visible={visibleSections.includes(projectFive.current)}
           index={5}
@@ -373,16 +416,16 @@ export default function Home(props) {
           techStack={[
             {
               text: 'JavaScript',
-              src: 'javascript'
+              src: 'javascript',
             },
             {
               text: 'HTML',
-              src: 'html'
+              src: 'html',
             },
             {
               text: 'CSS',
-              src: 'css'
-            }
+              src: 'css',
+            },
           ]}
           model={{
             type: 'laptop',
@@ -394,13 +437,13 @@ export default function Home(props) {
                 placeholder: mystgangTexturePlaceholder,
               },
             ],
-        }}
-      />
+          }}
+        />
       </div>
       <Profile
         sectionRef={about}
-          visible={visibleSections.includes(about.current)}
-          id="about"
+        visible={visibleSections.includes(about.current)}
+        id="about"
       />
       <Footer />
     </Fragment>

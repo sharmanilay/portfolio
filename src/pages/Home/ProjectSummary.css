@@ -28,7 +28,6 @@
 }
 .tech-logo {
   height: 3rem;
-  width: 3rem;
   margin-bottom: 1rem;
 }
 .tech-name {
@@ -87,7 +86,6 @@
   justify-content: center;
   margin: 2rem;
 }
-
 
 .project-summary--alternate .project-summary__content {
   grid-template-columns: 55% 40%;

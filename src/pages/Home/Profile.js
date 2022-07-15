@@ -10,9 +10,9 @@ import Image from 'components/Image';
 import Section from 'components/Section';
 import { reflow } from 'utils/transition';
 import { media } from 'utils/style';
-import profileImg from 'assets/profile.png';
-import profileImgLarge from 'assets/profile-large.png';
-import profileImgPlaceholder from 'assets/profile-placeholder.png';
+import profileImg from 'assets/profile1.png';
+import profileImgLarge from 'assets/profile1.png';
+import profileImgPlaceholder from 'assets/profile1.png';
 import './Profile.css';
 
 const ProfileText = ({ status, titleId }) => (
@@ -32,14 +32,14 @@ const ProfileText = ({ status, titleId }) => (
       I am a quick learner and can learn new technologies on the go. 
     </p> */}
     <p className={classNames('profile__description', `profile__description--${status}`)}>
-      I'm' Software Engineer
-      Skilled in {' '}
+      I'm' Software Engineer Skilled in{' '}
       <Anchor href="#about">
-       React JS, Vue JS, React Native, NodeJS, MongoDB, Java, Ruby on Rails, Python, HTML, CSS, JavaScript. 
-      </Anchor>
-      {' '}
-      I have been developing web applications for about 4 years now(with 2 years of professional experience)
-      I am a quick learner and can learn new technologies on the go. 
+        React JS, Vue JS, React Native, NodeJS, MongoDB, Java, Ruby on Rails, Python,
+        HTML, CSS, JavaScript.
+      </Anchor>{' '}
+      I have been developing web applications for about 6 years now(with 4 years of
+      professional experience) I am a quick learner and can learn new technologies on the
+      go.
     </p>
     <p className={classNames('profile__description', `profile__description--${status}`)}>
       In my spare time, I like to play guitar and{' '}
@@ -100,10 +100,7 @@ function Profile({ id, visible, sectionRef }) {
               <div className="profile__image-wrapper">
                 <Image
                   reveal
-                  className={classNames(
-                    'profile__image',
-                    `profile__image--${status}`
-                  )}
+                  className={classNames('profile__image', `profile__image--${status}`)}
                   delay={100}
                   placeholder={profileImgPlaceholder}
                   srcSet={`${profileImg} 480w, ${profileImgLarge} 960w`}
