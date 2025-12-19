@@ -19,7 +19,7 @@ function MatrixRain({ opacity = 0.4 }) {
     window.addEventListener('resize', resize)
 
     // Matrix characters - binary code like original + some katakana for Matrix feel
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモ10'
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモ10ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     const charArray = chars.split('')
 
     const fontSize = 16

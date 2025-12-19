@@ -4,22 +4,22 @@ import './Projects.css'
 const projects = [
   {
     id: 1,
-    title: 'Promptery',
-    description: 'A Prompt Management SaaS for developers and teams. Built end-to-end with modern auth flows, payments integration, and analytics.',
-    image: null,
-    tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Supabase', 'Stripe'],
-    link: null,
+    title: 'Hype My Hustle',
+    description: 'Your all-in-one AI co-pilot for building in public. Get personalized roadmaps, daily tasks, and content ideas. Go from idea to MVP with audience in 2 weeks.',
+    image: '/images/hypemyhustle.png',
+    tech: ['Next.js', 'Supabase', 'OpenAI', 'Tailwind', 'Stripe'],
+    link: 'https://hypemyhustle.com',
     github: null,
     featured: true,
     company: 'Digital Prysm Labs',
   },
   {
     id: 2,
-    title: 'Hype My Hustle',
-    description: 'AI accountability tool for creators building in public. Helps creators stay consistent with their goals using AI-powered nudges.',
-    image: null,
-    tech: ['Next.js', 'Supabase', 'OpenAI', 'Tailwind'],
-    link: null,
+    title: 'Promptery',
+    description: 'Spotlight for your prompts. Save complex prompts with a keystroke, access them from anywhere with Spotlight-like speed. Perfect for writers, developers, and creators.',
+    image: '/images/promptery.png',
+    tech: ['macOS', 'Swift', 'Node.js', 'Polar'],
+    link: 'https://promptery.app',
     github: null,
     featured: true,
     company: 'Digital Prysm Labs',
@@ -27,20 +27,20 @@ const projects = [
   {
     id: 3,
     title: 'Bake My Day',
-    description: 'AI Day Planner — Plan your day in 5 minutes with AI via Timeboxing. Know exactly what to do and when to do it.',
-    image: null,
-    tech: ['Next.js', 'Shadcn', 'Tailwind', 'Gemini API', 'Google Calendar API'],
-    link: null,
+    description: 'AI Calendar Assistant — Stop wasting half your day figuring out what to do next. Tell us your tasks, routines, habits and we create a simple, followable plan.',
+    image: '/images/bakemyday.png',
+    tech: ['Next.js', 'Shadcn', 'Tailwind', 'Gemini API', 'Google Calendar'],
+    link: 'https://bakemydaybro.vercel.app',
     github: null,
     featured: true,
     year: '2025',
   },
   {
     id: 4,
-    title: 'Whiskers',
-    description: 'Dictation Assistant — Dictate content that gets cleaned and structured using AI. Replacing typing with voice for emails, docs, journaling.',
-    image: null,
-    tech: ['Swift', 'Speech-to-Text', 'OpenAI Whisper', 'Gemini API'],
+    title: 'Focus Pro',
+    description: 'Chrome Extension for focus sessions — Block distracting websites and have custom pomodoro sessions. Simple interface: "I want to focus on [task]".',
+    image: '/images/focuspro.png',
+    tech: ['React', 'JavaScript', 'Vite', 'Chrome APIs'],
     link: null,
     github: null,
     featured: true,
@@ -48,10 +48,10 @@ const projects = [
   },
   {
     id: 5,
-    title: 'Focus Pro',
-    description: 'Chrome Extension for focus sessions — Block distracting websites and have custom pomodoro sessions based on your work style.',
-    image: null,
-    tech: ['React', 'JavaScript', 'Vite', 'Chrome APIs'],
+    title: 'Whiskers',
+    description: 'Dictation Assistant — Dictate content that gets cleaned and structured using AI. Replacing typing with voice for emails, docs, journaling.',
+    image: '/images/whiskers.png',
+    tech: ['Swift', 'Speech-to-Text', 'OpenAI Whisper', 'Gemini API'],
     link: null,
     github: null,
     featured: false,
@@ -61,34 +61,23 @@ const projects = [
     id: 6,
     title: 'React Easy Bar Chart',
     description: 'Open Source NPM Package — Lightweight React bar chart library with 5000+ downloads. Built on Canvas for optimal performance.',
-    image: null,
+    image: '/images/reacteasybarchart.png',
     tech: ['React', 'Canvas API', 'NPM', 'JavaScript'],
     link: 'https://www.npmjs.com/package/react-easy-bar-chart',
     github: null,
-    featured: true,
+    featured: false,
     year: '2020',
   },
   {
     id: 7,
     title: 'What To Watch',
     description: 'Movie Recommendation Platform — A recommendation engine that suggests films based on user content preferences and viewing habits.',
-    image: null,
+    image: '/images/whattowatch.png',
     tech: ['Next.js', 'Firebase', 'Express', 'TMDb API'],
-    link: 'https://getwhattowatch.com/',
+    link: 'https://getwhattowatch.vercel.app',
     github: null,
     featured: false,
     year: '2020',
-  },
-  {
-    id: 8,
-    title: 'Trajektory Platform',
-    description: 'Built core features from inception to production at Trajektory. Designed scalable architecture achieving 90% reduction in release time.',
-    image: null,
-    tech: ['React', 'Express', 'Google Cloud', 'BigQuery', 'GraphQL'],
-    link: null,
-    github: null,
-    featured: false,
-    company: 'Trajektory',
   },
 ]
 
@@ -155,9 +144,17 @@ function Projects() {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="project-card__image">
-                <div className="project-card__placeholder">
-                  <span className="project-card__number">0{index + 1}</span>
-                </div>
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="project-card__img"
+                  />
+                ) : (
+                  <div className="project-card__placeholder">
+                    <span className="project-card__number">0{index + 1}</span>
+                  </div>
+                )}
                 <div className="project-card__overlay">
                   <div className="project-card__links">
                     {project.link && (

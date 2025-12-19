@@ -55,8 +55,7 @@ function About() {
               </p>
               <p>
                 I hold a B.Tech in Computer Science from <strong>LNMIIT, Rajasthan</strong>. 
-                When I'm not shipping code, you'll find me playing guitar, writing stage plays 
-                (won Best Play at college fests!), or watching <span className="about__highlight">The Matrix</span> for the hundredth time 💊.
+                When I'm not shipping code, you'll find me playing guitar or writing stage plays
               </p>
             </div>
 
@@ -98,7 +97,7 @@ function About() {
                 <cite>— Neo, The Matrix</cite>
               </blockquote>
               <p className="about__matrix-note">
-                (But instead of kung fu, it's React, Next.js, Node, TypeScript, PostgreSQL... 😄)
+                (But instead of kung fu, for me, it's React, Next.js, Node, TypeScript, PostgreSQL... 😄)
               </p>
             </div>
           </div>

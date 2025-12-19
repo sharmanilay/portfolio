@@ -28,7 +28,7 @@ export const socialLinks = [
   },
   {
     label: 'Stack Overflow',
-    url: 'https://stackoverflow.com/users/8064382/thenaamsake',
+    url: 'https://stackoverflow.com/users/8064382/dohypemyhustle',
     icon: 'stackoverflow',
   },
   {
@@ -38,7 +38,7 @@ export const socialLinks = [
   },
   {
     label: 'Twitter',
-    url: 'https://twitter.com/thenaamsake',
+    url: 'https://twitter.com/dohypemyhustle',
     icon: 'twitter',
   }
 ];

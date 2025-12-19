@@ -276,7 +276,7 @@ export default function Home(props) {
           title="What To Watch"
           description="A straightforward recommendation engine to provide movie suggestions on the basis of user type catering the needs of their content consumption habits"
           buttonText="View More"
-          buttonLink="https://getwhattowatch.com/"
+          buttonLink="https://getwhattowatch.vercel.app"
           techStack={[
             {
               text: 'React',

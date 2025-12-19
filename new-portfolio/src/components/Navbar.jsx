@@ -24,7 +24,7 @@ function Navbar({ onReset, pill }) {
   const socialLinks = [
     { icon: 'github', url: 'https://github.com/sharmanilay', label: 'GitHub' },
     { icon: 'linkedin', url: 'https://www.linkedin.com/in/sharmanilay/', label: 'LinkedIn' },
-    { icon: 'twitter', url: 'https://twitter.com/thenaamsake', label: 'Twitter' },
+    { icon: 'twitter', url: 'https://twitter.com/dohypemyhustle', label: 'Twitter' },
   ]
 
   const handleNavClick = (e, href) => {

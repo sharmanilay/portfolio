@@ -74,7 +74,7 @@ function Profile({ id, visible, sectionRef }) {
                 as="a"
                 status={status}
                 target="_blank"
-                href={'https://twitter.com/thenaamsake'}
+                href={'https://twitter.com/dohypemyhustle'}
                 icon="send"
               >
                 Send me a message

@@ -12,7 +12,7 @@ function Hero({ pill }) {
     'React & Node.js Expert',
     'SaaS Builder',
     'Open Source Contributor',
-    'Pop Culture Nerd',
+    'Movie Buff',
   ]
 
   useEffect(() => {
@@ -142,8 +142,7 @@ function Hero({ pill }) {
                   {'\n'}  ],
                   {'\n'}  <span className="code-property">currently</span>:{' '}
                   <span className="code-string">"Digital Prysm Labs"</span>,
-                  {'\n'}  <span className="code-property">passion</span>:{' '}
-                  <span className="code-string">"The Matrix"</span> 💊
+                  
                   {'\n'}{'}'};
                 </code>
               </pre>

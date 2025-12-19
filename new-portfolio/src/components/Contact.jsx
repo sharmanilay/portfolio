@@ -56,8 +56,8 @@ function Contact() {
     {
       icon: '🐦',
       label: 'Twitter',
-      value: '@thenaamsake',
-      link: 'https://twitter.com/thenaamsake'
+      value: '@dohypemyhustle',
+      link: 'https://twitter.com/dohypemyhustle'
     },
     {
       icon: '🐙',

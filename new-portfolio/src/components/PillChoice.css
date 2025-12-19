@@ -37,9 +37,9 @@
   right: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  padding-bottom: 25vh;
+  justify-content: center;
+  gap: 28vw;
+  padding-bottom: 22vh;
   z-index: 10;
   animation: fadeIn 1s ease 0.5s both;
 }
@@ -51,12 +51,14 @@
 
 .pill-button {
   position: relative;
-  padding: 0.7rem 2rem;
-  border-radius: 4px;
+  padding: 0.85rem 2.5rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
+  letter-spacing: 0.5px;
+  min-width: 130px;
 }
 
 .pill-button__glow {
@@ -67,25 +69,29 @@
 }
 
 .pill-button--red {
-  background: rgb(148, 49, 38);
-  border: 1px solid rgb(148, 49, 38);
-  color: white;
+  background: #8B3A3A;
+  border: 2px solid #6B2A2A;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(139, 58, 58, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .pill-button--red:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(148, 49, 38, 0.5);
+  background: #9B4A4A;
+  box-shadow: 0 8px 25px rgba(139, 58, 58, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .pill-button--blue {
-  background: #1F487E;
-  border: 1px solid #1F487E;
-  color: white;
+  background: #3A5A8B;
+  border: 2px solid #2A4A6B;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(58, 90, 139, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .pill-button--blue:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(31, 72, 126, 0.5);
+  background: #4A6A9B;
+  box-shadow: 0 8px 25px rgba(58, 90, 139, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .pill-button__text {

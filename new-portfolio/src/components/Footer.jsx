@@ -6,8 +6,8 @@ function Footer() {
   const socialLinks = [
     { icon: 'github', url: 'https://github.com/sharmanilay', label: 'GitHub' },
     { icon: 'linkedin', url: 'https://www.linkedin.com/in/sharmanilay/', label: 'LinkedIn' },
-    { icon: 'twitter', url: 'https://twitter.com/thenaamsake', label: 'Twitter' },
-    { icon: 'stackoverflow', url: 'https://stackoverflow.com/users/8064382/thenaamsake', label: 'Stack Overflow' },
+    { icon: 'twitter', url: 'https://twitter.com/dohypemyhustle', label: 'Twitter' },
+    { icon: 'stackoverflow', url: 'https://stackoverflow.com/users/8064382/dohypemyhustle', label: 'Stack Overflow' },
     { icon: 'email', url: 'mailto:nilaysharma642@gmail.com', label: 'Email' },
   ]
 

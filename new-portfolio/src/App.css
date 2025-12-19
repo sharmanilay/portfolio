@@ -151,6 +151,13 @@
   background-clip: text;
 }
 
+.theme-light .skills__title,
+.theme-light .projects__title,
+.theme-light .about__title,
+.theme-light .contact__title {
+  color: var(--color-text-primary);
+}
+
 /* Main content needs higher z-index than matrix rain */
 main {
   position: relative;
