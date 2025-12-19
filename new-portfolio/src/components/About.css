@@ -1,0 +1,215 @@
+.about {
+  background: var(--color-bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+
+/* Header */
+.about__header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--duration-slow) var(--ease-out-expo);
+}
+
+.about--visible .about__header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about__label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: var(--space-md);
+  padding: var(--space-xs) var(--space-md);
+  background: rgba(229, 9, 20, 0.1);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(229, 9, 20, 0.2);
+}
+
+.about__title {
+  font-size: clamp(2rem, 5vw, var(--font-size-5xl));
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Grid */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: start;
+}
+
+/* Content */
+.about__content {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all var(--duration-slow) var(--ease-out-expo) 0.2s;
+}
+
+.about--visible .about__content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about__text {
+  margin-bottom: var(--space-2xl);
+}
+
+.about__text p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-lg);
+}
+
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+
+.about__text strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.about__highlight {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.about__quick-facts {
+  padding: var(--space-xl);
+  background: var(--color-bg-glass);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.about__facts-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-primary);
+}
+
+.about__facts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.about__facts-list li {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  padding-left: var(--space-sm);
+}
+
+/* Visual */
+.about__visual {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all var(--duration-slow) var(--ease-out-expo) 0.4s;
+}
+
+.about--visible .about__visual {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Card Stack */
+.about__card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.about__card {
+  padding: var(--space-xl);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.about__card:hover {
+  transform: translateX(10px);
+  border-color: var(--color-primary);
+  box-shadow: -10px 0 30px var(--color-primary-glow);
+}
+
+.about__card-icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-md);
+}
+
+.about__card h4 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+}
+
+.about__card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* Matrix Quote */
+.about__matrix-quote {
+  padding: var(--space-xl);
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.about__matrix-quote blockquote {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.about__matrix-quote cite {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-style: normal;
+}
+
+.about__matrix-note {
+  margin-top: var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .about__card:hover {
+    transform: translateY(-5px);
+  }
+}

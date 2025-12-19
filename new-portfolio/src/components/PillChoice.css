@@ -1,0 +1,147 @@
+.pill-choice {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: #0a0a0f;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.pill-choice__bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/pill-cover.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .pill-choice__bg-image {
+    background-size: 300%;
+    background-position: center 30%;
+  }
+}
+
+.pill-choice__buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  padding-bottom: 25vh;
+  z-index: 10;
+  animation: fadeIn 1s ease 0.5s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pill-button {
+  position: relative;
+  padding: 0.7rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.pill-button__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pill-button--red {
+  background: rgb(148, 49, 38);
+  border: 1px solid rgb(148, 49, 38);
+  color: white;
+}
+
+.pill-button--red:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(148, 49, 38, 0.5);
+}
+
+.pill-button--blue {
+  background: #1F487E;
+  border: 1px solid #1F487E;
+  color: white;
+}
+
+.pill-button--blue:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(31, 72, 126, 0.5);
+}
+
+.pill-button__text {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.pill-button:disabled {
+  pointer-events: none;
+}
+
+/* Transition states */
+.pill-choice--chosen {
+  animation: zoomFade 2s ease-in-out forwards;
+}
+
+@keyframes zoomFade {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(20px);
+  }
+}
+
+.pill-choice__loading {
+  position: fixed;
+  bottom: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.pill-choice__loading-text {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: #e50914;
+  animation: pulse 1s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (max-width: 625px) {
+  .pill-choice__buttons {
+    padding: 0 0.5rem;
+    padding-bottom: 35%;
+  }
+}

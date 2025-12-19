@@ -1,0 +1,205 @@
+/* App-specific styles */
+.app {
+  position: relative;
+  min-height: 100vh;
+}
+
+.loading-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-primary);
+}
+
+/* Theme variations */
+.theme-dark {
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: rgba(18, 18, 26, 0.85);
+  --color-bg-tertiary: rgba(26, 26, 36, 0.9);
+  --color-bg-glass: rgba(18, 18, 26, 0.8);
+  --color-text-primary: #ffffff;
+}
+
+.theme-light {
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #f1f5f9;
+  --color-bg-glass: rgba(255, 255, 255, 0.95);
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-hover: rgba(0, 0, 0, 0.2);
+  --color-primary: #2563eb;
+  --color-primary-glow: rgba(37, 99, 235, 0.2);
+  --color-secondary: #16a34a;
+  --color-accent: #0ea5e9;
+}
+
+/* Light theme specific overrides */
+.theme-light .hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.theme-light .hero__gradient-orb--1 {
+  background: rgba(37, 99, 235, 0.15);
+}
+
+.theme-light .hero__gradient-orb--2 {
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.theme-light .hero__gradient-orb--3 {
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.theme-light .hero__code-window {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.theme-light .hero__code-header {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.theme-light .hero__code-body {
+  background: #ffffff;
+}
+
+.theme-light .about {
+  background: #ffffff;
+}
+
+.theme-light .skills {
+  background: #f8fafc;
+}
+
+.theme-light .projects {
+  background: #ffffff;
+}
+
+.theme-light .contact {
+  background: #f8fafc;
+}
+
+.theme-light .footer {
+  background: #ffffff;
+  border-top-color: #e2e8f0;
+}
+
+.theme-light .navbar--scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: #e2e8f0;
+}
+
+.theme-light .project-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.theme-light .project-card__placeholder {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.theme-light .project-card__number {
+  color: rgba(37, 99, 235, 0.15);
+}
+
+.theme-light .skills__tab {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.theme-light .skills__bar {
+  background: #e2e8f0;
+}
+
+.theme-light .about__card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.theme-light .about__quick-facts {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.theme-light .contact__form {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.theme-light .contact__form-input {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.theme-light .contact__info-item {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.theme-light .gradient-text {
+  background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Main content needs higher z-index than matrix rain */
+main {
+  position: relative;
+  z-index: 10;
+}
+
+/* Navbar also needs to be above matrix rain */
+.navbar {
+  z-index: 1000 !important;
+}
+
+/* Footer above matrix rain */
+footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Scanline effect for dark theme only */
+.theme-dark::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 1px,
+    rgba(0, 0, 0, 0.02) 1px,
+    rgba(0, 0, 0, 0.02) 2px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Section backgrounds semi-transparent in dark mode to see matrix */
+.theme-dark .section {
+  background-color: rgba(18, 18, 26, 0.75);
+}
+
+.theme-dark .about {
+  background-color: rgba(18, 18, 26, 0.85);
+}
+
+.theme-dark .projects {
+  background-color: rgba(18, 18, 26, 0.85);
+}
+
+.theme-dark .skills {
+  background-color: rgba(10, 10, 15, 0.8);
+}
