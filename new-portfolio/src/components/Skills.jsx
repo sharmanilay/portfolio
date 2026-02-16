@@ -10,7 +10,7 @@ const skillCategories = [
       { name: 'Next.js', color: '#000000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
       { name: 'Vue.js', color: '#4FC08D', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
       { name: 'TypeScript', color: '#3178C6', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
-      { name: 'React Query', color: '#FF4154', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactquery/reactquery-original.svg' },
+      { name: 'Zustand', color: '#FF4154', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zustand/zustand-original.svg' },
       { name: 'Tailwind CSS', color: '#06B6D4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
     ]
   },
@@ -104,14 +104,14 @@ function Skills() {
         <div className="skills__content">
           <div className="skills__grid">
             {skillCategories[activeCategory].skills.map((skill, index) => (
-              <div 
-                key={skill.name} 
+              <div
+                key={skill.name}
                 className="skills__item"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="skills__item-icon">
-                  <img 
-                    src={skill.icon} 
+                  <img
+                    src={skill.icon}
                     alt={skill.name}
                     style={{ filter: `drop-shadow(0 0 8px ${skill.color}40)` }}
                   />
@@ -125,10 +125,10 @@ function Skills() {
         <div className="skills__additional">
           <h3 className="skills__additional-title">Also work with</h3>
           <div className="skills__tags">
-            {['Nuxt.js', 'Redux', 'Vuex', 'Material-UI', 'Shadcn', 
+            {['Nuxt.js', 'Redux', 'Vuex', 'Material-UI', 'Shadcn',
               'Firebase', 'Gemini API', 'OpenAI', 'Swift', 'Model Context Protocol'].map((tag) => (
-              <span key={tag} className="skills__tag">{tag}</span>
-            ))}
+                <span key={tag} className="skills__tag">{tag}</span>
+              ))}
           </div>
         </div>
       </div>
