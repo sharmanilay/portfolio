@@ -6,48 +6,48 @@ const skillCategories = [
     title: 'Frontend',
     icon: '🎨',
     skills: [
-      { name: 'React', level: 95, color: '#61DAFB' },
-      { name: 'Next.js', level: 92, color: '#000000' },
-      { name: 'Vue.js', level: 88, color: '#4FC08D' },
-      { name: 'TypeScript', level: 90, color: '#3178C6' },
-      { name: 'React Query', level: 85, color: '#FF4154' },
-      { name: 'Tailwind CSS', level: 92, color: '#06B6D4' },
+      { name: 'React', color: '#61DAFB', icon: '⚛️' },
+      { name: 'Next.js', color: '#000000', icon: '▲' },
+      { name: 'Vue.js', color: '#4FC08D', icon: '💚' },
+      { name: 'TypeScript', color: '#3178C6', icon: 'TS' },
+      { name: 'React Query', color: '#FF4154', icon: '🔄' },
+      { name: 'Tailwind CSS', color: '#06B6D4', icon: '🎨' },
     ]
   },
   {
     title: 'Backend',
     icon: '⚙️',
     skills: [
-      { name: 'Node.js', level: 92, color: '#339933' },
-      { name: 'Express.js', level: 90, color: '#000000' },
-      { name: 'Go', level: 85, color: '#00ADD8' },
-      { name: 'Ruby on Rails', level: 78, color: '#CC0000' },
-      { name: 'Python', level: 80, color: '#3776AB' },
-      { name: 'REST APIs', level: 95, color: '#5D4FEB' },
+      { name: 'Node.js', color: '#339933', icon: '📦' },
+      { name: 'Express.js', color: '#000000', icon: '🚀' },
+      { name: 'Go', color: '#00ADD8', icon: '🐹' },
+      { name: 'Ruby on Rails', color: '#CC0000', icon: '💎' },
+      { name: 'Python', color: '#3776AB', icon: '🐍' },
+      { name: 'REST APIs', color: '#5D4FEB', icon: '🔌' },
     ]
   },
   {
     title: 'Database & Cloud',
     icon: '☁️',
     skills: [
-      { name: 'PostgreSQL', level: 88, color: '#4169E1' },
-      { name: 'MongoDB', level: 85, color: '#47A248' },
-      { name: 'MySQL', level: 82, color: '#4479A1' },
-      { name: 'BigQuery', level: 75, color: '#669DF6' },
-      { name: 'Google Cloud', level: 82, color: '#4285F4' },
-      { name: 'Supabase', level: 85, color: '#3ECF8E' },
+      { name: 'PostgreSQL', color: '#4169E1', icon: '🐘' },
+      { name: 'MongoDB', color: '#47A248', icon: '🍃' },
+      { name: 'MySQL', color: '#4479A1', icon: '🗄️' },
+      { name: 'BigQuery', color: '#669DF6', icon: '📊' },
+      { name: 'Google Cloud', color: '#4285F4', icon: '☁️' },
+      { name: 'Supabase', color: '#3ECF8E', icon: '🔐' },
     ]
   },
   {
     title: 'Tools & Product',
     icon: '🛠️',
     skills: [
-      { name: 'Git/GitHub', level: 95, color: '#F05032' },
-      { name: 'CI/CD', level: 85, color: '#2088FF' },
-      { name: 'Docker', level: 80, color: '#2496ED' },
-      { name: 'Cursor', level: 82, color: '#00B4EF' },
-      { name: 'OpenCode', level: 88, color: '#007ACC' },
-      { name: 'React Native', level: 78, color: '#61DAFB' },
+      { name: 'Git/GitHub', color: '#F05032', icon: '🐙' },
+      { name: 'CI/CD', color: '#2088FF', icon: '⚡' },
+      { name: 'Docker', color: '#2496ED', icon: '🐳' },
+      { name: 'Cursor', color: '#00B4EF', icon: '✨' },
+      { name: 'OpenCode', color: '#007ACC', icon: '📝' },
+      { name: 'React Native', color: '#61DAFB', icon: '📱' },
     ]
   }
 ]
@@ -109,20 +109,10 @@ function Skills() {
                 className="skills__item"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="skills__item-header">
-                  <span className="skills__item-name">{skill.name}</span>
-                  <span className="skills__item-level">{skill.level}%</span>
+                <div className="skills__item-icon" style={{ color: skill.color }}>
+                  {skill.icon}
                 </div>
-                <div className="skills__bar">
-                  <div 
-                    className="skills__bar-fill"
-                    style={{ 
-                      width: isVisible ? `${skill.level}%` : '0%',
-                      background: skill.color,
-                      boxShadow: `0 0 20px ${skill.color}40`
-                    }}
-                  />
-                </div>
+                <span className="skills__item-name">{skill.name}</span>
               </div>
             ))}
           </div>
@@ -131,7 +121,7 @@ function Skills() {
         <div className="skills__additional">
           <h3 className="skills__additional-title">Also work with</h3>
           <div className="skills__tags">
-            {['Nuxt.js', 'SCSS', 'Redux', 'Vuex', 'Material-UI', 'Shadcn', 
+            {['Nuxt.js', 'Redux', 'Vuex', 'Material-UI', 'Shadcn', 
               'Firebase', 'Gemini API', 'OpenAI', 'Swift', 'Model Context Protocol'].map((tag) => (
               <span key={tag} className="skills__tag">{tag}</span>
             ))}
