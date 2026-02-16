@@ -6,48 +6,48 @@ const skillCategories = [
     title: 'Frontend',
     icon: '🎨',
     skills: [
-      { name: 'React', color: '#61DAFB', icon: '⚛️' },
-      { name: 'Next.js', color: '#000000', icon: '▲' },
-      { name: 'Vue.js', color: '#4FC08D', icon: '💚' },
-      { name: 'TypeScript', color: '#3178C6', icon: 'TS' },
-      { name: 'React Query', color: '#FF4154', icon: '🔄' },
-      { name: 'Tailwind CSS', color: '#06B6D4', icon: '🎨' },
+      { name: 'React', color: '#61DAFB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+      { name: 'Next.js', color: '#000000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+      { name: 'Vue.js', color: '#4FC08D', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
+      { name: 'TypeScript', color: '#3178C6', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+      { name: 'React Query', color: '#FF4154', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactquery/reactquery-original.svg' },
+      { name: 'Tailwind CSS', color: '#06B6D4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
     ]
   },
   {
     title: 'Backend',
     icon: '⚙️',
     skills: [
-      { name: 'Node.js', color: '#339933', icon: '📦' },
-      { name: 'Express.js', color: '#000000', icon: '🚀' },
-      { name: 'Go', color: '#00ADD8', icon: '🐹' },
-      { name: 'Ruby on Rails', color: '#CC0000', icon: '💎' },
-      { name: 'Python', color: '#3776AB', icon: '🐍' },
-      { name: 'REST APIs', color: '#5D4FEB', icon: '🔌' },
+      { name: 'Node.js', color: '#339933', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+      { name: 'Express.js', color: '#000000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg' },
+      { name: 'Go', color: '#00ADD8', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg' },
+      { name: 'Ruby on Rails', color: '#CC0000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-original-wordmark.svg' },
+      { name: 'Python', color: '#3776AB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+      { name: 'REST APIs', color: '#5D4FEB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/circleci/circleci-plain.svg' },
     ]
   },
   {
     title: 'Database & Cloud',
     icon: '☁️',
     skills: [
-      { name: 'PostgreSQL', color: '#4169E1', icon: '🐘' },
-      { name: 'MongoDB', color: '#47A248', icon: '🍃' },
-      { name: 'MySQL', color: '#4479A1', icon: '🗄️' },
-      { name: 'BigQuery', color: '#669DF6', icon: '📊' },
-      { name: 'Google Cloud', color: '#4285F4', icon: '☁️' },
-      { name: 'Supabase', color: '#3ECF8E', icon: '🔐' },
+      { name: 'PostgreSQL', color: '#4169E1', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+      { name: 'MongoDB', color: '#47A248', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+      { name: 'MySQL', color: '#4479A1', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+      { name: 'BigQuery', color: '#669DF6', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg' },
+      { name: 'Google Cloud', color: '#4285F4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg' },
+      { name: 'Supabase', color: '#3ECF8E', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
     ]
   },
   {
     title: 'Tools & Product',
     icon: '🛠️',
     skills: [
-      { name: 'Git/GitHub', color: '#F05032', icon: '🐙' },
-      { name: 'CI/CD', color: '#2088FF', icon: '⚡' },
-      { name: 'Docker', color: '#2496ED', icon: '🐳' },
-      { name: 'Cursor', color: '#00B4EF', icon: '✨' },
-      { name: 'OpenCode', color: '#007ACC', icon: '📝' },
-      { name: 'React Native', color: '#61DAFB', icon: '📱' },
+      { name: 'Git/GitHub', color: '#F05032', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
+      { name: 'CI/CD', color: '#2088FF', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/circleci/circleci-plain.svg' },
+      { name: 'Docker', color: '#2496ED', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+      { name: 'Cursor', color: '#00B4EF', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
+      { name: 'OpenCode', color: '#007ACC', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
+      { name: 'React Native', color: '#61DAFB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
     ]
   }
 ]
@@ -109,8 +109,12 @@ function Skills() {
                 className="skills__item"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="skills__item-icon" style={{ color: skill.color }}>
-                  {skill.icon}
+                <div className="skills__item-icon">
+                  <img 
+                    src={skill.icon} 
+                    alt={skill.name}
+                    style={{ filter: `drop-shadow(0 0 8px ${skill.color}40)` }}
+                  />
                 </div>
                 <span className="skills__item-name">{skill.name}</span>
               </div>

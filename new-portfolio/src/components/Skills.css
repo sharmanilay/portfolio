@@ -129,7 +129,8 @@
 }
 
 .skills__item-icon {
-  font-size: 3rem;
+  width: 60px;
+  height: 60px;
   margin-bottom: var(--space-md);
   display: flex;
   align-items: center;
@@ -137,9 +138,14 @@
   transition: all var(--duration-normal) var(--ease-out-expo);
 }
 
+.skills__item-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .skills__item:hover .skills__item-icon {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 8px currentColor);
+  transform: scale(1.15);
 }
 
 .skills__item-name {
