@@ -20,7 +20,7 @@ const skillCategories = [
     skills: [
       { name: 'Node.js', level: 92, color: '#339933' },
       { name: 'Express.js', level: 90, color: '#000000' },
-      { name: 'GraphQL', level: 85, color: '#E10098' },
+      { name: 'Go', level: 85, color: '#00ADD8' },
       { name: 'Ruby on Rails', level: 78, color: '#CC0000' },
       { name: 'Python', level: 80, color: '#3776AB' },
       { name: 'REST APIs', level: 95, color: '#5D4FEB' },
@@ -44,9 +44,9 @@ const skillCategories = [
     skills: [
       { name: 'Git/GitHub', level: 95, color: '#F05032' },
       { name: 'CI/CD', level: 85, color: '#2088FF' },
-      { name: 'Stripe/Polar', level: 80, color: '#635BFF' },
-      { name: 'Clerk Auth', level: 82, color: '#6C47FF' },
-      { name: 'Postman', level: 88, color: '#FF6C37' },
+      { name: 'Docker', level: 80, color: '#2496ED' },
+      { name: 'Cursor', level: 82, color: '#00B4EF' },
+      { name: 'OpenCode', level: 88, color: '#007ACC' },
       { name: 'React Native', level: 78, color: '#61DAFB' },
     ]
   }
@@ -132,7 +132,7 @@ function Skills() {
           <h3 className="skills__additional-title">Also work with</h3>
           <div className="skills__tags">
             {['Nuxt.js', 'SCSS', 'Redux', 'Vuex', 'Material-UI', 'Shadcn', 
-              'Docker', 'Firebase', 'Gemini API', 'OpenAI', 'Swift', 'Model Context Protocol'].map((tag) => (
+              'Firebase', 'Gemini API', 'OpenAI', 'Swift', 'Model Context Protocol'].map((tag) => (
               <span key={tag} className="skills__tag">{tag}</span>
             ))}
           </div>
