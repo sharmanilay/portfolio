@@ -28,7 +28,7 @@ function App() {
       <main>
         <Hero pill={pill} />
         <About />
-        <Skills />
+        <Skills pill={pill} />
         <Projects />
         <Contact />
       </main>
