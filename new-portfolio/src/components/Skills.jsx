@@ -11,7 +11,7 @@ const skillCategories = [
       { name: 'Next.js', color: '#000000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
       { name: 'Vue.js', color: '#4FC08D', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
       { name: 'TypeScript', color: '#3178C6', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
-      { name: 'React Query', color: '#FF4154', icon: null, customSvg: 'reactquery' },
+      { name: 'React Query', color: '#FF4154', icon: null, customSvg: 'react-query.png' },
       { name: 'Tailwind CSS', color: '#06B6D4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
       { name: 'Zustand', color: '#6D4C41', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zustand/zustand-original.svg' },
     ]
@@ -39,7 +39,7 @@ const skillCategories = [
       { name: 'MySQL', color: '#4479A1', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
       { name: 'Firebase', color: '#FFCA28', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg' },
       { name: 'Supabase', color: '#3ECF8E', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
-      { name: 'Convex', color: '#FF4154', icon: null, customSvg: 'convex' },
+      { name: 'Convex', color: '#FF4154', icon: null, customSvg: 'convex.png' },
       { name: 'Google Cloud', color: '#4285F4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg' },
       { name: 'GitHub Actions', color: '#2088FF', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg' },
     ]
@@ -50,12 +50,12 @@ const skillCategories = [
     skills: [
       { name: 'Git', color: '#F05032', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
       { name: 'Playwright', color: '#2EAD33', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg' },
-      { name: 'Cursor', color: '#00B4EF', icon: null, customSvg: 'cursor' },
-      { name: 'OpenCode', color: '#211E1E', icon: null, customSvg: 'opencode' },
+      { name: 'Cursor', color: '#00B4EF', icon: null, customSvg: 'cursor.svg' },
+      { name: 'OpenCode', color: '#211E1E', icon: null, customSvg: 'opencode.svg' },
       { name: 'Grafana', color: '#F05A28', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grafana/grafana-original.svg' },
       { name: 'Prometheus', color: '#E6522C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prometheus/prometheus-original.svg' },
       { name: 'Postman', color: '#FF6C37', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg' },
-      { name: 'Claude Code', color: '#D77655', icon: null, customSvg: 'claude-code' },
+      { name: 'Claude Code', color: '#D77655', icon: null, customSvg: 'claude-code.svg' },
     ]
   }
 ]
@@ -114,7 +114,7 @@ function Skills({ pill = 'red' }) {
             {skillCategories[activeCategory].skills.map((skill, index) => {
               let shadowColor = skill.color
               let filterStyle = `drop-shadow(0 0 8px ${shadowColor}40)`
-              
+
               if (skill.themeAware) {
                 const themeColor = pill === 'red' ? (skill.darkModeColor || '#FFFFFF') : '#333333'
                 shadowColor = themeColor
@@ -125,7 +125,7 @@ function Skills({ pill = 'red' }) {
                   filterStyle = `drop-shadow(0 0 8px ${themeColor}40)`
                 }
               }
-              
+
               return (
                 <div
                   key={skill.name}
@@ -134,10 +134,10 @@ function Skills({ pill = 'red' }) {
                 >
                   <div className="skills__item-icon">
                     {skill.customSvg ? (
-                      <img 
-                        src={`/${skill.customSvg}.svg`} 
+                      <img
+                        src={`/${skill.customSvg}`}
                         alt={skill.name}
-                        style={{ 
+                        style={{
                           filter: `drop-shadow(0 0 8px ${shadowColor}40)`,
                           maxWidth: '100%',
                           maxHeight: '100%'
@@ -147,7 +147,7 @@ function Skills({ pill = 'red' }) {
                       <img
                         src={skill.icon}
                         alt={skill.name}
-                        style={{ 
+                        style={{
                           filter: filterStyle
                         }}
                       />
