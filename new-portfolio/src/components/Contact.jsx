@@ -70,7 +70,7 @@ function Contact() {
   return (
     <section id="contact" className={`contact section ${isVisible ? 'contact--visible' : ''}`} ref={sectionRef}>
       <div className="contact__bg-gradient" />
-      
+
       <div className="container">
         <div className="contact__header">
           <span className="contact__label">Get In Touch</span>
@@ -78,7 +78,7 @@ function Contact() {
             Let's <span className="gradient-text">Connect</span>
           </h2>
           <p className="contact__subtitle">
-            Whether you have a project in mind or just want to say hi, 
+            Whether you have a project in mind or just want to say hi,
             my inbox is always open. I'll get back to you as soon as possible!
           </p>
         </div>
@@ -89,10 +89,10 @@ function Contact() {
               <h3>Contact Information</h3>
               <p>Reach out through any of these channels</p>
             </div>
-            
+
             <div className="contact__info-list">
               {contactInfo.map((item) => (
-                <a 
+                <a
                   key={item.label}
                   href={item.link}
                   target="_blank"
@@ -108,12 +108,6 @@ function Contact() {
               ))}
             </div>
 
-            <div className="contact__matrix-cta">
-              <p>
-                "There is no spoon. There is only code." 
-                <span className="contact__matrix-note">— Some Developer, probably</span>
-              </p>
-            </div>
           </div>
 
           <form className="contact__form" onSubmit={handleSubmit}>
@@ -159,8 +153,8 @@ function Contact() {
               />
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className={`contact__form-submit ${status === 'sending' ? 'contact__form-submit--sending' : ''}`}
               disabled={status === 'sending'}
             >
