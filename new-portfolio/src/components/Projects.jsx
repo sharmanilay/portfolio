@@ -4,6 +4,18 @@ import './Projects.css'
 const projects = [
   {
     id: 1,
+    title: 'Jobestry',
+    description: 'Open Source Chrome Extension that generates customized resumes and cover letters for different job postings. Tailor your application in seconds.',
+    image: '/images/jobestry.png',
+    tech: ['Chrome Extension', 'React', 'OpenAI', 'Tailwind'],
+    link: null,
+    github: 'https://github.com/sharmanilay/jobestry',
+    featured: true,
+    isOpenSource: true,
+    year: '2025',
+  },
+  {
+    id: 2,
     title: 'Hype My Hustle',
     description: 'Your all-in-one AI co-pilot for building in public. Get personalized roadmaps, daily tasks, and content ideas. Go from idea to MVP with audience in 2 weeks.',
     image: '/images/hypemyhustle.png',
@@ -14,7 +26,7 @@ const projects = [
     company: 'Digital Prysm Labs',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Promptery',
     description: 'Spotlight for your prompts. Save complex prompts with a keystroke, access them from anywhere with Spotlight-like speed. Perfect for writers, developers, and creators.',
     image: '/images/promptery.png',
@@ -25,18 +37,19 @@ const projects = [
     company: 'Digital Prysm Labs',
   },
   {
-    id: 3,
-    title: 'Bake My Day',
-    description: 'AI Calendar Assistant — Stop wasting half your day figuring out what to do next. Tell us your tasks, routines, habits and we create a simple, followable plan.',
-    image: '/images/bakemyday.png',
-    tech: ['Next.js', 'Shadcn', 'Tailwind', 'Gemini API', 'Google Calendar'],
-    link: 'https://bakemydaybro.vercel.app',
-    github: null,
+    id: 4,
+    title: 'HypeShelf',
+    description: 'Open Source content curation platform that helps creators discover, organize, and share inspiration across platforms. Turn bookmarks into actionable content.',
+    image: '/images/hypeshelf.png',
+    tech: ['Next.js', 'Convex', 'Clerk', 'Tailwind'],
+    link: 'https://hypeshelfpro.vercel.app',
+    github: 'https://github.com/sharmanilay/hypeshelf',
     featured: true,
-    year: '2025',
+    isOpenSource: true,
+    year: '2024',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Focus Pro',
     description: 'Chrome Extension for focus sessions — Block distracting websites and have custom pomodoro sessions. Simple interface: "I want to focus on [task]".',
     image: '/images/focuspro.png',
@@ -47,7 +60,7 @@ const projects = [
     year: '2025',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Whiskers',
     description: 'Dictation Assistant — Dictate content that gets cleaned and structured using AI. Replacing typing with voice for emails, docs, journaling.',
     image: '/images/whiskers.png',
@@ -58,7 +71,7 @@ const projects = [
     year: '2025',
   },
   {
-    id: 6,
+    id: 7,
     title: 'React Easy Bar Chart',
     description: 'Open Source NPM Package — Lightweight React bar chart library with 5000+ downloads. Built on Canvas for optimal performance.',
     image: '/images/reacteasybarchart.png',
@@ -67,30 +80,6 @@ const projects = [
     github: null,
     featured: false,
     year: '2020',
-  },
-  {
-    id: 7,
-    title: 'HypeShelf',
-    description: 'Open Source content curation platform that helps creators discover, organize, and share inspiration across platforms. Turn bookmarks into actionable content.',
-    image: '/images/hypeshelf.png',
-    tech: ['Next.js', 'Tailwind', 'Supabase', 'React'],
-    link: 'https://hypeshelfpro.vercel.app',
-    github: null,
-    featured: false,
-    isOpenSource: true,
-    year: '2024',
-  },
-  {
-    id: 8,
-    title: 'Jobestry',
-    description: 'Open Source Chrome Extension that generates customized resumes and cover letters for different job postings. Tailor your application in seconds.',
-    image: '/images/jobestry.png',
-    tech: ['Chrome Extension', 'React', 'OpenAI', 'Tailwind'],
-    link: null,
-    github: null,
-    featured: false,
-    isOpenSource: true,
-    year: '2025',
   },
 ]
 
@@ -201,9 +190,18 @@ function Projects() {
                   {project.featured && (
                     <span className="project-card__badge">Featured</span>
                   )}
-                  {project.isOpenSource && (
+                  {project.isOpenSource && project.github ? (
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-card__badge project-card__badge--opensource"
+                    >
+                      Open Source
+                    </a>
+                  ) : project.isOpenSource ? (
                     <span className="project-card__badge project-card__badge--opensource">Open Source</span>
-                  )}
+                  ) : null}
                   {project.company && (
                     <span className="project-card__company">{project.company}</span>
                   )}

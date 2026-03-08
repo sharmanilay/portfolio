@@ -78,9 +78,7 @@ function Hero({ pill }) {
           </div>
 
           <p className="hero__description">
-            I build production-grade SaaS products and scalable applications. 
-            6+ years of crafting digital experiences with React, Node.js, and modern cloud infrastructure.
-            Currently shipping products at Digital Prysm Labs.
+            Full Stack Engineer with 7+ years of experience building and shipping production products from 0 → launch → scale. Expert in modern web architectures across TypeScript, Go, React, Next.js, Node.js, and cloud-native systems, with deep experience designing scalable backends, developer tooling, and AI-powered applications.
           </p>
 
           <div className="hero__cta">
@@ -142,7 +140,7 @@ function Hero({ pill }) {
                   {'\n'}  ],
                   {'\n'}  <span className="code-property">currently</span>:{' '}
                   <span className="code-string">"Digital Prysm Labs"</span>,
-                  
+
                   {'\n'}{'}'};
                 </code>
               </pre>

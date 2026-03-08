@@ -24,7 +24,7 @@ function About() {
   }, [])
 
   return (
-    <section id="about" className={`about section ${isVisible ? 'about--visible' : ''}`} ref={sectionRef}>
+    <section id="about" className={`about section ${isVisible ? 'about--visible' : ''}`} ref={sectionRef} style={{ display: 'none' }}>
       <div className="container">
         <div className="about__header">
           <span className="about__label">About Me</span>

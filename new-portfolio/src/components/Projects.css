@@ -211,12 +211,21 @@
   color: var(--color-primary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out-expo);
 }
 
 .project-card__badge--opensource {
   background: rgba(76, 175, 80, 0.15);
   border-color: rgba(76, 175, 80, 0.3);
   color: #4CAF50;
+  cursor: pointer;
+}
+
+.project-card__badge--opensource:hover {
+  background: rgba(76, 175, 80, 0.25);
+  border-color: rgba(76, 175, 80, 0.5);
+  transform: translateY(-2px);
 }
 
 .project-card__company {
