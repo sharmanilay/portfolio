@@ -11,41 +11,11 @@ import Footer from './components/Footer'
 import './App.css'
 
 function App() {
-  const [hasChosen, setHasChosen] = useState(false)
-  const [pill, setPill] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [pill, setPill] = useState('red')
 
-  useEffect(() => {
-    // Check if user has already chosen
-    const savedPill = localStorage.getItem('matrixPill')
-    if (savedPill) {
-      setPill(savedPill)
-      setHasChosen(true)
-    }
-    setIsLoading(false)
-  }, [])
-
-  const handlePillChoice = (choice) => {
+  const handlePillChange = (choice) => {
     setPill(choice)
     localStorage.setItem('matrixPill', choice)
-    // Add dramatic delay for effect
-    setTimeout(() => {
-      setHasChosen(true)
-    }, 2000)
-  }
-
-  const resetChoice = () => {
-    localStorage.removeItem('matrixPill')
-    setHasChosen(false)
-    setPill(null)
-  }
-
-  if (isLoading) {
-    return <div className="loading-screen"><MatrixRain opacity={0.8} /></div>
-  }
-
-  if (!hasChosen) {
-    return <PillChoice onChoice={handlePillChoice} currentPill={pill} />
   }
 
   // Red pill = Matrix theme with prominent rain, Blue pill = clean light theme
@@ -54,11 +24,11 @@ function App() {
   return (
     <div className={`app ${isRedPill ? 'theme-dark' : 'theme-light'}`}>
       {isRedPill && <MatrixRain opacity={0.4} />}
-      <Navbar onReset={resetChoice} pill={pill} />
+      <Navbar onPillChange={handlePillChange} pill={pill} />
       <main>
         <Hero pill={pill} />
         <About />
-        <Skills />
+        <Skills pill={pill} />
         <Projects />
         <Contact />
       </main>

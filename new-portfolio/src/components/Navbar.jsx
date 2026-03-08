@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './Navbar.css'
 
-function Navbar({ onReset, pill }) {
+function Navbar({ onPillChange, pill }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -76,8 +76,8 @@ function Navbar({ onReset, pill }) {
           
           <button 
             className="navbar__pill-reset"
-            onClick={onReset}
-            title={`Currently: ${pill} pill. Click to choose again.`}
+            onClick={() => onPillChange(pill === 'red' ? 'blue' : 'red')}
+            title={`Currently: ${pill} pill. Click to toggle.`}
           >
             <span className={`navbar__pill-indicator navbar__pill-indicator--${pill}`} />
           </button>

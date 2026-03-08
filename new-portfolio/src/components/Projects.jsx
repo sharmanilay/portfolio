@@ -26,17 +26,30 @@ const projects = [
   },
   {
     id: 3,
-    title: 'Bake My Day',
-    description: 'AI Calendar Assistant — Stop wasting half your day figuring out what to do next. Tell us your tasks, routines, habits and we create a simple, followable plan.',
-    image: '/images/bakemyday.png',
-    tech: ['Next.js', 'Shadcn', 'Tailwind', 'Gemini API', 'Google Calendar'],
-    link: 'https://bakemydaybro.vercel.app',
-    github: null,
+    title: 'Jobestry',
+    description: 'Open Source Chrome Extension that generates customized resumes and cover letters for different job postings. Tailor your application in seconds.',
+    image: '/images/jobestry.png',
+    tech: ['Chrome Extension', 'React', 'OpenAI', 'Tailwind'],
+    link: null,
+    github: 'https://github.com/sharmanilay/jobestry',
     featured: true,
+    isOpenSource: true,
     year: '2025',
   },
   {
     id: 4,
+    title: 'HypeShelf',
+    description: 'Open Source content curation platform that helps creators discover, organize, and share inspiration across platforms. Turn bookmarks into actionable content.',
+    image: '/images/hypeshelf.png',
+    tech: ['Next.js', 'Convex', 'Clerk', 'Tailwind'],
+    link: 'https://hypeshelfpro.vercel.app',
+    github: 'https://github.com/sharmanilay/hypeshelf',
+    featured: true,
+    isOpenSource: true,
+    year: '2024',
+  },
+  {
+    id: 5,
     title: 'Focus Pro',
     description: 'Chrome Extension for focus sessions — Block distracting websites and have custom pomodoro sessions. Simple interface: "I want to focus on [task]".',
     image: '/images/focuspro.png',
@@ -47,7 +60,7 @@ const projects = [
     year: '2025',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Whiskers',
     description: 'Dictation Assistant — Dictate content that gets cleaned and structured using AI. Replacing typing with voice for emails, docs, journaling.',
     image: '/images/whiskers.png',
@@ -56,28 +69,6 @@ const projects = [
     github: null,
     featured: false,
     year: '2025',
-  },
-  {
-    id: 6,
-    title: 'React Easy Bar Chart',
-    description: 'Open Source NPM Package — Lightweight React bar chart library with 5000+ downloads. Built on Canvas for optimal performance.',
-    image: '/images/reacteasybarchart.png',
-    tech: ['React', 'Canvas API', 'NPM', 'JavaScript'],
-    link: 'https://www.npmjs.com/package/react-easy-bar-chart',
-    github: null,
-    featured: false,
-    year: '2020',
-  },
-  {
-    id: 7,
-    title: 'What To Watch',
-    description: 'Movie Recommendation Platform — A recommendation engine that suggests films based on user content preferences and viewing habits.',
-    image: '/images/whattowatch.png',
-    tech: ['Next.js', 'Firebase', 'Express', 'TMDb API'],
-    link: 'https://getwhattowatch.vercel.app',
-    github: null,
-    featured: false,
-    year: '2020',
   },
 ]
 
@@ -188,6 +179,18 @@ function Projects() {
                   {project.featured && (
                     <span className="project-card__badge">Featured</span>
                   )}
+                  {project.isOpenSource && project.github ? (
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-card__badge project-card__badge--opensource"
+                    >
+                      Open Source
+                    </a>
+                  ) : project.isOpenSource ? (
+                    <span className="project-card__badge project-card__badge--opensource">Open Source</span>
+                  ) : null}
                   {project.company && (
                     <span className="project-card__company">{project.company}</span>
                   )}

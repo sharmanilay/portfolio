@@ -78,9 +78,7 @@ function Hero({ pill }) {
           </div>
 
           <p className="hero__description">
-            I build production-grade SaaS products and scalable applications. 
-            6+ years of crafting digital experiences with React, Node.js, and modern cloud infrastructure.
-            Currently shipping products at Digital Prysm Labs.
+            Full Stack Engineer with 7+ years of experience building and shipping production products from 0 → launch → scale. Expert in modern web architectures across TypeScript, Go, React, Next.js, Node.js, and cloud-native systems, with deep experience designing scalable backends, developer tooling, and AI-powered applications.
           </p>
 
           <div className="hero__cta">
@@ -91,23 +89,6 @@ function Hero({ pill }) {
             <button className="hero__btn hero__btn--secondary" onClick={scrollToContact}>
               <span className="hero__btn-text">Get In Touch</span>
             </button>
-          </div>
-
-          <div className="hero__stats">
-            <div className="hero__stat">
-              <span className="hero__stat-number">6+</span>
-              <span className="hero__stat-label">Years Experience</span>
-            </div>
-            <div className="hero__stat-divider" />
-            <div className="hero__stat">
-              <span className="hero__stat-number">4</span>
-              <span className="hero__stat-label">Companies</span>
-            </div>
-            <div className="hero__stat-divider" />
-            <div className="hero__stat">
-              <span className="hero__stat-number">∞</span>
-              <span className="hero__stat-label">Cups of Coffee</span>
-            </div>
           </div>
         </div>
 
@@ -142,7 +123,7 @@ function Hero({ pill }) {
                   {'\n'}  ],
                   {'\n'}  <span className="code-property">currently</span>:{' '}
                   <span className="code-string">"Digital Prysm Labs"</span>,
-                  
+
                   {'\n'}{'}'};
                 </code>
               </pre>
