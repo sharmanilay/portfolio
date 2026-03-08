@@ -112,11 +112,18 @@ function Skills({ pill = 'red' }) {
         <div className="skills__content">
           <div className="skills__grid">
             {skillCategories[activeCategory].skills.map((skill, index) => {
-              let iconColor = skill.color
               let shadowColor = skill.color
+              let filterStyle = `drop-shadow(0 0 8px ${shadowColor}40)`
+              
               if (skill.themeAware) {
-                iconColor = pill === 'red' ? (skill.darkModeColor || '#CCCCCC') : '#333333'
-                shadowColor = pill === 'red' ? (skill.darkModeColor || '#CCCCCC') : '#333333'
+                const themeColor = pill === 'red' ? (skill.darkModeColor || '#FFFFFF') : '#333333'
+                shadowColor = themeColor
+                // Apply invert filter for Express.js in dark mode to make it white
+                if (pill === 'red') {
+                  filterStyle = `invert(1) drop-shadow(0 0 8px ${themeColor}40)`
+                } else {
+                  filterStyle = `drop-shadow(0 0 8px ${themeColor}40)`
+                }
               }
               
               return (
@@ -127,16 +134,21 @@ function Skills({ pill = 'red' }) {
                 >
                   <div className="skills__item-icon">
                     {skill.customSvg ? (
-                      <object data={`/${skill.customSvg}.svg`} type="image/svg+xml" style={{ filter: `drop-shadow(0 0 8px ${shadowColor}40)` }}>
-                        <img src={`/${skill.customSvg}.svg`} alt={skill.name} />
-                      </object>
+                      <img 
+                        src={`/${skill.customSvg}.svg`} 
+                        alt={skill.name}
+                        style={{ 
+                          filter: `drop-shadow(0 0 8px ${shadowColor}40)`,
+                          maxWidth: '100%',
+                          maxHeight: '100%'
+                        }}
+                      />
                     ) : (
                       <img
                         src={skill.icon}
                         alt={skill.name}
                         style={{ 
-                          filter: `drop-shadow(0 0 8px ${shadowColor}40)`,
-                          ...(skill.customColor && { color: shadowColor })
+                          filter: filterStyle
                         }}
                       />
                     )}
