@@ -4,18 +4,6 @@ import './Projects.css'
 const projects = [
   {
     id: 1,
-    title: 'Jobestry',
-    description: 'Open Source Chrome Extension that generates customized resumes and cover letters for different job postings. Tailor your application in seconds.',
-    image: '/images/jobestry.png',
-    tech: ['Chrome Extension', 'React', 'OpenAI', 'Tailwind'],
-    link: null,
-    github: 'https://github.com/sharmanilay/jobestry',
-    featured: true,
-    isOpenSource: true,
-    year: '2025',
-  },
-  {
-    id: 2,
     title: 'Hype My Hustle',
     description: 'Your all-in-one AI co-pilot for building in public. Get personalized roadmaps, daily tasks, and content ideas. Go from idea to MVP with audience in 2 weeks.',
     image: '/images/hypemyhustle.png',
@@ -26,7 +14,7 @@ const projects = [
     company: 'Digital Prysm Labs',
   },
   {
-    id: 3,
+    id: 2,
     title: 'Promptery',
     description: 'Spotlight for your prompts. Save complex prompts with a keystroke, access them from anywhere with Spotlight-like speed. Perfect for writers, developers, and creators.',
     image: '/images/promptery.png',
@@ -35,6 +23,18 @@ const projects = [
     github: null,
     featured: true,
     company: 'Digital Prysm Labs',
+  },
+  {
+    id: 3,
+    title: 'Jobestry',
+    description: 'Open Source Chrome Extension that generates customized resumes and cover letters for different job postings. Tailor your application in seconds.',
+    image: '/images/jobestry.png',
+    tech: ['Chrome Extension', 'React', 'OpenAI', 'Tailwind'],
+    link: null,
+    github: 'https://github.com/sharmanilay/jobestry',
+    featured: true,
+    isOpenSource: true,
+    year: '2025',
   },
   {
     id: 4,
@@ -69,17 +69,6 @@ const projects = [
     github: null,
     featured: false,
     year: '2025',
-  },
-  {
-    id: 7,
-    title: 'React Easy Bar Chart',
-    description: 'Open Source NPM Package — Lightweight React bar chart library with 5000+ downloads. Built on Canvas for optimal performance.',
-    image: '/images/reacteasybarchart.png',
-    tech: ['React', 'Canvas API', 'NPM', 'JavaScript'],
-    link: 'https://www.npmjs.com/package/react-easy-bar-chart',
-    github: null,
-    featured: false,
-    year: '2020',
   },
 ]
 

@@ -90,23 +90,6 @@ function Hero({ pill }) {
               <span className="hero__btn-text">Get In Touch</span>
             </button>
           </div>
-
-          <div className="hero__stats">
-            <div className="hero__stat">
-              <span className="hero__stat-number">6+</span>
-              <span className="hero__stat-label">Years Experience</span>
-            </div>
-            <div className="hero__stat-divider" />
-            <div className="hero__stat">
-              <span className="hero__stat-number">4</span>
-              <span className="hero__stat-label">Companies</span>
-            </div>
-            <div className="hero__stat-divider" />
-            <div className="hero__stat">
-              <span className="hero__stat-number">∞</span>
-              <span className="hero__stat-label">Cups of Coffee</span>
-            </div>
-          </div>
         </div>
 
         <div className="hero__visual">
