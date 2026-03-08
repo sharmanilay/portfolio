@@ -213,6 +213,12 @@
   letter-spacing: 0.1em;
 }
 
+.project-card__badge--opensource {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.3);
+  color: #4CAF50;
+}
+
 .project-card__company {
   display: inline-block;
   padding: var(--space-xs) var(--space-sm);

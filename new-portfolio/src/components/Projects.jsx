@@ -70,14 +70,27 @@ const projects = [
   },
   {
     id: 7,
-    title: 'What To Watch',
-    description: 'Movie Recommendation Platform — A recommendation engine that suggests films based on user content preferences and viewing habits.',
-    image: '/images/whattowatch.png',
-    tech: ['Next.js', 'Firebase', 'Express', 'TMDb API'],
-    link: 'https://getwhattowatch.vercel.app',
+    title: 'HypeShelf',
+    description: 'Open Source content curation platform that helps creators discover, organize, and share inspiration across platforms. Turn bookmarks into actionable content.',
+    image: '/images/hypeshelf.png',
+    tech: ['Next.js', 'Tailwind', 'Supabase', 'React'],
+    link: 'https://hypeshelfpro.vercel.app',
     github: null,
     featured: false,
-    year: '2020',
+    isOpenSource: true,
+    year: '2024',
+  },
+  {
+    id: 8,
+    title: 'Jobestry',
+    description: 'Open Source Chrome Extension that generates customized resumes and cover letters for different job postings. Tailor your application in seconds.',
+    image: '/images/jobestry.png',
+    tech: ['Chrome Extension', 'React', 'OpenAI', 'Tailwind'],
+    link: null,
+    github: null,
+    featured: false,
+    isOpenSource: true,
+    year: '2025',
   },
 ]
 
@@ -187,6 +200,9 @@ function Projects() {
                 <div className="project-card__meta">
                   {project.featured && (
                     <span className="project-card__badge">Featured</span>
+                  )}
+                  {project.isOpenSource && (
+                    <span className="project-card__badge project-card__badge--opensource">Open Source</span>
                   )}
                   {project.company && (
                     <span className="project-card__company">{project.company}</span>
