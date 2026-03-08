@@ -11,7 +11,7 @@ const skillCategories = [
       { name: 'Next.js', color: '#000000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
       { name: 'Vue.js', color: '#4FC08D', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
       { name: 'TypeScript', color: '#3178C6', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
-      { name: 'React Query', color: '#FF4154', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', customColor: '#FF4154' },
+      { name: 'React Query', color: '#FF4154', icon: null, customSvg: 'reactquery' },
       { name: 'Tailwind CSS', color: '#06B6D4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
       { name: 'Zustand', color: '#6D4C41', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zustand/zustand-original.svg' },
     ]
@@ -21,7 +21,7 @@ const skillCategories = [
     icon: '⚙️',
     skills: [
       { name: 'Node.js', color: '#339933', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
-      { name: 'Express.js', color: '#000000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', themeAware: true },
+      { name: 'Express.js', color: '#000000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', themeAware: true, darkModeColor: '#FFFFFF' },
       { name: 'Go', color: '#00ADD8', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg' },
       { name: 'Ruby on Rails', color: '#CC0000', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-original-wordmark.svg' },
       { name: 'Python', color: '#3776AB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
@@ -39,7 +39,7 @@ const skillCategories = [
       { name: 'MySQL', color: '#4479A1', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
       { name: 'Firebase', color: '#FFCA28', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg' },
       { name: 'Supabase', color: '#3ECF8E', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
-      { name: 'Convex', color: '#3E3735', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/convex/convex-original.svg' },
+      { name: 'Convex', color: '#FF4154', icon: null, customSvg: 'convex' },
       { name: 'Google Cloud', color: '#4285F4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg' },
       { name: 'GitHub Actions', color: '#2088FF', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg' },
     ]
@@ -113,10 +113,11 @@ function Skills({ pill = 'red' }) {
           <div className="skills__grid">
             {skillCategories[activeCategory].skills.map((skill, index) => {
               let iconColor = skill.color
+              let shadowColor = skill.color
               if (skill.themeAware) {
-                iconColor = pill === 'red' ? '#CCCCCC' : '#333333'
+                iconColor = pill === 'red' ? (skill.darkModeColor || '#CCCCCC') : '#333333'
+                shadowColor = pill === 'red' ? (skill.darkModeColor || '#CCCCCC') : '#333333'
               }
-              const shadowColor = skill.customColor || skill.color
               
               return (
                 <div
