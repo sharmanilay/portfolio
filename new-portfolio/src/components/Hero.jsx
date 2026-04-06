@@ -121,7 +121,7 @@ function Hero({ pill }) {
                   {'\n'}    <span className="code-string">"PostgreSQL"</span>,{' '}
                   <span className="code-string">"GCP"</span>
                   {'\n'}  ],
-                  {'\n'}                    <span className="code-property">currently</span>:{' '}
+                  {'\n'}  <span className="code-property">currently</span>:{' '}
                   <span className="code-string">"Digital Prysm Labs"</span>,
                   {'\n'}  <span className="code-property">workingTimeZones</span>: [
                   {'\n'}    <span className="code-string">"US"</span>,{' '}

@@ -88,8 +88,9 @@
 
 /* Light mode override for active tab */
 .theme-light .skills__tab--active {
-  color: white;
-  background: var(--color-primary);
+  background: white;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .skills__tab-icon {
