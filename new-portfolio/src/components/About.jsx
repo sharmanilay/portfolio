@@ -38,23 +38,23 @@ function About() {
           <div className="about__content">
             <div className="about__text">
               <p>
-                Hey there! I'm <strong>Nilay Sharma</strong>, a Principal Software Engineer 
-                with over 6 years of experience building production-grade SaaS products 
+                Hey there! I'm <strong>Nilay Sharma</strong>, a Senior Software Engineer
+                with over 7 years of experience building production-grade SaaS products
                 and scalable applications that people actually use.
               </p>
               <p>
-                Currently at <strong>Digital Prysm Labs</strong>, I own end-to-end product delivery — 
-                from architecture and development to deployment and iteration based on user feedback. 
-                I've shipped products like <strong>Promptery</strong> (Prompt Management SaaS) and 
+                Currently at <strong>Digital Prysm Labs</strong>, I own end-to-end product delivery —
+                from architecture and development to deployment and iteration based on user feedback.
+                I've shipped products like <strong>Promptery</strong> (Prompt Management SaaS) and
                 <strong> Hype My Hustle</strong> (AI accountability tool for creators).
               </p>
               <p>
-                Before this, I spent 4+ years at <strong>Trajektory</strong> building market-leading 
-                applications, designed scalable DevOps workflows achieving 90% reduction in release time, 
+                Before this, I spent 4+ years at <strong>Trajektory</strong> building market-leading
+                applications, designed scalable DevOps workflows achieving 90% reduction in release time,
                 and introduced code review processes that cut bugs by 50%.
               </p>
               <p>
-                I hold a B.Tech in Computer Science from <strong>LNMIIT, Rajasthan</strong>. 
+                I hold a B.Tech in Computer Science from <strong>LNMIIT, Rajasthan</strong>.
                 When I'm not shipping code, you'll find me playing guitar or writing stage plays
               </p>
             </div>
@@ -77,7 +77,7 @@ function About() {
               <div className="about__card about__card--1">
                 <div className="about__card-icon">💼</div>
                 <h4>Digital Prysm Labs</h4>
-                <p>Principal Engineer — Building & shipping SaaS products</p>
+                <p>Senior Software Engineer — Building & shipping SaaS products</p>
               </div>
               <div className="about__card about__card--2">
                 <div className="about__card-icon">🌐</div>

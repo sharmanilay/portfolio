@@ -7,7 +7,7 @@ function Hero({ pill }) {
   const [isDeleting, setIsDeleting] = useState(false)
 
   const roles = [
-    'Principal Software Engineer',
+    'Senior Software Engineer',
     'Full-Stack Developer',
     'React & Node.js Expert',
     'SaaS Builder',
@@ -110,7 +110,7 @@ function Hero({ pill }) {
                   {'\n'}  <span className="code-property">name</span>:{' '}
                   <span className="code-string">"Nilay Sharma"</span>,
                   {'\n'}  <span className="code-property">role</span>:{' '}
-                  <span className="code-string">"Principal Engineer"</span>,
+                  <span className="code-string">"Senior Software Engineer"</span>,
                   {'\n'}  <span className="code-property">location</span>:{' '}
                   <span className="code-string">"India 🇮🇳"</span>,
                   {'\n'}  <span className="code-property">stack</span>: [
