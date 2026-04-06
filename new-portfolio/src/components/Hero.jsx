@@ -7,7 +7,7 @@ function Hero({ pill }) {
   const [isDeleting, setIsDeleting] = useState(false)
 
   const roles = [
-    'Senior Software Engineer',
+    'Principal Software Engineer',
     'Full-Stack Developer',
     'React & Node.js Expert',
     'SaaS Builder',
@@ -110,7 +110,7 @@ function Hero({ pill }) {
                   {'\n'}  <span className="code-property">name</span>:{' '}
                   <span className="code-string">"Nilay Sharma"</span>,
                   {'\n'}  <span className="code-property">role</span>:{' '}
-                  <span className="code-string">"Senior Software Engineer"</span>,
+                  <span className="code-string">"Principal Engineer"</span>,
                   {'\n'}  <span className="code-property">location</span>:{' '}
                   <span className="code-string">"India 🇮🇳"</span>,
                   {'\n'}  <span className="code-property">stack</span>: [
@@ -121,13 +121,9 @@ function Hero({ pill }) {
                   {'\n'}    <span className="code-string">"PostgreSQL"</span>,{' '}
                   <span className="code-string">"GCP"</span>
                   {'\n'}  ],
-                  {'\n'}                    <span className="code-property">currently</span>:{' '}
+                  {'\n'}  <span className="code-property">currently</span>:{' '}
                   <span className="code-string">"Digital Prysm Labs"</span>,
-                  {'\n'}  <span className="code-property">workingTimeZones</span>: [
-                  {'\n'}    <span className="code-string">"US"</span>,{' '}
-                  <span className="code-string">"EU"</span>,{' '}
-                  <span className="code-string">"APAC"</span>
-                  {'\n'}  ],
+
                   {'\n'}{'}'};
                 </code>
               </pre>
